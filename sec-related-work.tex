@@ -1,0 +1,34 @@
+\section{Related Work}
+
+\citet{Faucon:2016:EDM} propose a semi-Markov model for simulating MOOC
+students. They produce behavior profiles that characterize groups of
+students in the form of semi-Markov models like our proposed model does,
+but they differ from our work in two major ways. First, they assume that a
+student can belong to only one behavior profile across the entire course
+rather than allowing this profile to change over time.  Because we do not
+have this restriction, our model is also able to learn the transition
+probabilities between the different behavior profiles we discover.
+
+\citet{Shih:2010:EDM} investigate the use of HMM-based clustering
+techniques for automatic discovery of student learning strategies when
+solving a particular problem. This is similar to our approach in that the
+description of behavior profiles is a Markov-model, but differs in focus:
+we investigate macro-level MOOC behavior here as opposed to looking at
+individual problem solving behavior. \citet{Ypma:2002:Springer} use
+mixtures of HMMs to categorize web pages and cluster users by investigating
+web log data, which is quite similar to the clickstream log data we obtain
+from MOOCs.
+
+\citet{Kizilcec:2013:LAK} assign students  to states following a rule-based
+approach based upon when the student submitted the assignment for a
+particular week in the course. They investigated how students transitioned
+between these states as the course progressed, and used the sequence of
+states a student exhibited as a representation for performing $k$-means
+clustering of students into related groups. This differs from our method
+substantially: we assign students to states using a probabilistic
+framework to account for uncertainty in this state assignment, and jointly
+learn representations for these states, which are treated as being
+\emph{latent} as opposed to pre-definied using some rule (or set of rules).
+Furthermore, our model provides more flexibility in how the time segments
+are defined, allowing for both finer (for example, day-by-day) or courser
+(for example, month-by-month) granularity.

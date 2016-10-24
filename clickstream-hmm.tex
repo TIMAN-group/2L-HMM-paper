@@ -1,0 +1,128 @@
+%% SIGCHI Proceedings Format (modern) Sample Document
+%% This sample file demonstrates the use of the `sigchi-modern' class file.
+%%
+%% The content of this document draws heavily on the `HCI Archive Format'
+%% template supplied by SIGCHI, but has been modified to demonstrate and
+%% document the LaTeX class.
+
+% The parameter given to the `\documentclass' command can be one of:
+%   `preprint', `submission', or `final'.
+% These control the presence of certain features for each stage of the authoring
+% process. For example, `submission' does not output the author block, and
+% `final' disables page numbers.
+%
+% The \preprintonly{}, \submissiononly{}, and \finalonly{} commands allow you
+% to wrap text that will only be output under the corresponding option.
+\documentclass[submission]{sigchi-modern}
+
+% These packages aren't required, but do provide some helpful features that are
+% used in this sample.
+\usepackage{graphicx}  % Graphics for figures
+\usepackage{booktabs}  % Nice formatting for tables
+\usepackage{balance}   % Attempts to balance the columns on the last page
+
+% A nice way to help avoid overful lines handing out into the margins is the
+% `microtype' package, which lets certain characters extrude a *little* bit.
+\usepackage{microtype}
+% If the situation becomes dire, use:
+%\sloppy
+
+% You may use any bibliography package as long as the output matches that of
+% the prescribed format. `natbib' is a fairly nice default, and the provided
+% BibTeX style file has been tested with it.
+\usepackage[numbers]{natbib}
+\bibliographystyle{acm-sigchi-modern}
+
+% Define these tokens as appropriate for the conference to generate the
+% necessary copyright notice for `final` mode.
+\confname{CHI'14}
+\confdate{April 26--May 1}
+\confyear{2014}
+\conflocation{Toronto, Canada}
+\procissn{XXX-X-XXXX-XXXX-X/XX/XX}
+\doi{10.1000/182}
+% \copylicense be set to one of: \acmcopyright, \authorlicense, or \openlicense
+\copylicense{\authorlicense}
+
+% End of preamble. Here comes the document.
+\begin{document}
+
+\title{Modeling MOOC Student Behavior With Two-Layer Hidden Markov Models}
+
+% Author information can be set automatically if you provide a series of
+% author names and affiliations:
+%   \author[1]{Author One}
+%   \author[2]{Author Two}
+%   \author[1,2]{Author Three}
+%   \affiliation[1]{Organisation One\\
+%                   Some Country}
+%   \affiliation[2]{Organisation Two\\
+%                   Some Country}
+%   \authorextra{\mailto{one@example.com}, \mailto{two@example.org},
+%                \mailto{three@example.net}}
+% Or, manually:
+%   \author{
+%     \authorname{Author One}\\
+%     \authoraffil{
+%       Organisation One\\
+%       Some Country\\
+%       \mailto{one@example.com}}}
+%   \author{
+%     \authorname{Author Two}\\
+%     \authoraffil{
+%       Organisation Two\\
+%       Some Country\\
+%       \mailto{two@example.org}}}
+% Refer to the body text of the document for more details.
+\author[1]{Chase Geigle}
+\author[1]{ChengXiang Zhai}
+
+% Set \authorwidth with the longest author name if you don't like the default
+% spacing:
+\settowidth{\authorwidth}{ChengXiang Zhai1}
+\settowidth{\affilwidth}{University of Illinois at Urbana-ChampaignAAA}
+
+\affiliation[1]{Department of Computer Science\\
+    University of Illinois at Urbana-Champaign\\
+    Urbana, Illinois, USA}
+
+\authorpostscript{\email{\{%
+  \href{mailto:geigle1@example.com}{geigle1},
+  \href{mailto:czhai@example.com}{czhai}\}@illinois.edu}}
+
+% If you format the author blocks manually, use \authorlist with a
+% comma-delimited list of the author names.
+% This is written into the PDF metadata for preprint and final modes.
+%\authorlist{Author One, Author Two, Author Three, Author Four}
+
+% Produces the title, author, and optional banner block.
+\maketitle
+
+\begin{abstract}
+  Massive open online courses (MOOCs) provide educators with an abundance
+  of data describing how students interact with the platform, but this data
+  is highly underutilized today. This is in part due to the lack of
+  sophisticated tools to provide interpretable and actionable summaries of
+  huge amounts of MOOC activity present in log data. In this paper, we
+  propose a method for automatically discovering student behavior patterns
+  by leveraging the click log data that can be obtained from the MOOC
+  platform itself in a completely unsupervised manner.
+\end{abstract}
+
+% A semicolon-separated list of keywords to describe the paper.
+\keywords{MOOC log analysis; student behavior modeling; Markov models;
+hidden Markov models}
+
+% ACM classification block.
+% \category{}{}{}[] has three mandatory arguments and one optional argument; it
+% can be used multiple times.
+%\classification{%
+%    \category{}{}{}
+%}
+
+\input{sec-intro}
+
+\input{sec-related-work}
+
+\bibliography{bib}
+\end{document}

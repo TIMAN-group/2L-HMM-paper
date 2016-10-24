@@ -1,5 +1,14 @@
 \section{Related Work}
 
+Our model is based heavily upon the prior art of Hidden Markov
+Models~\cite{Rabiner:1990:RSR} for sequence labeling tasks. These types of
+models are widely applicable and have been used for tasks such as speech
+recognition~\cite{Huang:1990:HMM} and part-of-speech
+tagging~\cite{Jurafsky:2009:SLP}. We employ maximum likelihood estimation
+for estimating our model parameters using the EM algorithm
+framework~\cite{Dempster:1977:JRSS} by modifying the Baum-Welch algorithm
+for traditional HMMs~\cite{Rabiner:1990:RSR}.
+
 \citet{Faucon:2016:EDM} propose a semi-Markov model for simulating MOOC
 students. They produce behavior profiles that characterize groups of
 students in the form of semi-Markov models like our proposed model does,

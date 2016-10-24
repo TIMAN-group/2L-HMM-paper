@@ -1,39 +1,63 @@
 \section{Model}
 
 Given a MOOC log, we can define a set $\mathbf{A}$ of actions that a
-student can take at any given time. For each student $\ell \in \mathbf{L}$,
-we then extract a list of action sequences $\mathbf{S}_\ell$ that he or she
-produced as observed in the log. Each sequence can be divided flexibly; in
-this paper we chose to denote the end of a sequence as occurring when no
-further actions occur within a 10 hour window of time (and thus our
-sequences roughly correspond to one day's worth of activity). Each action
-sequence $s_i \in \mathbf{S}_\ell$ is a list of actions from $\mathbf{A}$.
+student can take at any given time. For example, an action $a \in
+\mathbf{A}$ might be ``viewing lecture'', ``taking quiz'', or ``viewing
+forum''. For each student in the course $\ell \in \mathbf{L}$, we then
+extract a list of action sequences $\mathbf{S}_\ell$ that he or she
+produced as observed in the log, where each sequence $\mathbf{s} \in
+\mathbf{S}_\ell$ is itself a list of actions $(a_1, a_2, \ldots, a_M)$ with
+each $a_i \in \mathbf{A}$.  Each sequence can be divided flexibly; in this
+paper we chose to denote the end of a sequence as occurring when no further
+actions occur within a 10 hour window of time (and thus our sequences
+roughly correspond to one day's worth of activity).
 
-Each sequence $s_i$ is associated with a latent state $u_i$, and the
-actions within the sequence $(a_1, a_2, \ldots, a_{|s_i|})$ are modeled as
-a first-order Markov process, where each action is drawn from a
-distribution conditioned upon the previous action. (There is also an initial
-distribution that governs the probability of starting the sequence with a
-particular action $a_1 \in A$.)
+Each sequence $\mathbf{s} \in \mathbf{S}_\ell$ is associated with a latent
+state $u \in \{1,\ldots,K\}$ (where $K$ is a fixed constant picked in
+advance). The actions within the sequence $\mathbf{s} = (a_1, a_2, \ldots,
+a_M)$ are then modeled as a first-order Markov process conditioned upon $u$
+where each action is drawn from a distribution conditioned upon the
+previous action (except for the first which is sampled from an initial
+starting distribution). We can write the parameters for the first-order
+Markov model associated with latent state $u$ as $\lambda^{(u)} =
+(\pi^{(u)}, A^{(u)})$ where $\pi^{(u)}$ indicates the initial probability
+vector of length $|\mathbf{A}|$ and $A^{(u)}$ is an $|\mathbf{A}| \times
+|\mathbf{A}|$ matrix indicating the transition probabilities between each
+pair of actions from $\mathbf{A}$.
 
-For a given list of action sequences $\mathbf{S}_\ell$, we have the
-likelihood function
+Thus, the probability of a sequence $\mathbf{s}$ of length $M$ given its
+latent state $u$ is
+\begin{equation}
+  P(\mathbf{s} \mid \lambda^{(u)}) = P(a_1 \mid \pi^{(u)}) \prod_{i=2}^M P(a_i \mid
+  a_{i-1}, A^{(u)})
+\end{equation}
+where $P(a \mid \pi^{(u)}) = \pi^{(u)}_a$ is the probability of starting
+with action $a$ and $P(a_i \mid a_{i-1}, A^{(u)}) = A^{(u)}_{a_{i-1}, a_i}$
+is the transition probability of moving from action $a_{i-1}$ to $a_{i}$.
+
+We can compute the likelihood of a list of action sequences
+$\mathbf{S}_\ell$ of length $N$ for a student $\ell$ as
 \begin{equation}
   P(\mathbf{S}_\ell \mid \Lambda)
-  = \prod_{s_i \in \mathbf{S}_\ell}
-  \sum_{U} P(u_i \mid u_{i-1})
-  \prod_{a_t \in s_i}
-  P(a_t \mid a_{t-1}, u_i)
+  = \prod_{i=1}^N \sum_U P(U \mid \Lambda) P(\mathbf{s}_i \mid
+  \lambda^{(u_i)})
 \end{equation}
-where $\Lambda$ is the set of parameters for our model, and the summation
-over $U$ refers to summing over all possible latent state sequences of the
-same length as $\mathbf{S}_\ell$. (For $i=1$ and for $t=1$, we define the
-transition probability as drawing from the initial distribution; this can
-be thought of as padding the sequences with a dummy start symbol $u_0$ and
-$a_0$, respectively). This can be seen as a modification of the traditional
-hidden Markov model~\cite{Rabiner:1990:RSR} where instead of discrete
-observations (one for each latent state transition) we have observations
-that take the form of entire sequences $(a_1, a_2, \ldots a_T)$ whose
+where $\Lambda$ is the set of all model parameters, and the summation over
+$U$ indicates a sum over all possible latent state sequences of length
+$|\mathbf{s}_i|$. In our model, we let $\Lambda = (\pi, A, \lambda^{(1)},
+\ldots, \lambda^{(K)})$ where $\pi$ and $A$ are the parameters of a first-order
+Markov model over the latent states and each $\lambda^{(i)}$ consists of
+the parameters for the first-order Markov model over action sequences for
+latent state $i$. Thus $\pi$ (without superscripts) is an initial
+probability vector of length $K$ and $A$ (without superscripts) is a $K
+\times K$ transition probability matrix, analogous to the case with the
+individual first-order Markov model parameters $\lambda^{(i)}$ for each
+latent state.
+
+This can be seen as a modification of the traditional hidden Markov
+model~\cite{Rabiner:1990:RSR} where instead of discrete observations (one
+for each latent state transition) we have observations that take the form
+of entire sequences $\mathbf{s}_i = (a_1, a_2, \ldots a_M)$ whose
 probabilities are computed using another (non-hidden) Markov model
 conditioned upon the latent state $u_i$.
 
@@ -48,15 +72,14 @@ description of the original Baum-Welch algorithm, and then describe our
 modification.
 
 \subsubsection{Baum-Welch for Traditional HMMs}
-In the traditional HMM formulation, we have $\Lambda = (A, B, \pi)$ where
+In the traditional HMM formulation, we have $\Lambda = (\pi, A, B)$ where
+$\pi$ is the initial probability distribution over the latent states,
 $A$ is a $N\times N$ matrix indicating the latent state transition
-probabilities, $B$ is a $N \times V$ matrix indicating the probability of
-generating an observation symbol from a given latent state, and $\pi$ is
-the initial probability distribution over the latent states.
-
-The Baum-Welch algorithm (also called the forward-backward algorithm)
-defines two sets of variables $\alpha_t(i)$ called the forward variables
-and $\beta_t(i)$ called the backward variables.
+probabilities, and $B$ is a $N \times V$ matrix indicating the probability
+of generating a discrete observation symbol from a given latent state. The
+Baum-Welch algorithm (also called the forward-backward algorithm) defines
+two sets of variables $\alpha_t(i)$ called the forward variables and
+$\beta_t(i)$ called the backward variables.
 
 $\alpha_t(i) = P(o_1, \ldots, o_t, q_t = i \mid \Lambda)$ is the probability of
 generating the sequence of observations $(o_1, o_2, \ldots, o_t)$ up to time
@@ -66,7 +89,7 @@ using the following recursion:
   \item $\alpha_1(i) = \pi_i b_i(o_1)$, the probability of starting in
     state $i$ ($\pi_i$) times the probability of generating the first
     observation $o_1$ from state $i$.
-  \item $\alpha_{t+1}(i) = b_i(o_{t+1})\sum_{j=1}^N \alpha_t(j) a_{ji}$,
+  \item $\alpha_{t+1}(i) = b_i(o_{t+1})\sum_{j=1}^N \alpha_t(j) A_{ji}$,
     the probability of generating the observation $o_{t+1}$ from state $i$
     times the probability that we arrive in state $i$ from any other
     previous state after generating all of the other observations.
@@ -77,53 +100,72 @@ is the probability of generating the \emph{rest of the sequence} given that
 we are in state $i$ at time $t$. They are also defined using a recursion:
 \begin{itemize}
   \item $\beta_T(i) = 1$
-  \item $\beta_t(i) = \sum_{j=1}^N \beta_{t+1}(j) a_{ij} b_j(o_{t+1})$, the
+  \item $\beta_t(i) = \sum_{j=1}^N \beta_{t+1}(j) A_{ij} b_j(o_{t+1})$, the
     probability of transitioning to any state $j$ and generating the
     observation $o_{t+1}$ times the probability of generating the rest of
     the sequence given that we transitioned to state $j$.
 \end{itemize}
 
-Given the $\alpha$s and the $\beta$s, we can compute the posterior
-probability of being in a given state $i$ at time $t$ and the posterior
-probability of going through a transition from state $i$ to state $j$ at
-time $t$ as
+Given the $\alpha$s and the $\beta$s, we can compute $\gamma_t(i)$, the posterior
+probability of being in a given state $i$ at time $t$, and $\xi_t(i,j)$,
+the posterior probability of going through a transition from state $i$ to
+state $j$ at time $t$ as
 \begin{equation}
   \gamma_t(i) = \frac{\alpha_t(i)\beta_t(i)}{\sum_{j=1}^N
   \alpha_t(j)\beta_t(j)}
 \end{equation}
 and
 \begin{equation}
-  \xi_t(i,j) = \frac{\alpha_t(i)a_{ij} b_j(o_{t+1}) \beta_{t+1}(j)}
+  \xi_t(i,j) = \frac{\alpha_t(i) A_{ij} b_j(o_{t+1}) \beta_{t+1}(j)}
   {\sum_{j=1}^N \alpha_t(j)\beta_t(j)}
 \end{equation}
-respectively. These probabilities are enough to update our model parameters
+respectively. This is the E-step of the EM algorithm.
+
+Given $\gamma_t(i)$ and $\xi_t(i,j)$ for each sequence $\mathbf{o}_k$ in
+some training data of length $M$, we can update our model parameters
 $\Lambda$ as
 \begin{align}
-  \pi_i &= \gamma_1(i),\\
-  a_{ij} &= \frac{\sum_{t=1}^T \xi_t(i,j)}{\sum_{j=1}^N \sum_{t=1}^T
-  \xi_t(i,j)}, \text{ and }\\
-  b_i(v) &= \frac{\sum_{t=1, o_t = v}^T \gamma_t(i)}
-  {\sum_{t=1}^T \gamma_t(i)}.
+  \pi_i &= \frac{\sum_{k=1}^M \gamma^{(\mathbf{o}_k)}_1(i)}{M},\\
+  A_{ij} &= \frac{\sum_{k=1}^M \sum_{t=1}^T \xi^{(\mathbf{o}_k)}_t(i,j)}
+  {\sum_{k=1}^M \sum_{j=1}^N \sum_{t=1}^T \xi^{(\mathbf{o}_k)}_t(i,j)},
+  \text{ and }\\
+  b_i(v) &= \frac{\sum_{k=1}^M \sum_{t=1, o_{k,t} = v}^T
+  \gamma^{(\mathbf{o}_k)}_t(i)}
+  {\sum_{k=1}^M \sum_{t=1}^T \gamma^{(\mathbf{o}_{k,t})}_t(i)}.
 \end{align}
-
-% TODO: update this to compute \Lambda across multiple observation
-% sequences
+This is the M-step of the EM algorithm.
 
 \subsubsection{Baum-Welch for HMMs with Sequence Observations}
 The major deviation of our model from the traditional HMM is that our
 observations are themselves sequences. Thus, in all of the equations
-presented in the previous section, we treat an observation $o_t$ at time
-$t$ as consisting itself of a list of actions $a_1, \ldots, a_M$. Thus,
-instead of defining $b_i(v)$ as the probability that an observation
-\emph{token} $v$ is generated from state $i$, we have
+presented in the previous section, we treat an observation $o_t =
+\mathbf{s}_t$ at time $t$ as consisting itself of a list of actions $(a_1,
+\ldots, a_M)$. Thus, instead of defining $b_i(v)$ as the probability that a
+discrete observation \emph{token} $v$ is generated from state $i$, we have
 \begin{equation}
-  b_i(a_1, \ldots, a_M) = P(a_1) \prod_{i=2}^M P(a_i \mid a_{i-1})
+  b_i(\mathbf{s}_t) = P(\mathbf{s}_t \mid \lambda^{(i)})
+  = P(a_1 \mid \pi^{(i)}) \prod_{k=2}^M P(a_k \mid
+  a_{k-1}, A^{(i)})
 \end{equation}
-where $b_i(\mathbf{o})$ now defines the probability of an action sequence
-using a first-order (non-hidden) Markov model. Fortunately, the recursions
-for the $\alpha$ and $\beta$ variables remain the same, as do the
-definitions of $\gamma_t(i)$ and $\xi_t(i,j)$. The only change, then, is in
-the updating equations, where we replace the update for $b_i$ by a pair of
-updates
+where $b_i(\mathbf{s})$ now defines the probability of an action sequence
+using a first-order (non-hidden) Markov model.
 
-% TODO: add the pair of updates
+Fortunately, the recursions for the $\alpha$ and $\beta$ variables remain
+the same, as do the definitions of $\gamma_t(i)$ and $\xi_t(i,j)$ in the
+E-step. The only change is in the updating equations in the M-step,
+where we replace the update for $b_i(v)$ by a pair of updates: one for
+$\pi^{(i)}_a$ one for $A^{(i)}_{ab}$. We denote the $m$-th action in the
+$t$-th sequence for the $k$-th student as $o_{k,t,m}$. The two updates can
+be written as
+\begin{align}
+  \pi^{(i)}_{a}
+  &= \frac{\sum_{k=1}^M \sum_{t=1,a_1 = a}^T \gamma^{(\mathbf{o}_k)}_t(i)}
+  {\sum_{k=1}^M \sum_{t=1}^T \gamma^{(\mathbf{o}_k)}_t(i)}, \text{ and }\\
+  A^{(i)}_{ab}
+  &= \frac{\sum_{k=1}^M \sum_{t=1}^T
+  \sum_{m=2,a_{m-1}=a \land a_m = b}^{|\mathbf{o}_{k,t}|}
+  \gamma^{(\mathbf{o}_k)}_t(i)}
+  {\sum_{k=1}^M \sum_{t=1}^T \sum_{m=2}^{|\mathbf{o}_{k,t}|}
+  \gamma^{(\mathbf{o}_k)}_t(i)}
+\end{align}
+where $a_m = o_{t,k,m}$ (for notational conciseness).

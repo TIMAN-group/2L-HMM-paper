@@ -1,1 +1,50 @@
 \section{Introduction}
+The proliferation of massive open online courses (MOOCs) has resulted in a
+profound impact on education. As more and more learners turn to MOOCs to
+educate themselves on various topics, more and more behavioral data is
+being collected as part of the system on which the MOOC is offered. The
+data present in these logs has the power to aid us in understanding the
+behavior of students who take our MOOCs, which is mostly undetectable for
+instructors of these MOOCs today due to its vast scale. As a result, the
+rich data available through these MOOC logs is highly underutilized today.
+
+What stands in the way? Clearly, intelligent systems to create concise and
+digestible summaries of the massive amount of interaction data collected
+are needed in order to empower the instructors of these courses. If we can
+understand how users are interacting with our MOOCs, we are much more
+likely to be able to make changes to these courses that positively impact
+learners. While we can easily observe the changes in behavior of students
+in real classrooms, MOOCs present a challenge due to their hands-off
+nature. We view this paper as attempting to bridge this gap. Specifically,
+in this paper we explore unsupervised learning methods for automatically
+detecting student learning behavior patterns or profiles from large
+collections of click logs associated with MOOCs.
+
+Our work is motivated by the following beliefs:
+\begin{enumerate}
+  \item Student behavior is complicated and cannot necessarily be captured
+      sufficiently by rule-based methods such as those explored by
+      \citet{Kizilcec:2013:LAK}. We instead propose to treat
+      student behavior patterns as being generated via a sequence of
+      \emph{latent states}. This allows us to automatically capture
+      patterns that we might not have been able to articulate clearly a
+      priori via a series of rules, and also allows us to model the
+      inherent uncertainty in assigning a student's behavior to a
+      particular pattern or group.
+  \item Student behavior can vary over time. Previous models that treat students
+      as exhibiting only one behavioral pattern over
+      time~\cite{Faucon:2016:EDM} miss out on the opportunity to understand
+      student behavior dynamics in a course.
+  \item Analysis of student behavior can and should be performed at varying
+      levels of granularity. This requires us to aggregate data over time
+      with \emph{different levels of resolution}; existing models tend to come
+      with a particular assumption about the resolution of time they
+      consider~\cite{Faucon:2016:EDM, Kizilcec:2013:LAK, Shih:2010:EDM}.
+\end{enumerate}
+
+Thus, we want a \emph{latent variable approach} to mining student behavior
+patterns that is \emph{probabilistic} for inference, and that should be
+\emph{flexible to model state changes over different time resolutions}. In
+this paper, we propose to discover latent student behavior patterns via
+unsupervised learning on large collections of student behavior observation
+sequences via a two-layer hidden Markov model.

@@ -246,7 +246,7 @@
     \setcitestyle{square,comma,numbers}%
     % Simpler numbering in bibliography 
     \renewcommand*{\@biblabel}[1]{\hfill#1.}%
-    \setlength{\bibsep}{0pt}%
+    \setlength{\bibsep}{2pt \@plus \itemsep}%
     \renewcommand*{\bibfont}{%
       % Ragged right with hyphenation
       \leftskip\z@ plus 2em%

@@ -108,18 +108,120 @@ existing posts}. Thus, capturing the action transition matrix within a
 latent state is important for capturing detailed insights involving bigrams
 of actions.
 
-% highlight interesting latent states discovered; make arguments that
-% motivate why it's useful to have a Markov model as the latent state
-% representation (capturing transitions between actions is useful and
-% more meaningful than just using a discrete distribution as the latent
-% state representation); show how the learned state representations differ
-% between the two MOOCs
+\begin{figure*}
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/text-6state/state4.png}
+    \caption{A state from \textretrieval{}.}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/sustain-6state/state4.png}
+    \caption{A state from \sustain{}.}
+  \end{subfigure}
+  \caption{Two similar example states found by the 6-state TL-HMM.}
+  \label{fig:cross-course}
+\end{figure*}
+
+We can also use our model for cross-course behavior analysis. In
+Figure~\ref{fig:cross-course} we show two latent state representations
+learned by a 6-state TL-HMM, one from \textretrieval{} and one from
+\sustain{}. These two states were chosen as they are the most similar
+across the two courses. However, if we look at the transitions we can see
+some important differences. First, in the state from \textretrieval{}, we
+can see that the probability of returning to the course wiki after viewing
+a lecture is considerably lower than that probability in the state from
+\sustain{}. We also notice that the self-loop for staying in a lecture
+activity in \textretrieval{} is significantly higher probability than it is
+in the state from \sustain{}. This gives us some insight into the lecture
+viewing behavior of students in these two MOOCs which can possibly be a
+reflection of the course's structure. In \textretrieval{}, students are
+likely to view lecture videos in succession directly without first visiting
+the course wiki, whereas in \sustain{} students are much more likely to
+first return the course wiki before watching the next lecture video. This
+observation would be lost if we did not consider the transitions between
+the actions within the latent states.
 
 \subsection{Varying the Number of Latent States}
-% show what happens as we vary k (particularly interesting to see 2 -> 3
-% hidden state change, as the forum "topic" appears suddenly); argue that
-% this allows the model to capture behavior patterns at different levels of
-% granularity
+Our TL-HMM model has a parameter $K$ that sets the number of latent states
+to be learned. We believe that this can allow our model to flexibly
+discover patterns of different granularity, and we can show this by varying
+$K$ for a particular course and observing how the latent state
+representations evolve.
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cccc}
+    \textbf{State 1} & \textbf{State 2} & \textbf{State 3} & \textbf{State
+    4}\\\hline
+    \includegraphics[width=0.22\textwidth]{figures/text-2state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-2state/state1.png}\\
+    \includegraphics[width=0.22\textwidth]{figures/text-3state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-3state/state1.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-3state/state2.png}\\
+    \includegraphics[width=0.22\textwidth]{figures/text-4state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-4state/state1.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-4state/state2.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/text-4state/state3.png}
+  \end{tabular}
+  \caption{The evolution of states for increasing $K$ for the
+  \protect\textretrieval{} MOOC.} % I don't know why \protect is needed
+  \label{fig:text-state-evolution}
+\end{figure*}
+
+In Figure~\ref{fig:text-state-evolution} we see the evolution of the latent
+state representations found for the \textretrieval{} MOOC\footnote{Due to
+space constraints, the graphs are quite small, but the states are in the
+same positions as they were in previous figures to aid interpretation.}.
+With $K=2$ we uncover a video watching pattern (state 2) and a course
+material browsing pattern (state 1). However, we can see that when $K=3$ we
+are able to uncover a new pattern involving forum behavior in state 3
+(notice the node sizes on the bottom right). As we increase $K$ to four, we
+can see that state 2 splits into state 2 and state 4. These states appear
+quite similar at a glance, but there are still some key differences. First,
+we can see that state 2 now has a non-negligible forum component, whereas
+state 4 has hardly any weight on the forum.
+
+\begin{figure*}
+  \centering
+  \begin{tabular}{cccc}
+    \textbf{State 1} & \textbf{State 2} & \textbf{State 3} & \textbf{State
+    4}\\\hline
+    \includegraphics[width=0.22\textwidth]{figures/sustain-2state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-2state/state1.png}\\
+    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state1.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state2.png}\\
+    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state1.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state2.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state3.png}
+  \end{tabular}
+  \caption{The evolution of states for increasing $K$ for the
+  \protect\sustain{} MOOC.} % I don't know why \protect is needed
+  \label{fig:sustain-state-evolution}
+\end{figure*}
+
+We observe similar behavior in Figure~\ref{fig:sustain-state-evolution}
+as we increase $K$ when fitting our TL-HMM on the \sustain{} MOOC. Again,
+in the transition between $K=2$ and $K=3$ we discover forum behavior
+patterns as a latent state. However, in the transition between $K=3$ to
+$K=4$ we instead see a refining of that discovered forum state, where
+state 3 captures asymmetric transition probabilities between ``forum thread
+view'' and ``forum thread list''. These states could be seen as redundant,
+in which case a more appropriate setting of $K=3$ may be appropriate for
+the \sustain{} dataset.
 
 \subsection{Transitions Between Latent States}
 % using k=6, show that we can uncover interesting patterns in how students

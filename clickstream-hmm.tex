@@ -13,6 +13,8 @@
 %
 % The \preprintonly{}, \submissiononly{}, and \finalonly{} commands allow you
 % to wrap text that will only be output under the corresponding option.
+
+\PassOptionsToPackage{inline}{enumitem}
 \documentclass[preprint]{sigchi-modern}
 
 \def\meta/{\preprintonly{\textsc{MeTA}}\finalonly{\textsc{MeTA}}%
@@ -40,7 +42,7 @@
 \usepackage[numbers]{natbib}
 \bibliographystyle{acm-sigchi-modern}
 
-
+\usepackage{subcaption}
 
 % Define these tokens as appropriate for the conference to generate the
 % necessary copyright notice for `final` mode.

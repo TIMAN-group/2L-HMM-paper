@@ -1,5 +1,6 @@
 \section{Related Work}
 
+\subsection{Hidden Markov Models}
 Our model is based heavily upon the prior art of Hidden Markov
 Models~\cite{Rabiner:1990:RSR} for sequence labeling tasks. These types of
 models are widely applicable and have been used for tasks such as speech
@@ -9,26 +10,14 @@ for estimating our model parameters using the EM algorithm
 framework~\cite{Dempster:1977:JRSS} by modifying the Baum-Welch algorithm
 for traditional HMMs~\cite{Rabiner:1990:RSR}.
 
-\citet{Faucon:2016:EDM} propose a semi-Markov model for simulating MOOC
-students. They produce behavior profiles that characterize groups of
-students in the form of semi-Markov models like our proposed model does,
-but they differ from our work in two major ways. First, they assume that a
-student can belong to only one behavior profile across the entire course
-rather than allowing this profile to change over time.  Because we do not
-have this restriction, our model is also able to learn the transition
-probabilities between the different behavior profiles we discover.
-
 \citet{Shih:2010:EDM} investigate the use of HMM-based clustering
 techniques for automatic discovery of student learning strategies when
 solving a particular problem. This is similar to our approach in that the
 description of behavior profiles is a Markov-model, but differs in focus:
 we investigate macro-level MOOC behavior here as opposed to looking at
-individual problem solving behavior. \citet{Ypma:2002:Springer} use
-mixtures of HMMs to categorize web pages and cluster users by investigating
-web log data, which is quite similar to the clickstream log data we obtain
-from MOOCs.
+individual problem solving behavior.
 
-\citet{Kizilcec:2013:LAK} assign students  to states following a rule-based
+\citet{Kizilcec:2013:LAK} assign students to states following a rule-based
 approach based upon when the student submitted the assignment for a
 particular week in the course. They investigated how students transitioned
 between these states as the course progressed, and used the sequence of
@@ -41,3 +30,25 @@ learn representations for these states, which are treated as being
 Furthermore, our model provides more flexibility in how the time segments
 are defined, allowing for both finer (for example, day-by-day) or courser
 (for example, month-by-month) granularity.
+
+\subsection{Bayesian Knowledge Tracing}
+Bayesian Knowledge Tracing~\cite{Corbett:1994:UMUAI} in its basic form uses
+a hidden Markov model to model the probability that a learner knows a
+certain skill at a given time. Modifications to this algorithm include
+contextual estimation of the ``slip'' and ``guess'' probabilities of the
+model~\cite{Baker:2008:ITS} and most recently a re-framing as a neural
+network problem~\cite{Piech:2015:NIPS}.
+
+\subsection{Mixtures of Markov Models}
+\citet{Ypma:2002:Springer} use mixtures of HMMs to categorize web pages and
+cluster users by investigating web log data, which is quite similar to the
+clickstream log data we obtain from MOOCs.
+
+\citet{Faucon:2016:EDM} propose a semi-Markov model for simulating MOOC
+students. They produce behavior profiles that characterize groups of
+students in the form of semi-Markov models like our proposed model does,
+but they differ from our work in two major ways. First, they assume that a
+student can belong to only one behavior profile across the entire course
+rather than allowing this profile to change over time.  Because we do not
+have this restriction, our model is also able to learn the transition
+probabilities between the different behavior profiles we discover.

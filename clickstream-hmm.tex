@@ -15,7 +15,12 @@
 % to wrap text that will only be output under the corresponding option.
 \documentclass[preprint]{sigchi-modern}
 
-\def\meta/{\textsc{MeTA}}
+\def\meta/{\preprintonly{\textsc{MeTA}}\finalonly{\textsc{MeTA}}%
+\submissiononly{(redacted)}}
+
+\newcommand{\citemeta}{\preprintonly{\cite{Massung:2016:ACL}}%
+  \finalonly{\cite{Massung:2016:ACL}}%
+  \submissiononly{[redacted citation]}}
 
 % These packages aren't required, but do provide some helpful features that are
 % used in this sample.

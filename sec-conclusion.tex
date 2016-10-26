@@ -6,7 +6,7 @@ modeling in an unsupervised learning framework on large collections of
 actions extracted from MOOC log data. This model is different from existing
 methods in that it treats behavior patterns as a sequence of \emph{latent
 states}, rather than assigning these states in a rule-based manner. It
-allows for students to exhibit different behaviors over time, and allows
+captures the variable behaviors of students over time, and allows
 analysis at different levels of granularity.
 
 We showed that such a model does in fact capture meaningful behavior
@@ -14,17 +14,25 @@ patterns and produces descriptions of these behavior patterns that are easy
 to interpret. We argued that it is important to capture student behavior
 patterns with more sophisticated models than simple discrete distributions
 over actions in order to capture information present in bigrams of actions
-(or above). By varying the parameter $K$ controlling the number of latent
+(or above). By varying the number of latent
 states inferred, we showed that the model is flexible and can capture
 patterns of differing levels of specificity in this way.  Finally, we
 investigated whether we can detect differences in student behavior patterns
 as they correlate with course performance. Specifically, we demonstrated
 that high-performing students produce substantially different HMM
-transition diagrams.
+transition diagrams that tend to show longer concentration span in quiz-taking
+and more active  forum participation as compared with the average students. 
 
 \subsection{Future Work}
 
-Our model can be used to produce an ordered list of latent states for each
+Although we only experimented with our model on two MOOCs, the model
+is completely general and can be easily applied to analyze the log of any other
+course to enable deep understanding of student behaviors as well as the coorrelations
+of such behaviors as other variables such as grades. We plan to develop a MOOC log analysis
+system based on the proposed model to both facilitate education research and 
+help instructors improve course design. 
+
+Specifically, our model can be used to produce an ordered list of latent states for each
 student over time. Given these labeled sequences, we could correlate
 course-wide drifts in these latent states with events in a course. For
 example, we might be able to automatically discover difficult or confusing
@@ -43,4 +51,7 @@ student, but keep the second-level Markov models shared. This would provide
 the model with more flexibility which may be desirable itself, but would
 also naturally result in a description of a student (via his or her HMM
 transitions) that could be incorporated into existing supervised learning
-techniques that try to predict student outcomes.
+techniques that try to predict student outcomes for understanding
+which of the latent behavior patterns discovered by TL-HMM are most predictive
+of the performance of student learning. 
+

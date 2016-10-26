@@ -124,23 +124,26 @@ with action $a$ and $P(a_i \mid a_{i-1}, A^{(u)}) = A^{(u)}_{a_{i-1}, a_i}$
 is the transition probability of moving from action $a_{i-1}$ to $a_{i}$.
 
 We can compute the likelihood of a list of action sequences
-$\mathbf{S}_\ell$ of length $N$ for a student $\ell$ as
+$\mathbf{S}_\ell$ of length $N$ for a student $\ell$ by marginalizing over
+all possible latent state sequences $U=(v_1, \ldots, v_N)$ as
 \begin{equation}
+  \begin{split}
   P(\mathbf{S}_\ell \mid \Lambda)
-  = \prod_{i=1}^N \sum_U P(U \mid \Lambda) P(\mathbf{s}_i \mid
-  \lambda^{(u_i)})
+  &= \sum_U \left(P(v_1 \mid \Lambda) P(\mathbf{s}_1 \mid \lambda^{(v_1)})
+  \phantom{\prod_{i=2}^N}\right.\\
+  &\quad \left.\times \prod_{i=2}^N P(v_i \mid v_{i-1}, \Lambda)
+  P(\mathbf{s}_i \mid \lambda^{(v_i)})\right)
+  \end{split}
 \end{equation}
-where $\Lambda$ is the set of all model parameters, and the summation over
-$U$ indicates a sum over all possible latent state sequences of length
-$|\mathbf{s}_i|$. In our model, we let $\Lambda = (\pi, A, \lambda^{(1)},
-\ldots, \lambda^{(K)})$ where $\pi$ and $A$ are the parameters of a first-order
-Markov model over the latent states and each $\lambda^{(i)}$ consists of
-the parameters for the first-order Markov model over action sequences for
-latent state $i$. Thus $\pi$ (without superscripts) is an initial
-probability vector of length $K$ and $A$ (without superscripts) is a $K
-\times K$ transition probability matrix, analogous to the case with the
-individual first-order Markov model parameters $\lambda^{(i)}$ for each
-latent state.
+where $\Lambda$ is the set of all model parameters.  In our model, we let
+$\Lambda = (\pi, A, \lambda^{(1)}, \ldots, \lambda^{(K)})$ where $\pi$ and
+$A$ are the parameters of a first-order Markov model over the latent states
+and each $\lambda^{(i)}$ consists of the parameters for the first-order
+Markov model over action sequences for latent state $i$. Thus $\pi$
+(without superscripts) is an initial probability vector of length $K$ and
+$A$ (without superscripts) is a $K \times K$ transition probability matrix,
+analogous to the case with the individual first-order Markov model
+parameters $\lambda^{(i)}$ for each latent state.
 
 This can be seen as a modification of the traditional hidden Markov
 model~\cite{Rabiner:1990:RSR} where instead of discrete observations (one

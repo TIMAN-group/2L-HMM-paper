@@ -86,7 +86,7 @@ patterns. Next, we present this model more formally and discuss how to
 estimate its parameters to uncover these latent patterns in an unsupervised
 manner.
 
-\subsection{Formal definition of TL-HMM}
+\subsection{Formal Definition of TL-HMM}
 
 Given a MOOC log, we can define a set $\mathbf{A}$ of actions that a
 student can take at any given time. For example, an action $a \in
@@ -158,9 +158,9 @@ likelihood estimation. Unfortunately, a closed-form solution does not
 exist, so we must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In
 particular, we propose a minor modification of the Baum-Welch
 algorithm~\cite{Rabiner:1990:RSR} which is used to learn the parameters for
-hidden Markov models. In the following sections, we will provide a brief
-description of the original Baum-Welch algorithm, and then describe our
-modification.
+hidden Markov models in an unsupervised setting. In the following sections,
+we will provide a brief description of the original Baum-Welch algorithm,
+and then describe our modification.
 
 \subsubsection{Baum-Welch for Traditional HMMs}
 In the traditional HMM formulation, we have $\Lambda = (\pi, A, B)$ where
@@ -260,5 +260,5 @@ be written as
   \gamma^{(\mathbf{o}_k)}_t(i)}
 \end{align}
 where $a_m = o_{t,k,m}$ (for notational conciseness). Our modified EM
-algorithm for HMMs with sequence observations is provided as part of the
-\meta/ toolkit~\citemeta{}.
+algorithm for TL-HMMs is provided as part of the \meta/
+toolkit~\citemeta{}.

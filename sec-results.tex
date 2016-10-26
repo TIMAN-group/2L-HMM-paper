@@ -14,8 +14,8 @@
 As an analysis tool, the TL-HMM model provides with us the following two
 patterns to characterize student behavior:
 \begin{enumerate*}[label=(\arabic*)]
-  \item latent state representations, and
-  \item latent state transitions.
+  \item the latent state representations, and
+  \item the latent state transitions.
 \end{enumerate*}
 Thus to evaluate the proposed model, we conduct experiments to
 qualitatively analyze both types of patterns discovered from empirical MOOC
@@ -156,8 +156,8 @@ representations evolve.
 \begin{figure*}
   \centering
   \begin{tabular}{cccc}
-    \textbf{State 0} & \textbf{State 1} & \textbf{State 2} & \textbf{State
-    3}\\\hline
+    \textbf{State 0 (Wiki)} & \textbf{State 1 (Lecture)}
+    & \textbf{State 2 (Thread View)} & \textbf{State 3 (Lecture/Wiki)}\\\hline
     \includegraphics[width=0.22\textwidth]{figures/text-2state/state0.png}
     &
     \includegraphics[width=0.22\textwidth]{figures/text-2state/state1.png}\\
@@ -175,7 +175,8 @@ representations evolve.
     \includegraphics[width=0.22\textwidth]{figures/text-4state/state3.png}
   \end{tabular}
   \caption{The evolution of states for increasing $K$ for the
-  \protect\textretrieval{} MOOC.} % I don't know why \protect is needed
+  \protect\textretrieval{} MOOC.\ State ``names'' indicate the highest
+  probability action(s) within the state.} % I don't know why \protect is needed
   \label{fig:text-state-evolution}
 \end{figure*}
 
@@ -195,38 +196,41 @@ state 3 has hardly any weight on the forum.
 \begin{figure*}
   \centering
   \begin{tabular}{cccc}
-    \textbf{State 0} & \textbf{State 1} & \textbf{State 2} & \textbf{State
-    3}\\\hline
+    \textbf{State 0 (Wiki)}
+    & \textbf{State 1 (Lecture/Wiki)}
+    & \textbf{State 2 (Thread List)}
+    & \textbf{State 3 (Thread View)}\\\hline
     \includegraphics[width=0.22\textwidth]{figures/sustain-2state/state0.png}
     &
     \includegraphics[width=0.22\textwidth]{figures/sustain-2state/state1.png}\\
     \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state0.png}
     &
-    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state1.png}
+    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state2.png}
     &
-    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state2.png}\\
+    \includegraphics[width=0.22\textwidth]{figures/sustain-3state/state1.png}\\
     \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state0.png}
+    &
+    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state3.png}
     &
     \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state1.png}
     &
     \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state2.png}
-    &
-    \includegraphics[width=0.22\textwidth]{figures/sustain-4state/state3.png}
   \end{tabular}
   \caption{The evolution of states for increasing $K$ for the
-  \protect\sustain{} MOOC.} % I don't know why \protect is needed
+  \protect\sustain{} MOOC.\ State ``names'' indicate the highest
+  probability action(s) within a state.} % I don't know why \protect is needed
   \label{fig:sustain-state-evolution}
 \end{figure*}
 
 We observe similar behavior in Figure~\ref{fig:sustain-state-evolution}
-as we increase $K$ when fitting our TL-HMM on the \sustain{} MOOC. Again,
+as we increase $K$ when fitting our TL-HMM on the \sustain{} MOOC.\ Again,
 in the transition between $K=2$ and $K=3$ we discover forum behavior
 patterns as a latent state. However, in the transition between $K=3$ to
 $K=4$ we instead see a refining of that discovered forum state, where
-state 2 captures asymmetric transition probabilities between ``forum thread
+state 3 captures asymmetric transition probabilities between ``forum thread
 view'' and ``forum thread list''. These states could be seen as redundant,
-in which case a more appropriate setting of $K=3$ may be appropriate for
-the \sustain{} dataset.
+in which case a  setting of $K=3$ may be more appropriate for the
+\sustain{} dataset.
 
 \subsection{Transitions Between Latent States}
 
@@ -283,9 +287,10 @@ forced the model parameters associated with their Markov model
 representations to be fixed, in effect only learning initial and transition
 probabilities for the top layer of our TL-HMM.\ We show the updated latent
 state transition diagram in Figure~\ref{fig:trans-perfect}. We can clearly
-see that the probability of state 2 has increased dramatically, while the
-probability of states 0 and 3 has decreased. State 1 had its probability
-increase, but only very slightly.
+see that the probability of state 2 has increased dramatically, consistent
+with previous observations of the positive correlation between forum activity and
+grades~\cite{Huang:2014:LAS}, while the probability of states 0 and 3 has
+decreased. State 1 had its probability increase, but only very slightly.
 
 In Figure~\ref{fig:trans-low} we plot the latent state transition diagram
 for a second group of ``low'' students. These students were selected so

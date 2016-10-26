@@ -10,11 +10,16 @@
     \finalonly{UIUC}%
     \submissiononly{(redacted University)}}
 
-\section{Results}
-To qualitatively evaluate our model, we can look at the latent state
-representations we learn by fitting the model to some MOOC log data. We can
-also inspect the transition matrix between the latent states discovered by
-the model.
+\section{Experiment Results}
+As an analysis tool, the TL-HMM model provides with us the following two
+patterns to characterize student behavior:
+\begin{enumerate*}[label=(\arabic*)]
+  \item latent state representations, and
+  \item latent state transitions.
+\end{enumerate*}
+Thus to evaluate the proposed model, we conduct experiments to
+qualitatively analyze both types of patterns discovered from empirical MOOC
+log data.
 
 Specifically, we look at the MOOC logs associated with two different
 Coursera MOOCs offered by \UIUC{}: \textretrieval{} and \sustain{}.  The
@@ -227,17 +232,21 @@ the \sustain{} dataset.
 
 \begin{figure*}
   \centering
-  \begin{subfigure}[t]{0.5\textwidth}
+  \begin{subfigure}[t]{0.33\textwidth}
     \includegraphics[width=\textwidth,trim={0 3cm 0 2cm}]{figures/trans-comp/trans-avg.png}
     \caption{\label{fig:trans-avg}}
   \end{subfigure}%
-  \begin{subfigure}[t]{0.5\textwidth}
+  \begin{subfigure}[t]{0.33\textwidth}
     \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-perfect.png}
     \caption{\label{fig:trans-perfect}}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.33\textwidth}
+    \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-low.png}
+    \caption{\label{fig:trans-low}}
   \end{subfigure}
   \caption{The latent state transition diagrams for a 4-state TL-HMM fit to
   \protect\textretrieval{} for all students (a) compared to only ``perfect''
-  students (b).}
+  students (b) and only ``low'' students (c).}
   \label{fig:trans-comp}
 \end{figure*}
 
@@ -277,3 +286,20 @@ state transition diagram in Figure~\ref{fig:trans-perfect}. We can clearly
 see that the probability of state 2 has increased dramatically, while the
 probability of states 0 and 3 has decreased. State 1 had its probability
 increase, but only very slightly.
+
+In Figure~\ref{fig:trans-low} we plot the latent state transition diagram
+for a second group of ``low'' students. These students were selected so
+that they attempted all required quizzes in the course, but such that their
+average quiz score was $\leq 70\%$. Here, we see that \emph{state 1} has a
+large increase in size, where we might have expected state 3 to grow
+instead.  However, there is an alternative explanation for this phenomenon:
+Since state 1 seems to indicate a highly engaged student, it is a perfectly
+reasonable explanation for the ``low'' student group as they are going to
+be working hard to try to fill in the gaps in their knowledge. By contrast,
+the ``perfect'' student group likely has many members who can take the quiz
+more passively and get perfect marks, perhaps because they already know
+much of the material being presented, or are just naturally strong and do
+not require much background review to perform well. This also explains why
+state 1 did not increase in size for the ``perfect'' group like we were
+anticipating. Our model lends itself well to discovering this potentially
+counter-intuitive insight directly from data.

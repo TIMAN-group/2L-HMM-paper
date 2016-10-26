@@ -273,7 +273,7 @@ had perfect marks. To prevent the latent state meanings from drifting, we
 forced the model parameters associated with their Markov model
 representations to be fixed, in effect only learning initial and transition
 probabilities for the top layer of our TL-HMM.\ We show the updated latent
-state transition diagram in Figure~\ref{fig:trans-perfect}. While the
-differences are small, we do in fact see what we suspected: states 1 and 2
-have higher probability in the ``perfect'' student group compared to the
-model learned on all students, and states 0 and 3 have lower probability.
+state transition diagram in Figure~\ref{fig:trans-perfect}. We can clearly
+see that the probability of state 2 has increased dramatically, while the
+probability of states 0 and 3 has decreased. State 1 had its probability
+increase, but only very slightly.

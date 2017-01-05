@@ -127,13 +127,10 @@ We can compute the likelihood of a list of action sequences
 $\mathbf{S}_\ell$ of length $N$ for a student $\ell$ by marginalizing over
 all possible latent state sequences $U=(v_1, \ldots, v_N)$ as
 \begin{equation}
-  \begin{split}
   P(\mathbf{S}_\ell \mid \Lambda)
   &= \sum_U \left(P(v_1 \mid \Lambda) P(\mathbf{s}_1 \mid \lambda^{(v_1)})
-  \phantom{\prod_{i=2}^N}\right.\\
-  &\quad \left.\times \prod_{i=2}^N P(v_i \mid v_{i-1}, \Lambda)
+  \times \prod_{i=2}^N P(v_i \mid v_{i-1}, \Lambda)
   P(\mathbf{s}_i \mid \lambda^{(v_i)})\right)
-  \end{split}
 \end{equation}
 where $\Lambda$ is the set of all model parameters.  In our model, we let
 $\Lambda = (\pi, A, \lambda^{(1)}, \ldots, \lambda^{(K)})$ where $\pi$ and

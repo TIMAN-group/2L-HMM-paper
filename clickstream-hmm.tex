@@ -14,99 +14,39 @@
 % The \preprintonly{}, \submissiononly{}, and \finalonly{} commands allow you
 % to wrap text that will only be output under the corresponding option.
 
-\PassOptionsToPackage{inline}{enumitem}
-\documentclass[preprint]{sigchi-modern}
+\documentclass[a4,notitlepage,12pt]{jedm}
 
-\def\meta/{\preprintonly{\textsc{MeTA}}\finalonly{\textsc{MeTA}}%
-\submissiononly{(redacted)}}
+\def\meta/{\textsc{MeTA}}
 
-\newcommand{\citemeta}{\preprintonly{\cite{Massung:2016:ACL}}%
-  \finalonly{\cite{Massung:2016:ACL}}%
-  \submissiononly{[redacted citation]}}
+\newcommand{\citemeta}{\cite{Massung:2016:ACL}}
+\usepackage{graphicx}
+\usepackage{booktabs}
 
-% These packages aren't required, but do provide some helpful features that are
-% used in this sample.
-\usepackage{graphicx}  % Graphics for figures
-\usepackage{booktabs}  % Nice formatting for tables
-\usepackage{balance}   % Attempts to balance the columns on the last page
-
-% A nice way to help avoid overful lines handing out into the margins is the
-% `microtype' package, which lets certain characters extrude a *little* bit.
 \usepackage{microtype}
-% If the situation becomes dire, use:
-%\sloppy
 
-% You may use any bibliography package as long as the output matches that of
-% the prescribed format. `natbib' is a fairly nice default, and the provided
-% BibTeX style file has been tested with it.
-\usepackage[numbers]{natbib}
-\bibliographystyle{acm-sigchi-modern}
+\usepackage{natbib}
 
 \usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath}
 
-% Define these tokens as appropriate for the conference to generate the
-% necessary copyright notice for `final` mode.
-\confname{CHI'14}
-\confdate{April 26--May 1}
-\confyear{2014}
-\conflocation{Toronto, Canada}
-\procissn{XXX-X-XXXX-XXXX-X/XX/XX}
-\doi{10.1000/182}
-% \copylicense be set to one of: \acmcopyright, \authorlicense, or \openlicense
-\copylicense{\authorlicense}
+\setlength{\bibhang}{0em}
 
-% End of preamble. Here comes the document.
+\renewcommand\cite{\citep}
+
 \begin{document}
 
 \title{Modeling MOOC Student Behavior With Two-Layer Hidden Markov Models}
 
-% Author information can be set automatically if you provide a series of
-% author names and affiliations:
-%   \author[1]{Author One}
-%   \author[2]{Author Two}
-%   \author[1,2]{Author Three}
-%   \affiliation[1]{Organisation One\\
-%                   Some Country}
-%   \affiliation[2]{Organisation Two\\
-%                   Some Country}
-%   \authorextra{\mailto{one@example.com}, \mailto{two@example.org},
-%                \mailto{three@example.net}}
-% Or, manually:
-%   \author{
-%     \authorname{Author One}\\
-%     \authoraffil{
-%       Organisation One\\
-%       Some Country\\
-%       \mailto{one@example.com}}}
-%   \author{
-%     \authorname{Author Two}\\
-%     \authoraffil{
-%       Organisation Two\\
-%       Some Country\\
-%       \mailto{two@example.org}}}
-% Refer to the body text of the document for more details.
-\author[1]{Chase Geigle}
-\author[1]{ChengXiang Zhai}
+\author{%
+  {\large Chase Geigle}\\Department of Computer Science\\University
+  of Illinois at Urbana-Champaign\\Urbana, Illinois,
+  USA\\geigle1@illinois.edu
+  \and
+  {\large ChengXiang Zhai}\\Department of Computer Science\\University of
+  Illinois at Urbana-Champaign\\Urbana, Illinois, USA\\czhai@illinois.edu}
 
-% Set \authorwidth with the longest author name if you don't like the default
-% spacing:
-\settowidth{\authorwidth}{ChengXiang Zhai1}
-\settowidth{\affilwidth}{University of Illinois at Urbana-ChampaignAAA}
-
-\affiliation[1]{Department of Computer Science\\
-    University of Illinois at Urbana-Champaign\\
-    Urbana, Illinois, USA}
-
-\authorpostscript{\email{\{%
-  \href{mailto:geigle1@illinois.edu}{geigle1},
-  \href{mailto:czhai@illinois.edu}{czhai}\}@illinois.edu}}
-
-% If you format the author blocks manually, use \authorlist with a
-% comma-delimited list of the author names.
-% This is written into the PDF metadata for preprint and final modes.
-%\authorlist{Author One, Author Two, Author Three, Author Four}
-
-% Produces the title, author, and optional banner block.
 \maketitle
 
 \begin{abstract}
@@ -120,10 +60,6 @@
   platform itself in a completely unsupervised manner.
 \end{abstract}
 
-% A semicolon-separated list of keywords to describe the paper.
-\keywords{MOOC log analysis; student behavior modeling; Markov models;
-hidden Markov models}
-
 \newcommand{\NSFGRFP}{This material is based upon work supported by the
 National Science Foundation Graduate Research Fellowship Program under
 Grant Number DGE-1144245.}
@@ -132,13 +68,6 @@ Grant Number DGE-1144245.}
 Jason Cho and Sean Massung for their helpful discussion while developing
 this work, and the ATLAS group at UIUC for their help with securing the
 datasets used. \NSFGRFP{}}
-
-% ACM classification block.
-% \category{}{}{}[] has three mandatory arguments and one optional argument; it
-% can be used multiple times.
-%\classification{%
-%    \category{}{}{}
-%}
 
 \input{sec-intro}
 
@@ -151,10 +80,8 @@ datasets used. \NSFGRFP{}}
 \input{sec-conclusion}
 
 \section{Acknowledgments}
-\preprintonly{\acknowledgments{}}
-\finalonly{\acknowledgments{}}
-\submissiononly{(Anonymized for blind reviewing.)}
+\acknowledgments{}
 
-\balance
+\bibliographystyle{acmtrans}
 \bibliography{bib}
 \end{document}

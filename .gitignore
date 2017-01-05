@@ -22,3 +22,4 @@
 *.blg
 *.gz
 .dropbox
+*.gz(busy)

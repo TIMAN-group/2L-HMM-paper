@@ -25,22 +25,26 @@ Our work is motivated by the following observations:
 \begin{enumerate}
   \item Student behavior is complicated and cannot necessarily be captured
       sufficiently by rule-based methods such as those explored by
-      \citet{Kizilcec:2013:LAK}. We instead propose to treat
-      student behavior patterns as being characterized (represented) via a sequence of
-      \emph{latent states}. This allows us to automatically capture
-      patterns that we might not have been able to articulate clearly a
-      priori via a series of rules, and also allows us to model the
-      inherent uncertainty in assigning a student's behavior to a
-      particular pattern or group. 
+      \citet{Kizilcec:2013:LAK} and \citet{Davis:2016:EDM}. We instead
+      propose to treat student behavior patterns as being characterized
+      (represented) via a sequence of \emph{latent states}. This allows us
+      to automatically capture patterns that we might not have been able to
+      articulate clearly a priori via a series of rules, and also allows us
+      to model the inherent uncertainty in assigning a student's behavior
+      to a particular pattern or group.
   \item Student behavior can vary over time. Previous models that treat students
       as exhibiting only one behavioral pattern over
       time~\cite{Faucon:2016:EDM} miss out on the opportunity to understand
-      student behavior dynamics in a course. We propose a latent space model with {\em latent state transitions} to flexibly model the dynamics. 
+      student behavior dynamics in a course. We propose a latent space
+      model with {\em latent state transitions} to flexibly model the
+      dynamics.
   \item Analysis of student behavior can and should be performed at varying
       levels of granularity. This requires us to aggregate data over time
       with \emph{different levels of resolution}; existing models tend to come
       with a particular assumption about the resolution of time they
-      consider~\cite{Faucon:2016:EDM, Kizilcec:2013:LAK, Shih:2010:EDM}. We propose a more flexible model to accommodate different levels of resolution. 
+      consider~\cite{Faucon:2016:EDM, Kizilcec:2013:LAK, Shih:2010:EDM}. We
+      propose a more flexible model to accommodate different levels of
+      resolution.
 \end{enumerate}
 
 Thus, what we propose is a \emph{latent variable approach} to mining student behavior

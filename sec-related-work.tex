@@ -10,31 +10,53 @@ A major challenge in applying HMMs and other graphical models successfully to
 solve a problem is to design an appropriate architecture of the model, which
 always varies according to specific applications.
 
-HMMs or similar ideas have been previously 
-applied to model education data~\cite{Shih:2010:EDM,Kizilcec:2013:LAK}, but the previous models are not well tuned toward the student behavior task and thus cannot
-adequately address all the aspects of complexity of student learning behavior. 
-A main technical contribution of this paper is to propose a more general
-HMM that can better adapt to the variations of student behavior via its variable resolution
-and nested HMM structure, and thus enable discovery of more sophisticated behavior patterns and provide more detailed characterization of student behavior than the previous models.
- 
-For example, \citet{Kizilcec:2013:LAK} assigned students to states following a rule-based
-approach based upon when the student submitted the assignment for a
-particular week in the course. They investigated how students transitioned
-between these states as the course progressed, and used the sequence of
-states a student exhibited as a representation for performing $k$-means
-clustering of students into related groups. This differs from our method
-substantially: we assign students to states using a probabilistic
-framework to account for uncertainty in this state assignment, and jointly
-learn representations for these states, which are treated as being
-\emph{latent} as opposed to pre-definied using some rule (or set of rules).
-Furthermore, our model provides more flexibility in how the time segments
-are defined, allowing for both finer (for example, day-by-day) or courser
-(for example, month-by-month) granularity. \citet{Shih:2010:EDM} investigated the use of HMM-based clustering
-techniques for automatic discovery of student learning strategies when
-solving a particular problem. This is similar to our approach in that the
-description of behavior profiles is a Markov model, but cannot further characterize
-each latent state with another informative HMM. Thus their work can be regarded
-to modeling ``micro'' behavior, whereas our model can model both ``micro'' and ``macro'' behavior. 
+HMMs or similar ideas have been previously applied to model education
+data~\cite{Shih:2010:EDM,Kizilcec:2013:LAK,Davis:2016:EDM}, but the
+previous models are not well tuned toward the student behavior task and
+thus cannot adequately address all the aspects of complexity of student
+learning behavior.  A main technical contribution of this paper is to
+propose a more general HMM that can better adapt to the variations of
+student behavior via its variable resolution and nested HMM structure, and
+thus enable discovery of more sophisticated behavior patterns and provide
+more detailed characterization of student behavior than the previous
+models.
+
+For example, \citet{Kizilcec:2013:LAK} assigned students to states
+following a rule-based approach based upon when the student submitted the
+assignment for a particular week in the course. They investigated how
+students transitioned between these states as the course progressed, and
+used the sequence of states a student exhibited as a representation for
+performing $k$-means clustering of students into related groups. This
+differs from our method substantially: we assign students to states using a
+probabilistic framework to account for uncertainty in this state
+assignment, and jointly learn \emph{representations} for these states,
+which are treated as being \emph{latent} as opposed to pre-definied using
+some rule (or set of rules).  Furthermore, our model provides more
+flexibility in how the time segments are defined, allowing for both finer
+(for example, day-by-day) or courser (for example, month-by-month)
+granularity. \citet{Shih:2010:EDM} investigated the use of HMM-based
+clustering techniques for automatic discovery of student learning
+strategies when solving a particular problem.  This is similar to our
+approach in that the description of behavior profiles is a Markov model,
+but cannot further characterize each latent state with another informative
+HMM. Thus their work can be regarded to modeling ``micro'' behavior,
+whereas our model can model both ``micro'' and ``macro'' behavior.
+
+\citet{Davis:2016:EDM} investigate frequent student behavior pattern chains
+with a set of actions that is defined similarly to ours. However, their
+method for finding the common behavioral patterns involves a manual
+clustering step to identify behavioral ``motifs'', which is then followed
+by an automatic (rule-based) assignment of all sequences to these motifs.
+Our method, by contrast, attempts to do this automatically: the latent
+state representations obtained by our model attempt to capture similar
+meanings to their behavior motifs in a completely automated fashion. They
+also automatically generate and investigate Markov models for different
+MOOCs, but do so by considering \emph{all} student action sequences as
+belonging to a \emph{single Markov model}. In our approach, we allow each
+student behavior sequence to belong to one of $K$ different Markov models
+(and further model the transition probabilities between these latent state
+Markov models between each sequence a student generates). Thus, their
+Markov models presented are a special case of our model when $K = 1$.
 
 \citet{Faucon:2016:EDM} proposed a semi-Markov model for simulating MOOC
 students. They produce behavior profiles that characterize groups of

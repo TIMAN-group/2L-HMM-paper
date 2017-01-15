@@ -325,3 +325,40 @@ the courses they studied where they find that certificate earning is
 negatively correlated with help seeking behavior. Our model lends itself
 well to discovering this potentially counter-intuitive insight directly
 from data.
+
+To quantify this finding, we perform the following experiment. First, we
+select all students from \textretrieval{} who completed all of the quizzes
+$\mathbf{L}_q \subset \mathbf{L}$. This gives us 1,985 students along with
+their average quiz score. We then create a ranked list of the students in
+$\mathbf{L}_q$ by sorting them by their ``preference'' for a specific
+latent state
+\begin{equation}
+  p_\ell(i) = \frac{\sum_{t=1}^T \gamma_t^{(\mathbf{o}_\ell)}(i)}
+  {\sum_{j=1}^{K} \sum_{t=1}^T \gamma_t^{(\mathbf{o}_\ell)}(j)}
+\end{equation}
+where $\mathbf{o}_\ell$ is the list of action sequences for student $\ell$
+and $\gamma$ is defined as before and computed using the Baum-Welch
+algorithm. We can now compare the average rank in this list for both
+the ``perfect'' student group and the ``low'' student group: a useful state
+for distinguishing the two groups should result in a ranked list with
+statistically significant differences in average rank between the two
+groups. Our results are summarized in Table~\ref{table:mean-rank}. Indeed,
+we discover that states 1 and 2 are useful for teasing apart these two
+groups: state 1 ranks students in the ``low'' group significantly higher
+than those in the ``perfect'' group, and state 2 does the opposite and
+prefers students in the ``perfect'' group to those in the ``low'' group.
+
+\begin{table}
+  \centering
+  \begin{tabular}{r|rrrr}
+    \textbf{Group} & \textbf{State 0} & \textbf{State 1}^\dagger &
+    \textbf{State 2}^\dagger & \textbf{State 3}\\\hline
+    \textbf{Perfect} & 975.3  & 1001.5 & 999.0  & 1056.5\\
+    \textbf{Low}     & 1024.9 & 816.4  & 1230.5 & 1161.2\\
+  \end{tabular}
+  \caption{Average rank for ``perfect'' and ``low'' student groups in the
+  ranked lists associated with the four latent states found by a TL-HMM.
+  $\dagger$ indicates statistically significant different mean ranks at $p
+  < 0.01$ according to an unpaired $t$-test.}
+  \label{table:mean-rank}
+\end{table}

@@ -326,6 +326,22 @@ negatively correlated with help seeking behavior. Our model lends itself
 well to discovering this potentially counter-intuitive insight directly
 from data.
 
+\begin{table}
+  \centering
+  \begin{tabular}{r|rrrrr}
+    \textbf{Group} & \textbf{State 0} & \textbf{State 1}^\dagger &
+    \textbf{State 2}^\dagger & \textbf{State 3} & \textbf{State 2
+    $\rightarrow$ 2}^\dagger\\\hline
+    \textbf{Perfect} & 975.3  & 1001.5 & 999.0  & 1056.5 & 939.6\\
+    \textbf{Low}     & 1024.9 & 816.4  & 1230.5 & 1161.2 & 1187.4\\
+  \end{tabular}
+  \caption{Average rank for ``perfect'' and ``low'' student groups in the
+  ranked lists associated with the four latent states found by a TL-HMM.
+  $\dagger$ indicates statistically significant different mean ranks at $p
+  < 0.01$ according to an unpaired $t$-test.}
+  \label{table:mean-rank}
+\end{table}
+
 To quantify this finding, we perform the following experiment. First, we
 select all students from \textretrieval{} who completed all of the quizzes
 $\mathbf{L}_q \subset \mathbf{L}$. This gives us 1,985 students along with
@@ -343,22 +359,28 @@ the ``perfect'' student group and the ``low'' student group: a useful state
 for distinguishing the two groups should result in a ranked list with
 statistically significant differences in average rank between the two
 groups. Our results are summarized in Table~\ref{table:mean-rank}. Indeed,
-we discover that states 1 and 2 are useful for teasing apart these two
-groups: state 1 ranks students in the ``low'' group significantly higher
+we discover that states 1 and 2 are correlated with the ``perfect'' or
+``low'' groups: state 1 ranks students in the ``low'' group significantly higher
 than those in the ``perfect'' group, and state 2 does the opposite and
 prefers students in the ``perfect'' group to those in the ``low'' group.
 
-\begin{table}
-  \centering
-  \begin{tabular}{r|rrrr}
-    \textbf{Group} & \textbf{State 0} & \textbf{State 1}^\dagger &
-    \textbf{State 2}^\dagger & \textbf{State 3}\\\hline
-    \textbf{Perfect} & 975.3  & 1001.5 & 999.0  & 1056.5\\
-    \textbf{Low}     & 1024.9 & 816.4  & 1230.5 & 1161.2\\
-  \end{tabular}
-  \caption{Average rank for ``perfect'' and ``low'' student groups in the
-  ranked lists associated with the four latent states found by a TL-HMM.
-  $\dagger$ indicates statistically significant different mean ranks at $p
-  < 0.01$ according to an unpaired $t$-test.}
-  \label{table:mean-rank}
-\end{table}
+Returning to Figure~\ref{fig:trans-comp}, we an also see a difference in
+the transitions between the latent states. In particular, look at the
+transitions in Figure~\ref{fig:trans-perfect} and
+Figure~\ref{fig:trans-low} that leave state 2. In the ``perfect'' group,
+nearly all of this probability mass is allocated for the self-loop ($p
+\approx 0.93$). In the ``low'' group, this self loop is less strong ($p
+\approx 0.80$; most easily seen by noting that the edges leaving state 2
+are darker than for the ``perfect'' group). We can perform a similar
+experiment to above by producing a ranked list of students $\ell \in
+\mathbf{L}_q$ by their staying probability for state 2 (that is, given that
+a student $\ell$ is already in state 2, how likely are they to remain there
+in the next action sequence?). This can be computed as
+\begin{equation}
+  p_\ell(2, 2) = \frac{\sum_{t=1}^{T-1} \xi_t^{(\mathbf{o}_\ell)}(2,2)}
+  {\sum_{i=1}^K \sum_{t=1}^{T-1} \xi_t^{(\mathbf{o}_\ell)}(2,i)}
+\end{equation}
+where $\xi$ is defined as before and computed using the Baum-Welch
+algorithm. The last column of Table~\ref{table:mean-rank} indicates that
+this transition feature also correlates with the achievement group and
+results in significant differences in mean rank.

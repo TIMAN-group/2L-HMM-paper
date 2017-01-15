@@ -37,9 +37,14 @@ the MOOCs.
 \end{table}
 
 \subsection{Latent State Representations}
-First, we fit a 6-state TL-HMM to the \textretrieval{} sequence dataset and
-show some of the latent state representations we find. We used the
-following ten actions as our action set $\mathbf{A}$:
+The TL-HMM is meant to be a tool for exploratory analysis of student
+behavior. As such, the number of states should be empirically set based on
+the goal of analysis. A higher number of states will lead to a
+finer-grained modeling of student behavior. In our experiments, we explored
+using between 2--6 states. First, we fit a 6-state TL-HMM to the
+\textretrieval{} sequence dataset and show some of the latent state
+representations we find. We used the following ten actions as our action
+set $\mathbf{A}$:
 \begin{enumerate*}[label=(\arabic*)]
   \item quiz start,
   \item quiz submit,

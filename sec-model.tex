@@ -86,7 +86,7 @@ patterns. Next, we present this model more formally and discuss how to
 estimate its parameters to uncover these latent patterns in an unsupervised
 manner.
 
-\subsection{Formal Definition of TL-HMM}
+\subsection{Formal Definition of the TL-HMM}
 
 Given a MOOC log, we can define a set $\mathbf{A}$ of actions that a
 student can take at any given time. For example, an action $a \in
@@ -121,16 +121,17 @@ latent state $u$ is
 \end{equation}
 where $P(a \mid \pi^{(u)}) = \pi^{(u)}_a$ is the probability of starting
 with action $a$ and $P(a_i \mid a_{i-1}, A^{(u)}) = A^{(u)}_{a_{i-1}, a_i}$
-is the transition probability of moving from action $a_{i-1}$ to $a_{i}$.
+is the transition probability of moving from action $a_{i-1}$ to $a_{i}$
+given that the model is currently in latent state $u$.
 
 We can compute the likelihood of a list of action sequences
 $\mathbf{S}_\ell$ of length $N$ for a student $\ell$ by marginalizing over
-all possible latent state sequences $U=(v_1, \ldots, v_N)$ as
+all possible latent state sequences $(v_1, \ldots, v_N) \in U$ as
 \begin{equation}
   P(\mathbf{S}_\ell \mid \Lambda)
-  = \sum_U \left(P(v_1 \mid \Lambda) P(\mathbf{s}_1 \mid \lambda^{(v_1)})
-  \times \prod_{i=2}^N P(v_i \mid v_{i-1}, \Lambda)
-  P(\mathbf{s}_i \mid \lambda^{(v_i)})\right)
+  = \sum_{(v_1, \ldots, v_N) \in U} \left(P(v_1 \mid \Lambda)
+  P(\mathbf{s}_1 \mid \lambda^{(v_1)}) \times \prod_{i=2}^N P(v_i \mid
+  v_{i-1}, \Lambda) P(\mathbf{s}_i \mid \lambda^{(v_i)})\right)
 \end{equation}
 where $\Lambda$ is the set of all model parameters.  In our model, we let
 $\Lambda = (\pi, A, \lambda^{(1)}, \ldots, \lambda^{(K)})$ where $\pi$ and

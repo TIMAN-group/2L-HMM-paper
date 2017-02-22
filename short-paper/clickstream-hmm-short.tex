@@ -1,139 +1,141 @@
-\documentclass{sigchi-ext}
+%% SIGCHI Proceedings Format (modern) Sample Document
+%% This sample file demonstrates the use of the `sigchi-modern' class file.
+%%
+%% The content of this document draws heavily on the `HCI Archive Format'
+%% template supplied by SIGCHI, but has been modified to demonstrate and
+%% document the LaTeX class.
 
-% Please be sure that you have the dependencies (i.e., additional
-% LaTeX packages) to compile this example.
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[scaled=.92]{helvet} % for proper fonts
-\usepackage{graphicx} % for EPS use the graphics package instead
-\usepackage{balance}  % for useful for balancing the last columns
-\usepackage{booktabs} % for pretty table rules
-\usepackage{ccicons}  % for Creative Commons citation icons
-\usepackage{ragged2e} % for tighter hyphenation
+% The parameter given to the `\documentclass' command can be one of:
+%   `preprint', `submission', or `final'.
+% These control the presence of certain features for each stage of the authoring
+% process. For example, `submission' does not output the author block, and
+% `final' disables page numbers.
+%
+% The \preprintonly{}, \submissiononly{}, and \finalonly{} commands allow you
+% to wrap text that will only be output under the corresponding option.
 
-% Some optional stuff you might like/need.
-% \usepackage{marginnote}
-% \usepackage[shortlabels]{enumitem}
-% \usepackage{paralist}
-\usepackage[utf8]{inputenc} % for a UTF8 editor only
-\usepackage{amsmath}
-\usepackage{float}
+\PassOptionsToPackage{inline}{enumitem}
+\documentclass[final]{sigchi-modern}
+
+\def\meta/{\preprintonly{\textsc{MeTA}}\finalonly{\textsc{MeTA}}%
+\submissiononly{(redacted)}}
+
+\newcommand{\citemeta}{\preprintonly{\cite{Massung:2016:ACL}}%
+  \finalonly{\cite{Massung:2016:ACL}}%
+  \submissiononly{[redacted citation]}}
+
+% These packages aren't required, but do provide some helpful features that are
+% used in this sample.
+\usepackage{graphicx}  % Graphics for figures
+\usepackage{booktabs}  % Nice formatting for tables
+\usepackage{balance}   % Attempts to balance the columns on the last page
+
+% A nice way to help avoid overful lines handing out into the margins is the
+% `microtype' package, which lets certain characters extrude a *little* bit.
+\usepackage{microtype}
+% If the situation becomes dire, use:
+%\sloppy
+
+% You may use any bibliography package as long as the output matches that of
+% the prescribed format. `natbib' is a fairly nice default, and the provided
+% BibTeX style file has been tested with it.
 \usepackage[numbers]{natbib}
+\bibliographystyle{acm-sigchi-modern}
 
 \usepackage{subcaption}
 \usepackage{pdflscape}
 \usepackage{afterpage}
 
-\renewcommand\cite{\citep}
-\def\meta/{\textsc{MeTA}}
-\newcommand{\textretrieval}{textretrieval-001}
-\newcommand{\sustain}{sustain-001}
-\newcommand{\UIUC}{UIUC}
+% Define these tokens as appropriate for the conference to generate the
+% necessary copyright notice for `final` mode.
+\confname{L@S 2017}
+\confdate{April 20-21}
+\confyear{2017}
+\conflocation{Cambridge, MA, USA}
+\procissn{978-1-4503-4450-0/17/04}
+\doi{10.1145/3051457.3053986}
+% \copylicense be set to one of: \acmcopyright, \authorlicense, or \openlicense
+%\copylicense{\authorlicense}
 
-%% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP --
-% \copyrightinfo{Permission to make digital or hard copies of all or
-% part of this work for personal or classroom use is granted without
-% fee provided that copies are not made or distributed for profit or
-% commercial advantage and that copies bear this notice and the full
-% citation on the first page. Copyrights for components of this work
-% owned by others than ACM must be honored. Abstracting with credit is
-% permitted. To copy otherwise, or republish, to post on servers or to
-% redistribute to lists, requires prior specific permission and/or a
-% fee. Request permissions from permissions@acm.org.\\
-% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
-% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
-% DOI string from ACM form confirmation}
-%% EXAMPLE END
-
-\copyrightinfo{Permission to make digital or hard copies of all or part of
-  this work for personal or classroom use is granted without fee provided
-  that copies are not made or distributed for profit or commercial
-  advantage and that copies bear this notice and the full citation on the
-  first page. Copyrights for components of this work owned by others than
-  the author(s) must be honored. Abstracting with credit is permitted. To
-  copy otherwise, or republish, to post on servers or to redistribute to
-  lists, requires prior specific permission and/or a fee. Request
-  permissions from Permissions@acm.org.\\
-  \emph{L@S 2017}, April 20 - 21, 2017, Cambridge, MA, USA.\\
-  Copyright is held by the owner/author(s). Publication rights licensed to
-  ACM.\\
-  ACM 978-1-4503-4450-0/17/04 \$15.00\\
-  DOI: \url{http://dx.doi.org/10.1145/3051457.3053986}}
-
-% Paper metadata (use plain text, for PDF inclusion and later
-% re-using, if desired).  Use \emtpyauthor when submitting for review
-% so you remain anonymous.
-\def\plaintitle{Modeling MOOC Student Behavior with Two-Layer Hidden Markov
-Models}
-\def\plainauthor{Chase Geigle, ChengXiang Zhai}
-\def\emptyauthor{}
-\def\plainkeywords{MOOC log analysis; student behavior modeling; Markov models; hidden Markov models}
-\def\plaingeneralterms{\plainkeywords}
-
-\title{\plaintitle}
-
-\numberofauthors{2}
-% Notice how author names are alternately typesetted to appear ordered
-% in 2-column format; i.e., the first 4 autors on the first column and
-% the other 4 auhors on the second column. Actually, it's up to you to
-% strictly adhere to this author notation.
-\author{%
-  \alignauthor{%
-    \textbf{Chase Geigle}\\
-    \affaddr{University of Illinois at Urbana-Champaign} \\
-    \affaddr{201 N Goodwin Ave}\\
-    \affaddr{Urbana, IL 61801} \\
-    \email{geigle1@illinois.edu} } \vfil \alignauthor{%
-    \textbf{ChengXiang Zhai}\\
-    \affaddr{University of Illinois at Urbana-Champaign} \\
-    \affaddr{201 N Goodwin Ave}\\
-    \affaddr{Urbana, IL 61801} \\
-    \email{czhai@illinois.edu} } }
-
-% Make sure hyperref comes last of your loaded packages, to give it a
-% fighting chance of not being over-written, since its job is to
-% redefine many LaTeX commands.
-\definecolor{linkColor}{RGB}{6,125,233}
-\hypersetup{%
-  pdftitle={\plaintitle},
-%  pdfauthor={\plainauthor},
-  pdfauthor={\emptyauthor},
-  pdfkeywords={\plainkeywords},
-  bookmarksnumbered,
-  pdfstartview={FitH},
-  colorlinks,
-  citecolor=black,
-  filecolor=black,
-  linkcolor=black,
-  urlcolor=linkColor,
-  breaklinks=true,
-}
-
-% \reversemarginpar%
-
-\newcommand{\citemeta}{\cite{Massung:2016:ACL}}
-
+% End of preamble. Here comes the document.
 \begin{document}
 
+\title{Modeling MOOC Student Behavior With Two-Layer Hidden Markov Models}
+
+% Author information can be set automatically if you provide a series of
+% author names and affiliations:
+%   \author[1]{Author One}
+%   \author[2]{Author Two}
+%   \author[1,2]{Author Three}
+%   \affiliation[1]{Organisation One\\
+%                   Some Country}
+%   \affiliation[2]{Organisation Two\\
+%                   Some Country}
+%   \authorextra{\mailto{one@example.com}, \mailto{two@example.org},
+%                \mailto{three@example.net}}
+% Or, manually:
+%   \author{
+%     \authorname{Author One}\\
+%     \authoraffil{
+%       Organisation One\\
+%       Some Country\\
+%       \mailto{one@example.com}}}
+%   \author{
+%     \authorname{Author Two}\\
+%     \authoraffil{
+%       Organisation Two\\
+%       Some Country\\
+%       \mailto{two@example.org}}}
+% Refer to the body text of the document for more details.
+\author[1]{Chase Geigle}
+\author[1]{ChengXiang Zhai}
+
+% Set \authorwidth with the longest author name if you don't like the default
+% spacing:
+\settowidth{\authorwidth}{ChengXiang Zhai1}
+\settowidth{\affilwidth}{University of Illinois at Urbana-ChampaignAAA}
+
+\affiliation[1]{Department of Computer Science\\
+    University of Illinois at Urbana-Champaign\\
+    Urbana, Illinois, USA}
+
+\authorpostscript{\email{\{%
+  \href{mailto:geigle1@illinois.edu}{geigle1},
+  \href{mailto:czhai@illinois.edu}{czhai}\}@illinois.edu}}
+
+% If you format the author blocks manually, use \authorlist with a
+% comma-delimited list of the author names.
+% This is written into the PDF metadata for preprint and final modes.
+%\authorlist{Author One, Author Two, Author Three, Author Four}
+
+% Produces the title, author, and optional banner block.
 \maketitle
 
-% Uncomment to disable hyphenation (not recommended)
-% https://twitter.com/anjirokhan/status/546046683331973120
-\RaggedRight{}
-
-% Do not change the page size or page settings.
 \begin{abstract}
   Massive open online courses (MOOCs) provide educators with an abundance
   of data describing how students interact with the platform, but this data
   is highly underutilized today. This is in part due to the lack of
   sophisticated tools to provide interpretable and actionable summaries of
   huge amounts of MOOC activity present in log data. In this paper, we
-  propose a method for automatically discovering student behavior patterns
-  by leveraging the click log data that can be obtained from the MOOC
-  platform itself in a completely unsupervised manner.
+  propose a new method for automatically discovering student behavior
+  patterns by leveraging the click log data that can be obtained from the
+  MOOC platform itself in a completely unsupervised manner.
 \end{abstract}
 
-\keywords{\plainkeywords}
+% A semicolon-separated list of keywords to describe the paper.
+\keywords{MOOC log analysis; student behavior modeling; Markov models;
+hidden Markov models}
+
+\newcommand{\acknowledgments}{This material is based upon work supported by
+the National Science Foundation under Grant Number DGE-1144245 (GRFP) and
+Grant Number 1629161.}
+
+% ACM classification block.
+% \category{}{}{}[] has three mandatory arguments and one optional argument; it
+% can be used multiple times.
+%\classification{%
+%    \category{}{}{}
+%}
 
 \begin{CCSXML}
   <ccs2012>
@@ -155,19 +157,17 @@ Models}
 
 \printccsdesc{}
 
-\input{sec-intro}
+\input{../sec-intro}
 \input{sec-model}
 \input{sec-results}
 \input{sec-conclusion}
 
 \section{Acknowledgments}
+\preprintonly{\acknowledgments{}}
+\finalonly{\acknowledgments{}}
+\submissiononly{(Anonymized for blind reviewing.)}
 
-This material is based upon work supported by the NSF GRFP under Grant
-Number DGE-1144245.
-
-\balance{}
-
-\bibliographystyle{acm-sigchi-modern}
+\balance
 \bibliography{bib}
 
 \end{document}

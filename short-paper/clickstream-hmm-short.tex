@@ -1,0 +1,173 @@
+\documentclass{sigchi-ext}
+
+% Please be sure that you have the dependencies (i.e., additional
+% LaTeX packages) to compile this example.
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[scaled=.92]{helvet} % for proper fonts
+\usepackage{graphicx} % for EPS use the graphics package instead
+\usepackage{balance}  % for useful for balancing the last columns
+\usepackage{booktabs} % for pretty table rules
+\usepackage{ccicons}  % for Creative Commons citation icons
+\usepackage{ragged2e} % for tighter hyphenation
+
+% Some optional stuff you might like/need.
+% \usepackage{marginnote}
+% \usepackage[shortlabels]{enumitem}
+% \usepackage{paralist}
+\usepackage[utf8]{inputenc} % for a UTF8 editor only
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[numbers]{natbib}
+
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+
+\renewcommand\cite{\citep}
+\def\meta/{\textsc{MeTA}}
+\newcommand{\textretrieval}{textretrieval-001}
+\newcommand{\sustain}{sustain-001}
+\newcommand{\UIUC}{UIUC}
+
+%% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP --
+% \copyrightinfo{Permission to make digital or hard copies of all or
+% part of this work for personal or classroom use is granted without
+% fee provided that copies are not made or distributed for profit or
+% commercial advantage and that copies bear this notice and the full
+% citation on the first page. Copyrights for components of this work
+% owned by others than ACM must be honored. Abstracting with credit is
+% permitted. To copy otherwise, or republish, to post on servers or to
+% redistribute to lists, requires prior specific permission and/or a
+% fee. Request permissions from permissions@acm.org.\\
+% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
+% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
+% DOI string from ACM form confirmation}
+%% EXAMPLE END
+
+\copyrightinfo{Permission to make digital or hard copies of all or part of
+  this work for personal or classroom use is granted without fee provided
+  that copies are not made or distributed for profit or commercial
+  advantage and that copies bear this notice and the full citation on the
+  first page. Copyrights for components of this work owned by others than
+  the author(s) must be honored. Abstracting with credit is permitted. To
+  copy otherwise, or republish, to post on servers or to redistribute to
+  lists, requires prior specific permission and/or a fee. Request
+  permissions from Permissions@acm.org.\\
+  \emph{L@S 2017}, April 20 - 21, 2017, Cambridge, MA, USA.\\
+  Copyright is held by the owner/author(s). Publication rights licensed to
+  ACM.\\
+  ACM 978-1-4503-4450-0/17/04 \$15.00\\
+  DOI: \url{http://dx.doi.org/10.1145/3051457.3053986}}
+
+% Paper metadata (use plain text, for PDF inclusion and later
+% re-using, if desired).  Use \emtpyauthor when submitting for review
+% so you remain anonymous.
+\def\plaintitle{Modeling MOOC Student Behavior with Two-Layer Hidden Markov
+Models}
+\def\plainauthor{Chase Geigle, ChengXiang Zhai}
+\def\emptyauthor{}
+\def\plainkeywords{MOOC log analysis; studetn behavior modeling; Markov models; hidden Markov models}
+\def\plaingeneralterms{\plainkeywords}
+
+\title{\plaintitle}
+
+\numberofauthors{2}
+% Notice how author names are alternately typesetted to appear ordered
+% in 2-column format; i.e., the first 4 autors on the first column and
+% the other 4 auhors on the second column. Actually, it's up to you to
+% strictly adhere to this author notation.
+\author{%
+  \alignauthor{%
+    \textbf{Chase Geigle}\\
+    \affaddr{University of Illinois at Urbana-Champaign} \\
+    \affaddr{201 N Goodwin Ave}\\
+    \affaddr{Urbana, IL 61801} \\
+    \email{geigle1@illinois.edu} } \vfil \alignauthor{%
+    \textbf{ChengXiang Zhai}\\
+    \affaddr{University of Illinois at Urbana-Champaign} \\
+    \affaddr{201 N Goodwin Ave}\\
+    \affaddr{Urbana, IL 61801} \\
+    \email{czhai@illinois.edu} } }
+
+% Make sure hyperref comes last of your loaded packages, to give it a
+% fighting chance of not being over-written, since its job is to
+% redefine many LaTeX commands.
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{%
+  pdftitle={\plaintitle},
+%  pdfauthor={\plainauthor},
+  pdfauthor={\emptyauthor},
+  pdfkeywords={\plainkeywords},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+}
+
+% \reversemarginpar%
+
+\newcommand{\citemeta}{\cite{Massung:2016:ACL}}
+
+\begin{document}
+
+\maketitle
+
+% Uncomment to disable hyphenation (not recommended)
+% https://twitter.com/anjirokhan/status/546046683331973120
+\RaggedRight{}
+
+% Do not change the page size or page settings.
+\begin{abstract}
+  Massive open online courses (MOOCs) provide educators with an abundance
+  of data describing how students interact with the platform, but this data
+  is highly underutilized today. This is in part due to the lack of
+  sophisticated tools to provide interpretable and actionable summaries of
+  huge amounts of MOOC activity present in log data. In this paper, we
+  propose a method for automatically discovering student behavior patterns
+  by leveraging the click log data that can be obtained from the MOOC
+  platform itself in a completely unsupervised manner.
+\end{abstract}
+
+\keywords{\plainkeywords}
+
+\begin{CCSXML}
+  <ccs2012>
+    <concept>
+      <concept_id>10002950.10003648.10003670.10003683</concept_id>
+      <concept_desc>Mathematics of computing~Kalman filters and hidden Markov models</concept_desc>
+      <concept_significance>500</concept_significance>
+    </concept>
+    <concept>
+      <concept_id>10010147.10010257.10010258.10010260.10010267</concept_id>
+      <concept_desc>Computing methodologies~Mixture modeling</concept_desc>
+      <concept_significance>500</concept_significance>
+    </concept>
+  </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Mathematics of computing~Kalman filters and hidden Markov models}
+\ccsdesc[500]{Computing methodologies~Mixture modeling}
+
+\printccsdesc{}
+
+\input{sec-intro}
+\input{sec-model}
+\input{sec-results}
+\input{sec-conclusion}
+
+\section{Acknowledgments}
+
+This material is based upon work supported by the NSF GRFP under Grant
+Number DGE-1144245.
+
+\balance{}
+
+\bibliographystyle{acm-sigchi-modern}
+\bibliography{bib}
+
+\end{document}

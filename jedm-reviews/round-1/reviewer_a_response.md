@@ -47,8 +47,8 @@ a component in a human-machine collaborative system to enable instructors
 to extract knowledge from data that is otherwise being un(der)-utilized.
 
 There remains a gap between the modeling technique and educational practice
-impact, but we have attempted to make more clear what we feel the potential
-is for educational impact as a result of the application of our model.
+impact, but we envision that the proposed model can eventually lead to a useful system being built to allow instructors and education researchers to "see" the detailed behavior of students via mining the vast amount of student interaction data that is naturally available on various online education platforms. 
+
 
 > 4.      Is the work technically sound? Are there enough methodological
 >         details? Are claims convincingly substantiated, either through

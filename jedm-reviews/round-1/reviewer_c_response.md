@@ -40,7 +40,7 @@ addresses this particular perspective.
 We respectfully disagree that we do neither well. We can do a better job of
 framing our work, but we feel that the model we use in this work is novel
 in the education domain and that the behavior patterns we uncover are
-useful and important.
+useful, unique, and important.
 
 > The method itself is a twist on Markov switching models or on mixtures of
 > Markov Chains and appears to be very related to the following works, which
@@ -93,14 +93,20 @@ While there are many results that do indeed require qualitative assessment
 of latent state representations and transitions, we disagree that this
 makes the method technically unsound. Our goal is to uncover patterns that
 exist in this massive clickstream log data, which without a model are
-prohibitively expensive for instructors to discover.
+prohibitively expensive for instructors to discover. We view our model as a
+component in a human-machine collaborative system in which the
+computational techniques employed by the machine are applied to do what
+they are good at (namely, uncovering statistical patterns/trends) and the
+human effort is leveraged to uncover actionable knowledge based upon these
+statistical discoveries.
 
 > There are selective statistical tests performed which violate some basic
 > principles of statistical practice.
 
 We cannot adequately address this criticism without a clear articulation of
 exactly where in the paper such mistakes were made, and what the proper
-practice should be in those cases.
+practice should be in those cases. We would benefit greatly from more
+elaboration on this point.
 
 > The issue of temporal grain size/resolution seems important, but is very
 > mysterious once the method is actually described. As it is sold, one would

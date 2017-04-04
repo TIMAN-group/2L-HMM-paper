@@ -106,8 +106,7 @@ prohibitively expensive for instructors to discover. We view our model as a
 component in a human-machine collaborative system in which the
 computational techniques employed by the machine are applied to do what
 they are good at (namely, uncovering statistical patterns/trends) and the
-human effort is leveraged to uncover actionable knowledge based upon these
-statistical discoveries.
+human effort is leveraged to interpret the patterns and turn them into actionable knowledge.
 
 > There are selective statistical tests performed which violate some basic
 > principles of statistical practice.

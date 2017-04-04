@@ -286,7 +286,7 @@ Thank you for the suggestion.
 > the authors should try to be less boastful about the utility of this
 > method, which is much more dubious than they make out.
 
-We have attempted be more clear in the introduction about exactly the
+We have attempted to be more clear in the introduction about exactly the
 contributions we are making that are sufficiently supported by our existing
 experiment results.
 

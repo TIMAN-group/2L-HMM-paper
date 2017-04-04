@@ -1,4 +1,4 @@
-> 1.      How relevant is this submission to the scope of JEDM? (if
+﻿> 1.      How relevant is this submission to the scope of JEDM? (if
 >         applicable: to the targeted special issue?)
 >
 > The topic itself, categorizing subsequences of actions in a learning
@@ -31,7 +31,7 @@ have attempted to revise this based on your later comments. We also agree
 that we may need to more clearly articulate our answer to the "why"
 question from a more education-oriented perspective. Our original
 description was perhaps too technically motivated and insufficiently
-addresses this particular perspective. We hope our revised introduction
+addresses this particular perspective. From education perspective, the motivation for our work is two-fold: 1) there is a need to understand student behavior in detail in the online education environment (which is challenging due to the scale of education), and the proposed model addresses this need (as an "intelligent assistant" for humans); 2) the naturally available student interaction data contains valuable knowledge/patterns about student behavior, which the proposed model can help reveal.  We hope our revised introduction
 more clearly articulates why this is an important problem to tackle.
 
 > The paper is on shaky ground because it attempts to do two things and

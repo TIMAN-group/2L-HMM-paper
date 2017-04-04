@@ -189,7 +189,7 @@ about what is automatically discovered and what is manually discovered. We
 still feel, however, that this method is useful in the sense that these
 patterns cannot be discovered from the raw clickstream data manually by
 instructors without the application of a model that can provide statistical
-summaries of the data such as the ones provided by our model.
+summaries of the data such as the ones provided by our model, and no existing model can be used directly to generate the same behavior patterns as what our model generates. 
 
 > Moreover, the discoveries do not go beyond obvious findings like
 > “watching video” states and “reading forum thread” states.

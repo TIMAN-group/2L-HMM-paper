@@ -98,7 +98,14 @@ produced as observed in the log, where each sequence $\mathbf{s} \in
 each $a_i \in \mathbf{A}$.  Each sequence can be divided flexibly; in this
 paper we chose to denote the end of a sequence as occurring when no further
 actions occur within a 10 hour window of time (and thus our sequences
-roughly correspond to one day's worth of activity).
+roughly correspond to one day's worth of activity). This decision reflects
+our desire to uncover latent state transition behavior at the granularity
+of day-to-day behavior. A different segmentation strategy could be used to
+uncover hour-by-hour behavior, or week-by-week behavior, and this depends
+entirely on the desired time resolution one wishes to be exhibited in the
+transitions between the latent states. Different segmentation strategies
+will result in different underlying training data, and this different
+meanings behind the patterns that the 2L-HMM will extract.
 
 Each sequence $\mathbf{s} \in \mathbf{S}_\ell$ is associated with a latent
 state $u \in \{1,\ldots,K\}$ (where $K$ is a fixed constant picked in

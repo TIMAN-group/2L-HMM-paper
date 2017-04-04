@@ -108,7 +108,7 @@ segment the action sequences and its impact on the discovered patterns, the
 parameter K for the number of states and its impact on the discovered
 patterns, and the difficulty in choosing the "correct" settings. We also
 acknowledge the manual effort that is still required to go from discovered
-patterns to actionable knowledge.
+patterns to actionable knowledge; we envisioned to build a software tool based on the proposed model to be used as an "intelligent assistant" to help humans "see" patterns about student behavior in the data more clearly. 
 
 > 6.      How significant is the research? Will the paper be likely to have
 >         an impact on the community?

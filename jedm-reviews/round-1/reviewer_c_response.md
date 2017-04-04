@@ -42,7 +42,7 @@ We respectfully disagree that we do neither well. We could have done a
 better job of framing our work (which we feel we have improved in the
 revision), but we feel that the model we use in this work is novel in the
 education domain and that the behavior patterns we uncover are useful,
-unique, and important.
+unique, and important. (No existing model can be directly applied to this data to produce the same output as the proposed model produces.) 
 
 > The method itself is a twist on Markov switching models or on mixtures of
 > Markov Chains and appears to be very related to the following works, which

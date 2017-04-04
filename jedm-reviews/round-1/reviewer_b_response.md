@@ -147,7 +147,7 @@ You make good points here. To address these issues, we plan to (1) be more
 clear about our contribution in the introduction, (2) amend our related
 work section to discuss the literature on layered HMMs, and (3) increase
 the length of our abstract to highlight some of the knowledge we uncovered
-in our experiment section
+in our experiment section.
 
 > 10.  Can you suggest any reductions in the paper, or deletions of parts?
 >

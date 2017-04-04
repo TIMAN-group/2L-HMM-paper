@@ -126,7 +126,7 @@ of this model is for the educational community specifically.
 
 This is indeed true, but we felt it is also non-obvious how one should
 compare our method with prior art for modeling MOOC student behavior when
-our approach is substantially different.
+our approach is substantially different (no existing models can produce exactly the same student patterns as our model produces). 
 
 We could compare the log likelihood or perplexity that our model achieves
 on our data at convergence with that of another more simple statistical

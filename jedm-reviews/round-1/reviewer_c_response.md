@@ -14,7 +14,7 @@
 
 Thank you. We agree with your assessment of relevance to JEDM, and concede
 that our knowledge of related work in education is a potential blind spot
-for us.
+for us as CS researchers.
 
 > 3.      What is the scientific contribution of this submission? Is it
 >         clearly explained, in terms of how the paper advances the EDM field
@@ -30,17 +30,19 @@ We agree that we are weak on the educational aspect of the related work. We
 have attempted to revise this based on your later comments. We also agree
 that we may need to more clearly articulate our answer to the "why"
 question from a more education-oriented perspective. Our original
-description is perhaps too technically motivated and insufficiently
-addresses this particular perspective.
+description was perhaps too technically motivated and insufficiently
+addresses this particular perspective. We hope our revised introduction
+more clearly articulates why this is an important problem to tackle.
 
 > The paper is on shaky ground because it attempts to do two things and
 > does neither well. The first is develop a new method. The second is apply
 > the method to learn about behavior patterns in MOOCs.
 
-We respectfully disagree that we do neither well. We can do a better job of
-framing our work, but we feel that the model we use in this work is novel
-in the education domain and that the behavior patterns we uncover are
-useful, unique, and important.
+We respectfully disagree that we do neither well. We could have done a
+better job of framing our work (which we feel we have improved in the
+revision), but we feel that the model we use in this work is novel in the
+education domain and that the behavior patterns we uncover are useful,
+unique, and important.
 
 > The method itself is a twist on Markov switching models or on mixtures of
 > Markov Chains and appears to be very related to the following works, which
@@ -110,10 +112,10 @@ statistical discoveries.
 > There are selective statistical tests performed which violate some basic
 > principles of statistical practice.
 
-We cannot adequately address this criticism without a clear articulation of
-exactly where in the paper such mistakes were made, and what the proper
-practice should be in those cases. We would benefit greatly from more
-elaboration on this point.
+We feel that we cannot adequately address this criticism without a clear
+articulation of exactly where in the paper such mistakes were made, and
+what the proper practice should be in those cases. We would benefit greatly
+from more elaboration on this point.
 
 > The issue of temporal grain size/resolution seems important, but is very
 > mysterious once the method is actually described. As it is sold, one would
@@ -125,9 +127,9 @@ elaboration on this point.
 
 Choosing the cutoff points for what defines a browsing session is indeed
 an important assumption that will impact the patterns that are uncovered.
-However, rather than viewing this as a weakness, we view this as a strength
-in the sense that this decision depends entirely on the granularity of the
-patterns you wish to discover.
+However, rather than viewing this as a weakness, we can view this as a
+strength in the sense that this decision depends entirely on the
+granularity of the patterns you wish to discover.
 
 The model still does determine when the latent state switches, but you are
 correct in the sense that when it is allowed to determine a switch occurs
@@ -136,10 +138,15 @@ the model itself. It _is_ flexible in the sense that you can change the
 segmentation strategy you employ on the sequence data before running the
 model, though.
 
-We will attempt to do a better job of explaining this assumption, and why
-we chose the segmentation strategy we did for our experiments. We can also
-discuss when it might be appropriate to chose a different segmentation
-depending on the kinds of patterns you wish to uncover.
+We have attempted in the revision to do a better job of explaining this
+assumption, and why we chose the segmentation strategy we did for our
+experiments. We also briefly discuss when it might be appropriate to chose
+a different segmentation depending on the kinds of patterns you wish to
+uncover.
+
+We have also attempted to address the segmentation strategy problem as a
+whole in the new section of the paper dedicated entirely to the discussion
+of the limitations and potential drawbacks with our approach.
 
 > Also, the semantics/combinatorics is unclear. The authors make
 > it sound like the observable “state” is a sequence, which would suggest a
@@ -148,26 +155,29 @@ depending on the kinds of patterns you wish to uncover.
 > chains, corresponding to the cardinality of latent variable.
 
 We do not believe there is an issue here. The observable variable is indeed
-a sequence, whose cardinality is indeed exponentially large in the number
-of available actions for that sequence. However, the way that we model the
-_generation_ of these sequences, and thus the space of model parameters, is
-as you describe. Each sequence is modeled as being generated from one of
-the K Markov models: its initial state is chosen based on the initial state
-distribution, and then each subsequent action is chosen by sampling a
-transition from the current state to the next state.
+a sequence. The cardinality of the set of all such sequences is indeed
+exponentially large in the number of available actions for a sequence.
+However, the way that we model the _generation_ of these sequences, and
+thus the space of model parameters, is as you describe. Each sequence is
+modeled as being generated from one of the K Markov models: its initial
+state is chosen based on the initial state distribution, and then each
+subsequent action is chosen by sampling a transition from the current state
+to the next state.
 
 I will attempt to make an analogy with text documents. The space of all
 possible English journal articles is unfathomably large, but we can still
 model the generation of these articles using simpler statistical models. If
 we have a discrete distribution over words, we can model the generation of
-a document by repeatedly sampling the next word in the document from this
+a document as repeatedly sampling the next word in the document from this
 discrete distribution. This model is obviously naive and doesn't capture
 everything we know about how documents are generated, but it is
 "sufficient" in the sense that for any text document, the contents of it
 can in fact be modeled by repeated sampling of words from some
-distribution. We do not require exponentially many parameters to model
-document generation, and similarly here we do not require exponentially
-many parameters to model sequence generation.
+distribution that covers its vocabulary. We do not require exponentially
+many parameters to model document generation in this setting, and similarly
+in this paper we do not require exponentially many parameters to model
+sequence generation because we make a strong assumption about the kind of
+parametric model that is used to generate the observed sequences.
 
 > While the idea of breaking up a longer sequence of observed actions into
 > shorter subsequences which are each characterized by a latent state is
@@ -176,12 +186,12 @@ many parameters to model sequence generation.
 > automatically infer student behaviors, as much of the interpretability of
 > the results still rests on human readings of the Markov chains.
 
-We will modify the paper to be more precise about our claims about what is
-automatically discovered and what is manually discovered. We still feel,
-however, that this method is useful in the sense that these patterns cannot
-be discovered from the raw clickstream data manually by instructors without
-the application of a model that can provide statistical summaries of the
-data such as the ones provided by our model.
+We have attempted to modify the paper to be more precise about our claims
+about what is automatically discovered and what is manually discovered. We
+still feel, however, that this method is useful in the sense that these
+patterns cannot be discovered from the raw clickstream data manually by
+instructors without the application of a model that can provide statistical
+summaries of the data such as the ones provided by our model.
 
 > Moreover, the discoveries do not go beyond obvious findings like
 > “watching video” states and “reading forum thread” states.
@@ -214,10 +224,24 @@ poorly on quizzes). You can also see this visibly if you compare Figure
 > I would not say so. The authors seem to suggest that this method solves all
 > of the problems of inferring behavior in MOOC learner data.
 
-We did not intend to come across this way. We will add a new section to the
-paper that discusses the limitations and drawbacks of our approach, and how
-these might be addressed in practice. We will also better highlight what
-gaps remain in this section and in our future work.
+We did not intend to come across this way. We have added a new section to
+the paper that discusses the limitations and drawbacks of our approach, and
+how these might be addressed in practice. We have also attempted to better
+highlight what gaps remain in this section and in our future work.
+
+Specifically, we address what we feel are the two major classes of
+limitations of our method. The first class relates to technical challenges
+and drawbacks due to the particular statistical framework we have proposed
+and the methods we used to perform parameter estimation. This section also
+details some implementation challenges related to numerical stability in
+the face of very small emission probabilities. The second class relates
+more to the interpretability of the patterns we uncover with the current
+model formulation and addresses issues like the pre-processing used to
+segment the action sequences and its impact on the discovered patterns, the
+parameter K for the number of states and its impact on the discovered
+patterns, and the difficulty in choosing the "correct" settings. We also
+acknowledge the manual effort that is still required to go from discovered
+patterns to actionable knowledge.
 
 > 6.      How significant is the research? Will the paper be likely to have
 >         an impact on the community?
@@ -226,9 +250,9 @@ gaps remain in this section and in our future work.
 > that seem to merit this approach. If at least the method were better
 > described, I think the community might find useful applications of it.
 
-We appreciate this feedback. We will attempt to better describe the model
+We appreciate this feedback. We have attempted to better describe the model
 and more clearly articulate why this particular approach is important
-compared to other approaches.
+and novel compared to other approaches.
 
 
 > 7.      Does the title of this paper clearly and sufficiently reflect its
@@ -264,8 +288,9 @@ Thank you for the suggestion.
 > the authors should try to be less boastful about the utility of this
 > method, which is much more dubious than they make out.
 
-We will be more clear about exactly the contributions we are making that
-are sufficiently supported by our existing experiment results.
+We have attempted be more clear in the introduction about exactly the
+contributions we are making that are sufficiently supported by our existing
+experiment results.
 
 > 10.  Can you suggest any reductions in the paper, or deletions of parts?
 >
@@ -276,7 +301,8 @@ are sufficiently supported by our existing experiment results.
 >
 > Table 2 has serious flaws. The counts are not independent.
 
-I don't know how to address this without a concrete suggestion.
+We would benefit greatly from a concrete suggestion on how to improve the
+reporting in table 2.
 
 > 12.  Are the key words and abstracts/summary informative?
 >

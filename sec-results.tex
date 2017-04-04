@@ -5,7 +5,7 @@
 \newcommand{\UIUC}{UIUC}
 
 \section{Experiment Results}
-As an analysis tool, the TL-HMM model provides with us the following two
+As an analysis tool, the 2L-HMM model provides with us the following two
 patterns to characterize student behavior:
 \begin{enumerate*}[label=(\arabic*)]
   \item the latent state representations, and
@@ -37,11 +37,11 @@ the MOOCs.
 \end{table}
 
 \subsection{Latent State Representations}
-The TL-HMM is meant to be a tool for exploratory analysis of student
+The 2L-HMM is meant to be a tool for exploratory analysis of student
 behavior. As such, the number of states should be empirically set based on
 the goal of analysis. A higher number of states will lead to a
 finer-grained modeling of student behavior. In our experiments, we explored
-using between 2--6 states. First, we fit a 6-state TL-HMM to the
+using between 2--6 states. First, we fit a 6-state 2L-HMM to the
 \textretrieval{} sequence dataset and show some of the latent state
 representations we find. We used the following ten actions as our action
 set $\mathbf{A}$:
@@ -86,7 +86,7 @@ python-igraph: \url{http://igraph.org/python/}.}.
     \caption{An example ``lecture viewing'' state.}
     \label{fig:lecture-viewing-state}
   \end{subfigure}
-  \caption{Two example states found by the 6-state TL-HMM. (The naming of
+  \caption{Two example states found by the 6-state 2L-HMM. (The naming of
   these states reflects our own interpretation.)}
   \label{fig:states}
 \end{figure*}
@@ -101,7 +101,7 @@ python-igraph: \url{http://igraph.org/python/}.}.
     \includegraphics[width=\textwidth]{figures/sustain-6state/state4.png}
     \caption{A state from \sustain{}.}
   \end{subfigure}
-  \caption{Two similar example states found by the 6-state TL-HMM.}
+  \caption{Two similar example states found by the 6-state 2L-HMM.}
   \label{fig:cross-course}
 \end{figure*}
 
@@ -134,7 +134,7 @@ for capturing detailed insights involving bigrams of actions.
 
 We can also use our model for cross-course behavior analysis. In
 Figure~\ref{fig:cross-course} we show two latent state representations
-learned by a 6-state TL-HMM, one from \textretrieval{} and one from
+learned by a 6-state 2L-HMM, one from \textretrieval{} and one from
 \sustain{}. These two states were chosen as they are the most similar
 across the two courses. However, if we look at the transitions we can see
 some important differences. First, in the state from \textretrieval{}, we
@@ -156,7 +156,7 @@ be lost if we did not consider the transitions between the actions within
 the latent states.
 
 \subsection{Varying the Number of Latent States}
-Our TL-HMM model has a parameter $K$ that sets the number of latent states
+Our 2L-HMM model has a parameter $K$ that sets the number of latent states
 to be learned. We believe that this can allow our model to flexibly
 discover patterns of different granularity, and we can show this by varying
 $K$ for a particular course and observing how the latent state
@@ -242,7 +242,7 @@ now has a non-negligible forum component, whereas state 3 has hardly any
 weight on the forum.
 
 We observe similar behavior in Figure~\ref{fig:sustain-state-evolution}
-as we increase $K$ when fitting our TL-HMM on the \sustain{} MOOC.\ Again,
+as we increase $K$ when fitting our 2L-HMM on the \sustain{} MOOC.\ Again,
 in the transition between $K=2$ and $K=3$ we discover forum behavior
 patterns as a latent state. However, in the transition between $K=3$ to
 $K=4$ we instead see a refining of that discovered forum state, where
@@ -256,7 +256,7 @@ in which case a  setting of $K=3$ may be more appropriate for the
 A unique property of our model is its ability to capture transitions
 between the \emph{behavior patterns themselves} that are captured by the
 latent states. In Figure~\ref{fig:trans-avg} we show the latent state
-transition diagram for a 3-state TL-HMM fit on \textretrieval{}. We can
+transition diagram for a 3-state 2L-HMM fit on \textretrieval{}. We can
 immediately observe two things: \begin{enumerate*}[label=(\arabic*)]
   \item each latent state has a very high ``staying'' probability, and
   \item the prevalence of each latent state matches our intuition.
@@ -291,7 +291,7 @@ also significantly lower than state 1.
     \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-low.png}
     \caption{\label{fig:trans-low}}
   \end{subfigure}
-  \caption{The latent state transition diagrams for a 4-state TL-HMM fit to
+  \caption{The latent state transition diagrams for a 4-state 2L-HMM fit to
   \protect\textretrieval{} for all students (a) compared to only ``perfect''
   students (b) and only ``low'' students (c).}
   \label{fig:trans-comp}
@@ -304,7 +304,7 @@ consisting only of sequences produced by students in \textretrieval{} that
 had perfect marks. To prevent the latent state meanings from drifting, we
 forced the model parameters associated with their Markov model
 representations to be fixed, in effect only learning initial and transition
-probabilities for the top layer of our TL-HMM.\ We show the updated latent
+probabilities for the top layer of our 2L-HMM.\ We show the updated latent
 state transition diagram in Figure~\ref{fig:trans-perfect}. We can clearly
 see that the probability of state 2 has increased dramatically, consistent
 with previous observations of the positive correlation between forum activity and
@@ -334,7 +334,7 @@ from data.
 \begin{table}
   \centering
   \caption{Average rank for ``perfect'' and ``low'' student groups in the
-  ranked lists associated with the four latent states found by a TL-HMM.
+  ranked lists associated with the four latent states found by a 2L-HMM.
   $\dagger$ indicates statistically significant different mean ranks at $p
   < 0.01$ according to an unpaired $t$-test.}
   \label{table:mean-rank}

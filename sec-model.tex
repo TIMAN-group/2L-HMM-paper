@@ -78,7 +78,7 @@ transitions between quiz-taking and quiz-submission, which would suggest a
 concentrated period of taking quizzes). Combining this ``surface'' Markov
 model over the ``micro'' actions with the ``deep'' hidden Markov model over
 the latent task states gives us a fairly general and powerful two-layer HMM
-(TL-HMM) that can simultaneously learn ``deeply'' the latent task/behavior
+(2L-HMM) that can simultaneously learn ``deeply'' the latent task/behavior
 states and their transitions as well as the corresponding ``micro''
 activity transition patterns associated with each latent state to
 facilitate interpretation and analysis of the discovered latent state
@@ -86,7 +86,7 @@ patterns. Next, we present this model more formally and discuss how to
 estimate its parameters to uncover these latent patterns in an unsupervised
 manner.
 
-\subsection{Formal Definition of the TL-HMM}
+\subsection{Formal Definition of the 2L-HMM}
 
 Given a MOOC log, we can define a set $\mathbf{A}$ of actions that a
 student can take at any given time. For example, an action $a \in
@@ -258,5 +258,5 @@ be written as
   \gamma^{(\mathbf{o}_k)}_t(i)}
 \end{align}
 where $a_m = o_{t,k,m}$ (for notational conciseness). Our modified EM
-algorithm for TL-HMMs is provided as part of the \meta/
+algorithm for 2L-HMMs is provided as part of the \meta/
 toolkit~\citemeta{}.

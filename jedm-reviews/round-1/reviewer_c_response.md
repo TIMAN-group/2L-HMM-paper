@@ -246,7 +246,8 @@ one which models the within-session patterns and one that models the
 between-session patterns.
 
 Thanks for pointing out the potential ambiguity in our abbreviation. We
-hadn't considered this since we only focused on two layers.
+hadn't considered this since we only focused on two layers. We have
+switched the abbreviation to 2L-HMM instead to avoid this ambiguity.
 
 
 > 8.      Are the presentation, organization and length satisfactory?

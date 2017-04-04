@@ -68,7 +68,7 @@ details may be overwhelming for people with little exposure to statistical
 techniques like the EM algorithm or CS techniques like dynamic programming.
 However, we believe that these details about the data mining aspect of our
 model are important enough that they belong in the main text of the
-article.
+article. We have attempted to add more intuitive explanation of the technical approaches so that readers can potentially skip the technical details about model definition and estimation.  
 
 > 5.      Do the authors describe the limitations of their approach in a
 >         satisfactory manner?

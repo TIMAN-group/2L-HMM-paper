@@ -61,7 +61,7 @@ We agree that there is still substantial effort required to extract the
 actionable knowledge from the patterns that our method uncovers. When we
 say that the method is "unsupervised", we mean that from the machine
 learning perspective where this term is used to describe methods that can
-be applied to raw training data that have not been annotated by experts. We
+be applied to raw training data that have not been annotated by experts.（Some machine learning approaches would still need human annotations to facilitate knowledge discovery). We
 did not mean to imply that the knowledge extraction itself requires no
 effort on behalf of an instructor. However, we do stand by our claim that
 this model substantially reduces the effort that would be required to

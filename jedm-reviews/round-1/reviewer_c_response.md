@@ -113,8 +113,7 @@ human effort is leveraged to interpret the patterns and turn them into actionabl
 
 We feel that we cannot adequately address this criticism without a clear
 articulation of exactly where in the paper such mistakes were made, and
-what the proper practice should be in those cases. We would benefit greatly
-from more elaboration on this point.
+what the proper practice should be in those cases. We would thus benefit greatly from more elaboration on this point.
 
 > The issue of temporal grain size/resolution seems important, but is very
 > mysterious once the method is actually described. As it is sold, one would
@@ -128,7 +127,7 @@ Choosing the cutoff points for what defines a browsing session is indeed
 an important assumption that will impact the patterns that are uncovered.
 However, rather than viewing this as a weakness, we can view this as a
 strength in the sense that this decision depends entirely on the
-granularity of the patterns you wish to discover.
+granularity of the patterns you wish to discover (following our vision of building a software tool based on the proposed model for use as an intelligent assistant for humans). 
 
 The model still does determine when the latent state switches, but you are
 correct in the sense that when it is allowed to determine a switch occurs

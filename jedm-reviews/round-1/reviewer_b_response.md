@@ -67,8 +67,10 @@ effort on behalf of an instructor. However, we do stand by our claim that
 this model substantially reduces the effort that would be required to
 extract the same knowledge directly from the action sequence data stream.
 
-We will modify the text to be more clear about where the automatic part of
-the model ends and the manual instructor effort part begins.
+We have modified the text (particularly our introduction) to attempt to be
+more clear about where the automatic part of the model ends (pattern
+discovery) and the manual instructor effort part begins (interpretation and
+knowledge discovery on top of these extracted patterns).
 
 > 4.      Is the work technically sound? Are there enough methodological
 >         details? Are claims convincingly substantiated, either through
@@ -91,8 +93,22 @@ Thank you.
 > those issues.
 
 We agree that we did not adequately address the potential drawbacks and
-limitations of our approach. We will add a new section to the paper to
+limitations of our approach. We have added a new section to the paper to
 discuss this aspect of the work in detail.
+
+Specifically, we address what we feel are the two major classes of
+limitations of our method. The first class relates to technical challenges
+and drawbacks due to the particular statistical framework we have proposed
+and the methods we used to perform parameter estimation. This section also
+details some implementation challenges related to numerical stability in
+the face of very small emission probabilities. The second class relates
+more to the interpretability of the patterns we uncover with the current
+model formulation and addresses issues like the pre-processing used to
+segment the action sequences and its impact on the discovered patterns, the
+parameter K for the number of states and its impact on the discovered
+patterns, and the difficulty in choosing the "correct" settings. We also
+acknowledge the manual effort that is still required to go from discovered
+patterns to actionable knowledge.
 
 > 6.      How significant is the research? Will the paper be likely to have
 >         an impact on the community?
@@ -106,9 +122,10 @@ discuss this aspect of the work in detail.
 > effectively improve MOOCs at a large scale.
 
 We agree with this assessment---there is still a gap that exists between
-this method and the extraction of actionable knowledge. We will make an
-effort to more clearly point this out in the work, and discuss briefly how
-this might be addressed by future work.
+this method and the extraction of actionable knowledge. We have made an
+effort to more clearly point this out in the work (specifically in our
+limitations section), and discuss briefly how this might be addressed by
+future work.
 
 > 7.      Does the title of this paper clearly and sufficiently reflect its
 >         contents?
@@ -126,19 +143,20 @@ Thank you for this suggestion.
 > tables must occur above the table, while captions for figures must be
 > below. Both tables are improperly captioned.
 
-Thanks for pointing this out. We will fix the table captioning issue.
+Thanks for pointing this out. We have fixed the table captioning issue.
 
 > There are a few grammatical errors decreasing the readability of the
 > paper, mostly near the beginning.
 
-We will re-read and attempt to revise the beginning of the paper, but a
-concrete example of one such mistake we have made would be helpful for us
-to have a more focused approach to this revision.
+We have re-read and have attempted to revise the beginning of the paper,
+but a concrete example of one such mistake we have made would be helpful
+for us to take a more focused approach to this revision.
 
 > The style guide mentions that the abstract should be between 100-250
 > words, but the abstract in this work is 86 words.
 
-Thank you. We will extend the abstract.
+Thank you. We have extended the abstract to discuss more of our findings
+in the experimental results section.
 
 > 9.      Can you suggest additions or amendments or an introductory
 >         statement that will increase the value of this paper?
@@ -150,11 +168,11 @@ Thank you. We will extend the abstract.
 > too short, and focuses much more on the method than the knowledge discovery
 > accomplished by this work.
 
-You make good points here. To address these issues, we plan to (1) be more
-clear about our contribution in the introduction, (2) amend our related
-work section to discuss the literature on layered HMMs, and (3) increase
-the length of our abstract to highlight some of the knowledge we uncovered
-in our experiment section.
+You make good points here. To address these issues in the revision, we have
+tried to (1) be more clear about our contribution in the introduction, (2)
+amend our related work section to discuss the literature on layered HMMs
+and HHMMs, and (3) increase the length of our abstract to highlight some of
+the knowledge we uncovered in our experiment section.
 
 > 10.  Can you suggest any reductions in the paper, or deletions of parts?
 >
@@ -198,7 +216,7 @@ mitigate these as much as we possibly could.
 
 Thank you for your detailed comments and actionable summary. We agree that
 we have not necessarily been clear enough about where the automatic aspects
-of our model end and the manual effort requirement begins. We will attempt
-to be more precise about our model's contribution and ensure that the
-claims we make in the beginning of the paper are all sufficiently supported
-by our experiment section.
+of our model end and the manual effort requirement begins. We have
+attempted in our revision to be more precise about our model's contribution
+and to ensure that the claims we make in the beginning of the paper are all
+adequately supported by our experiment section.

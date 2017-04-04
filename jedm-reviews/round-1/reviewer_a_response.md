@@ -39,9 +39,16 @@ work to the scope of JEDM and the novelty of our research.
 > It is however not clear how do they advance educational practice.
 
 We agree that we may not have been clear enough about how applying our
-model can potentially lead to advances in educational practice. We will add
-additional text to the article to attempt to more clearly articulate what
-we believe our educational contribution is.
+model can potentially lead to advances in educational practice.  We have
+added text to the article, particularly in the introduction, to attempt to
+more clearly articulate what we believe our educational contribution is:
+providing a framework for automatic student behavioral pattern discovery as
+a component in a human-machine collaborative system to enable instructors
+to extract knowledge from data that is otherwise being un(der)-utilized.
+
+There remains a gap between the modeling technique and educational practice
+impact, but we have attempted to make more clear what we feel the potential
+is for educational impact as a result of the application of our model.
 
 > 4.      Is the work technically sound? Are there enough methodological
 >         details? Are claims convincingly substantiated, either through
@@ -59,7 +66,9 @@ we believe our educational contribution is.
 Thank you for pointing this out. We agree that the technical modeling
 details may be overwhelming for people with little exposure to statistical
 techniques like the EM algorithm or CS techniques like dynamic programming.
-We will consider pushing some of the more technical parts to an appendix.
+However, we believe that these details about the data mining aspect of our
+model are important enough that they belong in the main text of the
+article.
 
 > 5.      Do the authors describe the limitations of their approach in a
 >         satisfactory manner?
@@ -108,8 +117,8 @@ Thank you.
 >   value for the end-user. Other applications would simplify following the
 >   paper and make it more interesting for the educational community.
 
-We will attempt to better articulate potential applications of this model
-for the educational community specifically.
+We have attempted to better articulate what we feel the major application
+of this model is for the educational community specifically.
 
 > * validation: Authors present results of fitting the model to existing
 >   courses, but there is no way of telling how good is the fit. There are no
@@ -129,8 +138,6 @@ more complicated model fits training data better".
 >
 > Possibly the technical part could be moved to a supplement, but I don't
 > have a strong opinion on that.
-
-We will consider this option.
 
 > 11.  Are the illustrations and tables necessary and acceptable?
 >

@@ -21,7 +21,17 @@ in this paper we propose unsupervised learning methods for automatically
 discovering and characterizing student learning behavior patterns or profiles from large
 collections of click logs associated with MOOCs. 
 
-Our work is motivated by the following observations:
+We view our model as a component of a system that enables collaboration
+between the machine and a human instructor to extract knowledge from these
+large collections of MOOC data. Automatically extracting interpretable
+patterns from the clickstream data associated with MOOCs is a necessary
+step in order for instructors to identify the hidden knowledge in these
+massive interaction datasets. Without the availability of a suitable model
+for identifying these behavioral patterns, instructors are not empowered to
+use this available data to improve their courses without expending
+extraordinary amounts of manual effort.
+
+Our proposed model is motivated by the following observations:
 \begin{enumerate}
   \item Student behavior is complicated and cannot necessarily be captured
       sufficiently by rule-based methods such as those explored by
@@ -43,18 +53,27 @@ Our work is motivated by the following observations:
       with \emph{different levels of resolution}; existing models tend to come
       with a particular assumption about the resolution of time they
       consider~\cite{Faucon:2016:EDM, Kizilcec:2013:LAK, Shih:2010:EDM}. We
-      propose a more flexible model to accommodate different levels of
-      resolution.
+      propose a model that is agnostic to the time resolution considered,
+      allowing it to be applied at different levels of resolution more
+      naturally.
 \end{enumerate}
 
 Thus, what we propose is a \emph{latent variable approach} to mining student behavior
 patterns that is \emph{probabilistic} for inference and 
-\emph{flexible to model state changes over different time resolutions}. 
-More specifically, we propose a novel two-layer hidden Markov model (2L-HMM) to
- discover latent student behavior patterns via
+does \emph{not} force assumptions about time resolutions, making it
+\emph{flexible to model state changes over different time resolutions} more
+easily.  More specifically, we propose a novel two-layer hidden Markov
+model (2L-HMM) to discover latent student behavior patterns via
 unsupervised learning on large collections of student behavior observation
-sequences. Evaluation results on a MOOC data set on Coursera demonstrate that 2L-HMM can effectively 
-discover a variety of interesting interpretable student behavior patterns at different levels of resolution, many of which are beyond what existing approaches can discover. 2L-HMM further enables easy use of the discovered patterns for discriminative analysis such as prediction of learning outcome. 
-Since our proposed methods are unsupervised, they can potentially be applied to any MOOC data without requiring any manual work to facilitate understanding of student behaviors and their variations, opening up many possibilities for developing intelligent tutoring systems that can adaptive to student behavior. 
-
-
+sequences.  Evaluation results on a MOOC data set on Coursera demonstrate
+that the 2L-HMM can effectively discover a variety of interesting interpretable
+student behavior patterns at different levels of resolution, many of which
+are beyond what existing approaches can discover. We show that the patterns
+uncovered by the 2L-HMM capture meaningful behavior by quantitatively
+showing that features extracted from a trained 2L-HMM correlate with
+learning outcomes. Since our proposed methods are
+unsupervised, they can potentially be applied to any MOOC data without
+requiring manual annotation effort at the level of sequences. Instead,
+instructors are empowered to use the latent patterns that the 2L-HMM can
+discover from raw data to extract knowledge about the behaviors his/her
+students exhibit in the MOOC.

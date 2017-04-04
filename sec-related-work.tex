@@ -3,12 +3,52 @@
 Our model is based heavily upon the prior art of Hidden Markov
 Models~\cite{Rabiner:1990:RSR} for sequence labeling tasks. These types of
 models are widely applicable and have been used for tasks such as speech
-recognition~\cite{Huang:1990:HMM} and part-of-speech
-tagging~\cite{Jurafsky:2009:SLP}, and are a member of the more general
-family of probabilistic graphical models~\cite{Koller:2009:PGM}.
-A major challenge in applying HMMs and other graphical models successfully to
-solve a problem is to design an appropriate architecture of the model, which
-always varies according to specific applications.
+recognition~\cite{Huang:1990:HMM}, part-of-speech
+tagging~\cite{Jurafsky:2009:SLP}, and econometrics~\cite{Hamilton:1990:JoE}
+and are a member of the more general family of probabilistic graphical
+models~\cite{Koller:2009:PGM}.  A major challenge in applying HMMs and
+other graphical models successfully to solve a problem is to design an
+appropriate architecture of the model, which always varies according to
+specific applications.
+
+A multi-layered approach to HMM modeling of sequence data has been
+performed before in other domains. \citet{Zhang:2004:CVPR}, for example,
+explored a two-layer HMM framework for modeling actions in meetings, but
+their definition of ``two-layer'' differs from ours. In their formulation,
+the ``lower-layer'' level is used to label audio-video action sequences
+into basic events, and the ``upper-layer'' is used to label the output of
+the lower-layer to discover higher-level office behavior abstractions. Our
+formulation differs in that we do not feed the labeled sequence of the
+lower level into the input of the higher level. Instead, our lower level is
+actually treated using a non-hidden Markov model, and the higher level is
+modeling transitions between the $K$ different non-hidden Markov models we
+consider.
+
+Our formulation is more closely related to the Hierarchical Hidden Markov
+Model (HHMM) detailed in \citet{Fine:1998:ML}. Here, the ``layers'' are
+modeled by having the hidden Markov model have two kinds of transitions.
+Horizontal transitions move between states within a layer, where vertical
+transitions move between different layers. At the bottom layer lie the
+``production'' states, which output symbols according to some probability
+distribution. Our specific model in this case can be modeled as a HHMM
+where the horizontal transitions between nodes at the highest layer
+(including self-loops) \emph{must} be immediately followed by a vertical
+transition to the lower layer. The output probability distributions over
+symbols in the lower layer ``production'' level are forced to emit only one
+kind of symbol, and vertical transitions are only allowed into the original
+higher-layer state that transitioned down into the lower-layer.
+
+Mixtures of hidden Markov models are also conceptually similar to our
+formulation. \citet{Song:2009:NDSS} explored using a mixture of hidden
+Markov models in the context of anomaly detection in the security domain.
+\citet{Ypma:2002:Springer} use mixtures of HMMs to categorize web pages and
+cluster users by investigating web log data, which is quite similar to the
+clickstream log data we obtain from MOOCs. The major difference between
+our approach and a standard mixture of HMMs is that we also model the
+\emph{transition behavior} between the Markov models that make up our
+model's lowest layer, where a standard mixture of HMMs would ignore the
+potential dependence of the previous sequence's latent state on the next
+sequence's latent state.
 
 HMMs or similar ideas have been previously applied to model education
 data~\cite{Shih:2010:EDM,Kizilcec:2013:LAK,Davis:2016:EDM}, but the
@@ -74,7 +114,4 @@ certain skill at a given time. Modifications to this algorithm include
 contextual estimation of the ``slip'' and ``guess'' probabilities of the
 model~\cite{Baker:2008:ITS} and most recently a re-framing as a neural
 network problem~\cite{Piech:2015:NIPS}.
-\citet{Ypma:2002:Springer} use mixtures of HMMs to categorize web pages and
-cluster users by investigating web log data, which is quite similar to the
-clickstream log data we obtain from MOOCs.
 

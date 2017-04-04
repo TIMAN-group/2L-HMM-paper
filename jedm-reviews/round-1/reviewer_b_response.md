@@ -24,10 +24,17 @@ the JDEM community.
 > Zhang et al. seems to use a similar approach. The authors' related works do
 > not reference papers using similar methods in different domains.
 
-Thank you for pointing out this deficiency in our related work. We will
-attempt to more broadly characterize how similar models to the one we
-describe have been used in non-education domains, and we will add citations
-for such works (including the one you suggested).
+Thank you for pointing out this deficiency in our related work. In our
+revision, we have attempted to more broadly characterize how similar models
+to the one we describe have been used in non-education domains, and we have
+add citations for such works (including the one you suggested).
+
+Specifically, we have now called out our model's relation to similar
+two-layered approaches applied in other domains, articulated how our model
+may be viewed as a special case of a more general Hierarchical Hidden
+Markov Model with certain hard constraints, and discussed in more detail
+how our model relates to the literature about mixtures of hidden Markov
+models.
 
 > The authors do, however, reference other papers that use various methods to
 > solve problems in the same domain. In this regard, the authors' results,

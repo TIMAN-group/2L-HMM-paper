@@ -27,9 +27,9 @@ for us.
 > and does not adequately address the “why are you doing this” question.
 
 We agree that we are weak on the educational aspect of the related work. We
-will attempt to revise this based on your later comments. We also agree
+have attempted to revise this based on your later comments. We also agree
 that we may need to more clearly articulate our answer to the "why"
-question from a more education-oriented perspective. Our current
+question from a more education-oriented perspective. Our original
 description is perhaps too technically motivated and insufficiently
 addresses this particular perspective.
 
@@ -66,15 +66,22 @@ useful, unique, and important.
 > run on the order of 1000 times to recover parameters as well as the
 > spectral approach.)
 
-We agree that our related work section is weak in the breadth sense and
+We agree that our related work section was weak in the breadth sense and
 perhaps focuses too much on MOOC-specific or CS-specific research and did
 not cover enough related work in wider domains. We wholeheartedly thank you
-for your suggested references, which we will incorporate into a
+for your suggested references, which we have incorporated into a
 substantially revised related work section that more clearly articulates
 how our model differs from similar models that have been applied in other
 domains.
 
-We will attempt to also do a better job of discussing the potential
+Specifically, we have now called out our model's relation to similar
+two-layered approaches applied in other domains, articulated how our model
+may be viewed as a special case of a more general Hierarchical Hidden
+Markov Model with certain hard constraints, and discussed in more detail
+how our model relates to the literature about mixtures of hidden Markov
+models.
+
+We have also attempted to also do a better job of discussing the potential
 limitations and drawbacks of our method, including those related to the
 application of the EM algorithm for fitting our model, in a new section
 added to the paper.

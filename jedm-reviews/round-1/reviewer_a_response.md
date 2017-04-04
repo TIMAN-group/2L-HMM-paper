@@ -73,10 +73,9 @@ We will consider pushing some of the more technical parts to an appendix.
 
 This assessment is valid, and all of the limitations you have identified
 are indeed potential issues with application of our model (or any
-sufficiently complex statistical model). We will add an additional section
-to the paper to discuss the limitations and drawbacks of our model and how
-they might be addressed in practice, and we will also modify our future
-work section to focus more heavily on these drawbacks.
+sufficiently complex statistical model). We have added an additional
+section to the paper to discuss the limitations and drawbacks of our model
+and how they might be addressed in practice.
 
 > 6.      How significant is the research? Will the paper be likely to have
 >         an impact on the community?

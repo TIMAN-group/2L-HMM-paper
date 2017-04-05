@@ -31,8 +31,15 @@ have attempted to revise this based on your later comments. We also agree
 that we may need to more clearly articulate our answer to the "why"
 question from a more education-oriented perspective. Our original
 description was perhaps too technically motivated and insufficiently
-addresses this particular perspective. From education perspective, the motivation for our work is two-fold: 1) there is a need to understand student behavior in detail in the online education environment (which is challenging due to the scale of education), and the proposed model addresses this need (as an "intelligent assistant" for humans); 2) the naturally available student interaction data contains valuable knowledge/patterns about student behavior, which the proposed model can help reveal.  We hope our revised introduction
-more clearly articulates why this is an important problem to tackle.
+addresses this particular perspective. From education perspective, the
+motivation for our work is two-fold: 1) there is a need to understand
+student behavior in detail in the online education environment (which is
+challenging due to the scale of education), and the proposed model
+addresses this need (as an "intelligent assistant" for humans); 2) the
+naturally available student interaction data contains valuable
+knowledge/patterns about student behavior, which the proposed model can
+help reveal.  We hope our revised introduction more clearly articulates why
+this is an important problem to tackle.
 
 > The paper is on shaky ground because it attempts to do two things and
 > does neither well. The first is develop a new method. The second is apply
@@ -42,7 +49,8 @@ We respectfully disagree that we do neither well. We could have done a
 better job of framing our work (which we feel we have improved in the
 revision), but we feel that the model we use in this work is novel in the
 education domain and that the behavior patterns we uncover are useful,
-unique, and important. (No existing model can be directly applied to this data to produce the same output as the proposed model produces.) 
+unique, and important. (No existing model can be directly applied to this
+data to produce the same output as the proposed model produces.)
 
 > The method itself is a twist on Markov switching models or on mixtures of
 > Markov Chains and appears to be very related to the following works, which
@@ -113,7 +121,8 @@ human effort is leveraged to interpret the patterns and turn them into actionabl
 
 We feel that we cannot adequately address this criticism without a clear
 articulation of exactly where in the paper such mistakes were made, and
-what the proper practice should be in those cases. We would thus benefit greatly from more elaboration on this point.
+what the proper practice should be in those cases. We would thus benefit
+greatly from more elaboration on this point.
 
 > The issue of temporal grain size/resolution seems important, but is very
 > mysterious once the method is actually described. As it is sold, one would
@@ -127,7 +136,9 @@ Choosing the cutoff points for what defines a browsing session is indeed
 an important assumption that will impact the patterns that are uncovered.
 However, rather than viewing this as a weakness, we can view this as a
 strength in the sense that this decision depends entirely on the
-granularity of the patterns you wish to discover (following our vision of building a software tool based on the proposed model for use as an intelligent assistant for humans). 
+granularity of the patterns you wish to discover (following our vision of
+building a software tool based on the proposed model for use as an
+intelligent assistant for humans).
 
 The model still does determine when the latent state switches, but you are
 correct in the sense that when it is allowed to determine a switch occurs
@@ -189,7 +200,9 @@ about what is automatically discovered and what is manually discovered. We
 still feel, however, that this method is useful in the sense that these
 patterns cannot be discovered from the raw clickstream data manually by
 instructors without the application of a model that can provide statistical
-summaries of the data such as the ones provided by our model, and no existing model can be used directly to generate the same behavior patterns as what our model generates. 
+summaries of the data such as the ones provided by our model, and no
+existing model can be used directly to generate the same behavior patterns
+as what our model generates.
 
 > Moreover, the discoveries do not go beyond obvious findings like
 > “watching video” states and “reading forum thread” states.

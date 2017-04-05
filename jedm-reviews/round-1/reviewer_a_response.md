@@ -47,7 +47,11 @@ a component in a human-machine collaborative system to enable instructors
 to extract knowledge from data that is otherwise being un(der)-utilized.
 
 There remains a gap between the modeling technique and educational practice
-impact, but we envision that the proposed model can eventually lead to a useful system being built to allow instructors and education researchers to "see" the detailed behavior of students via mining the vast amount of student interaction data that is naturally available on various online education platforms. 
+impact, but we envision that the proposed model can eventually lead to a
+useful system being built to allow instructors and education researchers to
+"see" the detailed behavior of students via mining the vast amount of
+student interaction data that is naturally available on various online
+education platforms.
 
 
 > 4.      Is the work technically sound? Are there enough methodological
@@ -68,7 +72,9 @@ details may be overwhelming for people with little exposure to statistical
 techniques like the EM algorithm or CS techniques like dynamic programming.
 However, we believe that these details about the data mining aspect of our
 model are important enough that they belong in the main text of the
-article. We have attempted to add more intuitive explanation of the technical approaches so that readers can potentially skip the technical details about model definition and estimation.  
+article. We have attempted to add more intuitive explanation of the
+technical approaches so that readers can potentially skip the technical
+details about model definition and estimation.
 
 > 5.      Do the authors describe the limitations of their approach in a
 >         satisfactory manner?
@@ -126,7 +132,8 @@ of this model is for the educational community specifically.
 
 This is indeed true, but we felt it is also non-obvious how one should
 compare our method with prior art for modeling MOOC student behavior when
-our approach is substantially different (no existing models can produce exactly the same student patterns as our model produces). 
+our approach is substantially different (no existing models can produce
+exactly the same student patterns as our model produces).
 
 We could compare the log likelihood or perplexity that our model achieves
 on our data at convergence with that of another more simple statistical

@@ -61,11 +61,13 @@ We agree that there is still substantial effort required to extract the
 actionable knowledge from the patterns that our method uncovers. When we
 say that the method is "unsupervised", we mean that from the machine
 learning perspective where this term is used to describe methods that can
-be applied to raw training data that have not been annotated by experts.（Some machine learning approaches would still need human annotations to facilitate knowledge discovery). We
-did not mean to imply that the knowledge extraction itself requires no
-effort on behalf of an instructor. However, we do stand by our claim that
-this model substantially reduces the effort that would be required to
-extract the same knowledge directly from the action sequence data stream.
+be applied to raw training data that have not been annotated by
+experts. (Some machine learning approaches would still need human
+annotations to facilitate knowledge discovery). We did not mean to imply
+that the knowledge extraction itself requires no effort on behalf of an
+instructor. However, we do stand by our claim that this model substantially
+reduces the effort that would be required to extract the same knowledge
+directly from the action sequence data stream.
 
 We have modified the text (particularly our introduction) to attempt to be
 more clear about where the automatic part of the model ends (pattern
@@ -108,7 +110,9 @@ segment the action sequences and its impact on the discovered patterns, the
 parameter K for the number of states and its impact on the discovered
 patterns, and the difficulty in choosing the "correct" settings. We also
 acknowledge the manual effort that is still required to go from discovered
-patterns to actionable knowledge; we envisioned to build a software tool based on the proposed model to be used as an "intelligent assistant" to help humans "see" patterns about student behavior in the data more clearly. 
+patterns to actionable knowledge; we envisioned to build a software tool
+based on the proposed model to be used as an "intelligent assistant" to
+help humans "see" patterns about student behavior in the data more clearly.
 
 > 6.      How significant is the research? Will the paper be likely to have
 >         an impact on the community?

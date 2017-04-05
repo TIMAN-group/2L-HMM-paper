@@ -152,8 +152,9 @@ more complicated model fits training data better".
 > illustration in the introduction, when authors are introducing the high
 > level idea of the two-level HMM.
 
-We think the idea of adding an explanatory figure to the introduction is a
-very good one, and we will do so.
+Getting the visualizations just right has been quite a challenge. We agree
+that there are still visibility issues, but we have tried our best to
+mitigate these as much as we possibly could.
 
 > 12.  Are the key words and abstracts/summary informative?
 >

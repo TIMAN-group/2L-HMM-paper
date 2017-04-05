@@ -83,7 +83,7 @@ Markov Model with certain hard constraints, and discussed in more detail
 how our model relates to the literature about mixtures of hidden Markov
 models.
 
-We have also attempted to also do a better job of discussing the potential
+We have also attempted to do a better job of discussing the potential
 limitations and drawbacks of our method, including those related to the
 application of the EM algorithm for fitting our model, in a new section
 added to the paper.

@@ -30,7 +30,7 @@ data between the models that were started from different initialization
 points and select the one that has the highest value. This still does not
 guarantee finding a global maximum, but it does help alleviate the
 potential for finding a particularly bad local maximum. In practice, we
-have found that our model model can be fit to the data fairly quickly on
+have found that our model can be fit to the data fairly quickly on
 commodity hardware, so running it multiple times to address this concern is
 not computationally unfeasible.
 
@@ -44,7 +44,7 @@ in hidden Markov models, applying the ``scaling'' method proposed by
 our case due to the incredibly small sequence-generation probabilities. We
 address this in our open-source implementation by computing the trellises
 in log-space and using the log-sum-exp trick when we need to take
-summations, which exploits the identify
+summations, which exploits the identity
 \begin{equation}
     \log \sum_{i=1}^n e^{x_i} = a + \log \sum_{i=1}^n e^{x_i - a}
 \end{equation}

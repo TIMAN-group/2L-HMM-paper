@@ -21,23 +21,33 @@ investigated whether we can detect differences in student behavior patterns
 as they correlate with course performance. Specifically, we demonstrated
 that high-performing students produce substantially different HMM
 transition diagrams that tend to show longer concentration span in quiz-taking
-and more active  forum participation as compared with the average students. 
+and more active  forum participation as compared with the average students.
 
 \subsection{Future Work}
 
-Although we only experimented with our model on two MOOCs, the model
-is completely general and can be easily applied to analyze the log of any other
-course to enable deep understanding of student behaviors as well as the correlations
-of such behaviors and other variables such as grades. We plan to develop a MOOC log analysis
-system based on the proposed model to both facilitate education research and 
-help instructors improve course design. 
+Although we only experimented with our model on two MOOCs, the model is
+completely general and can be easily applied to analyze the log of any
+other course to enable deep understanding of student behaviors as well as
+the correlations of such behaviors and other variables such as grades. We
+plan to develop a MOOC log analysis system based on the proposed model to
+both facilitate education research and help instructors improve course
+design.
 
-Specifically, our model can be used to produce an ordered list of latent states for each
-student over time. Given these labeled sequences, we could correlate
-course-wide drifts in these latent states with events in a course. For
-example, we might be able to automatically discover difficult or confusing
-parts of a course by noticing spikes in the distribution of students over
-latent states over time.
+Our model can empower many new comparative analyses. For example, we could
+now look at how behavior patterns change between different offerings of
+the same MOOC to understand how changes in course structure or materials
+influences student behavior. Individual students can now also be compared
+against each other or against groups. For example, by decoding the latent
+state sequences for each student, we can measure how ``surprising'' their
+latent state transition sequence is relative to the average we would expect
+according to the model, or to the average ``perfect'' student, etc. We can
+now investigate how certain behavioral patterns correlate with properties
+of a student (e.g., demographics, prior aptitude, etc.). After decoding the
+students' latent state sequences, we could also correlate course-wide
+drifts in these latent states with events in a course. For example, we
+might be able to automatically discover difficult or confusing parts of a
+course by noticing spikes in the distribution of students over latent
+states over time.
 
 Our model does not explicitly model drop-out like
 \citet{Kizilcec:2013:LAK}, but doing so is an obvious extension. Our model
@@ -53,7 +63,7 @@ also naturally result in a description of a student (via his or her HMM
 transitions) that could be incorporated into existing supervised learning
 techniques that try to predict student outcomes for understanding
 which of the latent behavior patterns discovered by 2L-HMM are most predictive
-of the performance of student learning. 
+of the performance of student learning.
 
 There is more recent work on better learning algorithms for mixtures of
 Markov models~\citep{Gupta:2016:NIPS}. It would be worth exploring whether

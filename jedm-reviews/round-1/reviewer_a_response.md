@@ -42,9 +42,11 @@ We agree that we may not have been clear enough about how applying our
 model can potentially lead to advances in educational practice.  We have
 added text to the article, particularly in the introduction, to attempt to
 more clearly articulate what we believe our educational contribution is:
-providing a framework for automatic student behavioral pattern discovery as
-a component in a human-machine collaborative system to enable instructors
-to extract knowledge from data that is otherwise being un(der)-utilized.
+proposing a specific way of visualizing student behavior patterns and their
+transitions, and providing a framework for automatic student behavioral
+pattern discovery as a component in a human-machine collaborative system to
+enable instructors to extract knowledge from data that is otherwise being
+un(der)-utilized.
 
 There remains a gap between the modeling technique and educational practice
 impact, but we envision that the proposed model can eventually lead to a
@@ -155,6 +157,10 @@ more complicated model fits training data better".
 Getting the visualizations just right has been quite a challenge. We agree
 that there are still visibility issues, but we have tried our best to
 mitigate these as much as we possibly could.
+
+We have added a hypothetical example to the introduction to introduce our
+behavior representation in a more simplified setting to "prime" the reader
+to be able to interpret the figures in the experiment section.
 
 > 12.  Are the key words and abstracts/summary informative?
 >

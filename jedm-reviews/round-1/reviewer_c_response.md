@@ -38,7 +38,7 @@ challenging due to the scale of education), and the proposed model
 addresses this need (as an "intelligent assistant" for humans); 2) the
 naturally available student interaction data contains valuable
 knowledge/patterns about student behavior, which the proposed model can
-help reveal.  We hope our revised introduction more clearly articulates why
+help reveal. We hope our revised introduction more clearly articulates why
 this is an important problem to tackle.
 
 > The paper is on shaky ground because it attempts to do two things and
@@ -114,7 +114,8 @@ prohibitively expensive for instructors to discover. We view our model as a
 component in a human-machine collaborative system in which the
 computational techniques employed by the machine are applied to do what
 they are good at (namely, uncovering statistical patterns/trends) and the
-human effort is leveraged to interpret the patterns and turn them into actionable knowledge.
+human effort is leveraged to interpret the patterns and turn them into
+actionable knowledge.
 
 > There are selective statistical tests performed which violate some basic
 > principles of statistical practice.

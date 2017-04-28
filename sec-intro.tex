@@ -1,35 +1,86 @@
 \section{Introduction}
+
 The proliferation of massive open online courses (MOOCs) has resulted in a
-profound impact on education. As more and more learners turn to MOOCs to
-educate themselves on various topics, more and more behavioral data is
-being collected as part of the system on which the MOOC is offered. The
-data present in these logs has the power to aid us in understanding the
-behavior of students who take our MOOCs, which is mostly undetectable for
-instructors of these MOOCs today due to its vast scale. As a result, the
-rich data available through these MOOC logs is highly underutilized today.
+profound impact on education. As more and more students participate in
+these novel educational environments, it is of utmost importance that we be
+able to understand the behavioral patterns of students as they interact
+with them. While we can easily observe the changes in behavior of students
+in real classrooms, MOOCs present a challenge due to their hands-off nature
+and sometimes irregular schedule due to being a full-time worker.
+
+At the same time, as more and more learners turn to MOOCs to educate
+themselves on various topics, more and more behavioral data is being
+collected as part of the system on which the MOOC is offered. This
+presents a unique opportunity: the data present in these logs has the power
+to aid us in understanding the behavior of students who take our MOOCs,
+which is mostly undetectable for instructors of these MOOCs today due to
+its vast scale. As a result, the rich data available through these MOOC
+logs is highly underutilized today.
 
 What stands in the way? Clearly, intelligent systems to create concise and
 digestible summaries of the massive amount of interaction data collected
 are needed in order to empower the instructors of these courses. If we can
 understand how users are interacting with our MOOCs, we are much more
 likely to be able to make changes to these courses that positively impact
-learners. While we can easily observe the changes in behavior of students
-in real classrooms, MOOCs present a challenge due to their hands-off
-nature and sometimes irregular schedule due to being a full-time worker.   
-We view this paper as attempting to bridge this gap. Specifically,
-in this paper we propose unsupervised learning methods for automatically
-discovering and characterizing student learning behavior patterns or profiles from large
-collections of click logs associated with MOOCs. 
+learners. We view this paper as attempting to bridge this gap.
 
-We view our model as a component of a system that enables collaboration
-between the machine and a human instructor to extract knowledge from these
-large collections of MOOC data. Automatically extracting interpretable
-patterns from the clickstream data associated with MOOCs is a necessary
-step in order for instructors to identify the hidden knowledge in these
-massive interaction datasets. Without the availability of a suitable model
-for identifying these behavioral patterns, instructors are not empowered to
-use this available data to improve their courses without expending
-extraordinary amounts of manual effort.
+How should we represent behavioral patterns, and what does it mean to
+understand changes in student behavior with respect to these patterns?
+These are still very open questions, and are active areas of
+research~\cite{Kizilcec:2013:LAK, Faucon:2016:EDM, Davis:2016:EDM,
+Shih:2010:EDM}. In this paper, we advocate for a particular representation
+of student behavior patterns as well as \emph{behavior transitions} that we
+believe is simultaneously interpretable but also amenable to unsupervised,
+automated discovery via statistical means. Specifically, we choose to
+visualize behavior patterns as labeled directed graphs where node sizes are
+proportional to steady-state probabilities and edge widths are proportional
+to the probability of leaving a node following that edge. We can use this
+same representation for visualizing both the student behavior patterns as
+well as the transitioning behavior between them. In
+Figure~\ref{fig:motivating-example} we show a hypothetical example of the
+kind of output our proposed representation could convey. Here we see two
+different behavioral patterns (\ref{fig:motivating-example-0} and
+\ref{fig:motivating-example-1}) as well as the \emph{transition behavior}
+between these two behavior patterns (\ref{fig:motivating-example-trans}).
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.30\textwidth}
+    \includegraphics[width=\textwidth]{figures/example/state0.png}
+    \caption{Behavior pattern 0\label{fig:motivating-example-0}}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.30\textwidth}
+    \includegraphics[width=\textwidth]{figures/example/state1.png}
+    \caption{Behavior pattern 1\label{fig:motivating-example-1}}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.30\textwidth}
+    \includegraphics[width=\textwidth]{figures/example/trans.png}
+    \caption{Transitions between the two behavior patterns to the
+    left.\label{fig:motivating-example-trans}}
+  \end{subfigure}
+  \caption{An idealized example of what our behavior representation could capture.}
+  \label{fig:motivating-example}
+\end{figure}
+We could infer many things from even such a simple example. The first might
+be that, when students are taking quizzes, they tend to either use the
+forum or the videos for support, but not both. They also tend to take
+quizzes in a sort of ``cycle'' pattern, indicating perhaps that this course
+allows quiz re-takes. Finally, in Figure~\ref{fig:motivating-example-trans}
+we could conclude that users tend to change their quiz-taking behavior over
+time from one that is more video-focused (pattern 0) to one that is more
+forum-focused (pattern 1).
+
+Our goal in this paper is to design a model that can automatically capture
+student behavior in this way via unsupervised learning methods applied to
+large collections of click logs associated with MOOCs. We view our model
+as a component of a system that enables collaboration between the machine
+and a human instructor to extract knowledge from these large collections of
+MOOC data. Automatically extracting interpretable patterns from the
+clickstream data associated with MOOCs is a necessary step in order for
+instructors to identify the hidden knowledge in these massive interaction
+datasets. Without the availability of a suitable model for identifying
+these behavioral patterns, instructors are not empowered to use this
+available data to improve their courses without expending extraordinary
+amounts of manual effort.
 
 Our proposed model is motivated by the following observations:
 \begin{enumerate}
@@ -59,7 +110,7 @@ Our proposed model is motivated by the following observations:
 \end{enumerate}
 
 Thus, what we propose is a \emph{latent variable approach} to mining student behavior
-patterns that is \emph{probabilistic} for inference and 
+patterns that is \emph{probabilistic} for inference and
 does \emph{not} force assumptions about time resolutions, making it
 \emph{flexible to model state changes over different time resolutions} more
 easily.  More specifically, we propose a novel two-layer hidden Markov

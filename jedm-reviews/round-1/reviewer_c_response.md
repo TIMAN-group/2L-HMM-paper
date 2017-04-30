@@ -214,7 +214,7 @@ section, where we discover that a student's probability of being in one
 particular state that indicates more diverse activity when taking quizzes
 correlates negatively with grade outcomes.
 
-A more important point is that the proposed model is a general model that can be applied to any such student interaction data. It is reasonable to expect that the model would be able to generate even more interesting patterns when it is applied to a data set with such interesting patterns. The specific data set used in our experiments is only to show the capacity of the model to reveal interesting and meaningful patterns in the data. 
+A more important point is that the proposed model is completely general and thus can be applied to analyze any other data set. The actual utility of the patterns discovered from a particular data set is inevitably limited by the true patterns that the data set actually contains; it is reasonable to expect the model to be able to reveal even more interesting patterns when applied to data sets that contain such patterns.   
 
 > It’s hard to say this from reviewing the figures alone, but the states
 > seem to be characterized almost entirely by the self-loops in the Markov
@@ -230,7 +230,9 @@ perfect quiz scores are more likely to continue to participate heavily in
 the forum between browsing sessions compared to students that performed
 poorly on quizzes). You can also see this visibly if you compare Figure
 5(b) and Figure 5(c)'s edge weight from transitioning from state 2 to state
-1, which is significantly darker in 5(c) than 5(b).
+1, which is significantly darker in 5(c) than 5(b). Moreover, although the magnitude of probabilities of the transitions is small, relative comparison of these probabilities across different "contexts" (e.g., across different student groups or different periods of a course) may reveal sufficiently significant differences to understand how student behavior varies according to the context. 
+
+As already mentioned earlier, the specific data set used in our experiments is only to show the potential of the model to reveal interesting and meaningful patterns in the data; the intended main contribution of the paper lies in the novel representation of behavior patterns and the novel algorithm to extract such patterns automatically from data, which would empower all instructors to potentially turn any such interaction data into useful insights and knowledge for improving instruction, as well as enable a novel way of performing data-drive research on student behavior (e.g., by doing large scale analysis of the extracted behavior patterns in association with other "context" variables as mentioned above to reveal detailed understanding of student behavior in general).  
 
 > 5.      Do the authors describe the limitations of their approach in a
 >         satisfactory manner?

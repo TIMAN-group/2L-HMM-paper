@@ -174,7 +174,7 @@ state is chosen based on the initial state distribution, and then each
 subsequent action is chosen by sampling a transition from the current state
 to the next state.
 
-I will attempt to make an analogy with text documents. The space of all
+It may be useful to make an analogy with text documents. The space of all
 possible English journal articles is unfathomably large, but we can still
 model the generation of these articles using simpler statistical models. If
 we have a discrete distribution over words, we can model the generation of
@@ -213,6 +213,8 @@ state is, we argue that there are more non-obvious findings later in the
 section, where we discover that a student's probability of being in one
 particular state that indicates more diverse activity when taking quizzes
 correlates negatively with grade outcomes.
+
+A more important point is that the proposed model is a general model that can be applied to any such student interaction data. It is reasonable to expect that the model would be able to generate even more interesting patterns when it is applied to a data set with such interesting patterns. The specific data set used in our experiments is only to show the capacity of the model to reveal interesting and meaningful patterns in the data. 
 
 > It’s hard to say this from reviewing the figures alone, but the states
 > seem to be characterized almost entirely by the self-loops in the Markov

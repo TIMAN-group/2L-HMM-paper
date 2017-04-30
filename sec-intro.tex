@@ -32,7 +32,7 @@ Shih:2010:EDM}. In this paper, we advocate for a particular representation
 of student behavior patterns as well as \emph{behavior transitions} that we
 believe is simultaneously interpretable but also amenable to unsupervised,
 automated discovery via statistical means. Specifically, we choose to
-visualize behavior patterns as labeled directed graphs where node sizes are
+visualize behavior patterns as labeled directed graphs where a node represents a ``behavior state'' (e.g., watching lecture video, or visiting a forum) and a directed edge indicates a transition from one behavior state to another, and node sizes are
 proportional to steady-state probabilities and edge widths are proportional
 to the probability of leaving a node following that edge. We can use this
 same representation for visualizing both the student behavior patterns as
@@ -60,7 +60,7 @@ between these two behavior patterns (\ref{fig:motivating-example-trans}).
   \caption{An idealized example of what our behavior representation could capture.}
   \label{fig:motivating-example}
 \end{figure}
-We could infer many things from even such a simple example. The first might
+Such a visualized state-transition representation is very informative for describing student behavior. Indeed, we could infer many things from even such a simple example: The first might
 be that, when students are taking quizzes, they tend to either use the
 forum or the videos for support, but not both. They also tend to take
 quizzes in a sort of ``cycle'' pattern, indicating perhaps that this course
@@ -80,9 +80,9 @@ instructors to identify the hidden knowledge in these massive interaction
 datasets. Without the availability of a suitable model for identifying
 these behavioral patterns, instructors are not empowered to use this
 available data to improve their courses without expending extraordinary
-amounts of manual effort.
+amounts of manual effort (even with which the raw data can still be very hard to interpret). 
 
-Our proposed model is motivated by the following observations:
+Our proposed model (as well as the proposed behavior representation) is motivated by the following observations:
 \begin{enumerate}
   \item Student behavior is complicated and cannot necessarily be captured
       sufficiently by rule-based methods such as those explored by

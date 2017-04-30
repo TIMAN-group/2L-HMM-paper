@@ -25,9 +25,10 @@ optimizing in a highly non-convex parameter space. Thus, it can only
 guarantee reaching a local maximum in practice~\citep{Dempster:1977:JRSS}.
 This may mean that the parameters found for the model may not be the
 ``best'' parameters in a global sense, which may lead to suboptimal latent
-state representations and transition patterns. The problem may not be as serious as it 
-appears to be because strong patterns tend to always show up as long as the algorithm reaches a reasonably good local maximum, and the differences of the results tend to be 
-related to weak ``unstable'' patterns which may not be reliable anyway. 
+state representations and transition patterns. Empirically, however, we observed
+in our experiments that strong patterns tend to always show up as long as the algorithm reaches a reasonably good local maximum, and the differences of the results tend to be 
+related to weak ``unstable'' patterns which may not be reliable anyway. Since
+it is far more important and useful to reveal the strong salient patterns than weak unreliable ones for instructors, the problem might not necessarily affect the utility of the approach so significantly.  
  A commonly applied approach
 to address the problem of multiple local maxima is to run the model multiple times with different
 starting points to allow the model to explore a larger portion of the

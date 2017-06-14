@@ -9,13 +9,31 @@ and are a member of the more general family of probabilistic graphical
 models~\cite{Koller:2009:PGM}.  A major challenge in applying HMMs and
 other graphical models successfully to solve a problem is to design an
 appropriate architecture of the model, which always varies according to
-specific applications. For example, \citet{Hamilton:1990:JoE} explores HMMs
-in the context of ``regime-switching''. Essentially, these are HMMs with
-observation distributions such as the multivariate Gaussian or an
-auto-regressive model in order to properly capture real-valued vector data
-in the domain of econometrics. Our model can be seen as such a
-``regime-switching'' model where the output distributions are (observable)
-Markov chains.
+specific applications.
+
+For example, in part-of-speech tagging~\cite{Jurafsky:2009:SLP} the output
+distributions are categorical (distributions over words from a fixed
+vocabulary) and the latent states represent the part-of-speech category for
+a word. In speech recognition~\cite{Huang:1990:HMM} the output
+distributions might be mixtures of Gaussians to predict real-valued vectors
+extracted from short windows of a speech signal. In the domain of
+econometrics, \citet{Hamilton:1990:JoE} explores HMMs in the context of
+``regime-switching.'' In this framing, the goal is to understand how
+econometric data changes by modeling discrete changes in ``regime'' as
+having an impact on the resulting real-valued vector data observed. The
+``regimes'' are represented with some sort of model that can produce
+real-valued vector data, such as a multivariate Gaussian or an
+auto-regressive model. The analogy with HMMs is that a ``regime'' is a
+latent state, and the characterization of the regime itself is the output
+distribution for that latent state. Our model can be seen as such a
+``regime-switching'' model where the output of the ``regimes'' that
+students are switching between are discrete-valued \emph{sequences} (as
+opposed to real numbers, vectors of real numbers, or categorical symbols)
+and the model used to represent a specific ``regime'' is an (observable)
+Markov chain over the observed student actions. We view the switching
+between ``regimes'' as the first ``layer'' of our model, and the
+transitioning behavior \emph{within} a ``regime'' between the actions a
+student takes as the second ``layer'' of our model.
 
 A multi-layered approach to HMM modeling of sequence data has been
 performed before in other domains. \citet{Zhang:2004:CVPR}, for example,

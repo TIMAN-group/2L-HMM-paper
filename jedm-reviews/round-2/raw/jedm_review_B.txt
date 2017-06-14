@@ -1,0 +1,45 @@
+After rereading the paper, I have made some comments on the authors' changes in reference to my previous suggestions. 
+
+Related works
+
+In prior iterations, the related works did not frame the authors' research with respect to similar methods. I think the authors have done an excellent job in reworking this section. It is much clearer how the authors' work is novel in both the education and data mining/machine learning domains.  
+
+Abstract and style
+
+The abstract is now sufficiently long and adequately written. The table captions have also been fixed. Certain parts of the figures are still hard to read, but I understand that the possible fixes here are limited. In that regard, the visual issues do not significantly hinder interpretability of the concepts. 
+
+Challenges / Limitations
+
+The authors have created a full challenges and limitations section. The authors have added a great deal of clarity to the core issues they encountered with both the methods and outcomes of their work. 
+
+General readability comments:
+
+Previously, I made comments about the readability of the work and the authors requested a few examples. I have written down a few quotes from the paper along with explanations or fixes for the problems (denoted by an arrow ->). It is important to note that these are not all of the issues in the paper. I think that authors could still make many improvements to increase both the readability and clarity of the work. 
+
+"As more and more students participate in these novel educational environments, it is of utmost importance that we be able to understand the behavioral patterns of students as they interact with them."
+
+-> Ambiguous pronouns: "they interact with them" 
+
+"While we can easily observe the changes in behavior of students in real classrooms, MOOCs present a challenge due to their hands-off nature and sometimes irregular schedule due to being a full-time worker."
+
+-> The phrasing of this sentence makes it sounds like the MOOCs are full-time workers with irregular schedules. I don't think that is the intended meaning here. 
+
+"At the same time, as more and more learners turn to MOOCs to educate themselves on various topics, more and more..."
+
+-> The phrase "more and more" is used three times within a few sentences. This is superfluous: the significance of the work makes itself clear without this description.
+
+"This presents a unique opportunity: the data present in these logs has the power to aid us in understanding the behavior of students who take our MOOCs, which is mostly undetectable for instructors of these MOOCs today due to its vast scale."
+
+-> Multiple issues here. The clause "which is mostly undetectable for instructors..." is attached to the noun "MOOCs." This makes it sounds like it is the MOOCs that are mostly undetectable. I believe you are referring to the behavior of students instead. Additionally, "...MOOCs today due to its vast scale" is unclear. If you are saying the MOOCs have a vast scale, then "its" should be plural. If you're referring to the behavior as having a vast scale, then the pronoun is ambiguous. 
+
+"...a manual clustering step to identify behavioral “motifs”, which is then..."
+
+-> The comma should be inside the quotes: "motifs,"
+
+"One potential limitation is that the model is complex and has many parameters, to truly uncover relevant patterns in the data, thus a large amount of it must be available to the training algorithm"
+
+-> This sentence should be rewritten for clarity. 
+
+' ...divide the user action stream into discrete “sessions”. '
+
+-> Period should be inside the quotes: "sessions."

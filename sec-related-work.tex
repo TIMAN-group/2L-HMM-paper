@@ -85,7 +85,7 @@ whereas our model can model both ``micro'' and ``macro'' behavior.
 \citet{Davis:2016:EDM} investigate frequent student behavior pattern chains
 with a set of actions that is defined similarly to ours. However, their
 method for finding the common behavioral patterns involves a manual
-clustering step to identify behavioral ``motifs'', which is then followed
+clustering step to identify behavioral ``motifs,'' which is then followed
 by an automatic (rule-based) assignment of all sequences to these motifs.
 Our method, by contrast, attempts to do this automatically: the latent
 state representations obtained by our model attempt to capture similar
@@ -101,11 +101,11 @@ Markov models presented are a special case of our model when $K = 1$.
 \citet{Faucon:2016:EDM} proposed a semi-Markov model for simulating MOOC
 students. They produce behavior profiles that characterize groups of
 students in the form of semi-Markov models like our proposed model does,
-but they differ from our work in two major ways. First, they assume that a
-student can belong to only one behavior profile across the entire course
-rather than allowing this profile to change over time.  Because we do not
-have this restriction, our model is also able to learn the transition
-probabilities between the different behavior profiles we discover.
+but they assume that a student can belong to only one behavior profile
+across the entire course rather than allowing this profile to change over
+time. Because we do not have this restriction, our model is also able to
+learn the transition probabilities between the different behavior profiles
+we discover.
 
 There are a few additional related studies worth mentioning.
 Bayesian Knowledge Tracing~\cite{Corbett:1994:UMUAI} in its basic form uses

@@ -10,14 +10,13 @@ patterns. We discuss both of these lines below.
 
 \subsection{Technical Limitations and Implementation Challenges}
 
- %irregular behavior
-%patterns In particular, because
-One potential limitation is that the model is complex and has many parameters,
-to truly uncover relevant patterns in the data, thus a large amount of it must
-be available to the training algorithm. The assumption that we have a large
-amount of sequence data available for training on should generally hold for
-most MOOC courses, but this assumption may be problematic if attempting to
-apply our model to smaller online (or on-campus) courses.
+One potential limitation is that the model is complex and has many parameters
+in order to truly uncover the relevant patterns in the data. In order to
+properly estimate these parameters at training time, a large amount of data
+must be available to the training algorithm. The assumption that we have a
+large amount of sequence data available for training on should generally
+hold for most MOOC courses, but this assumption may be problematic if
+attempting to apply our model to smaller online (or on-campus) courses.
 
 Our model fits its parameters using maximum likelihood estimation using the
 EM algorithm. The EM algorithm is a hill climbing algorithm that is
@@ -25,22 +24,24 @@ optimizing in a highly non-convex parameter space. Thus, it can only
 guarantee reaching a local maximum in practice~\citep{Dempster:1977:JRSS}.
 This may mean that the parameters found for the model may not be the
 ``best'' parameters in a global sense, which may lead to suboptimal latent
-state representations and transition patterns. Empirically, however, we observed
-in our experiments that strong patterns tend to always show up as long as the algorithm reaches a reasonably good local maximum, and the differences of the results tend to be 
-related to weak ``unstable'' patterns which may not be reliable anyway. Since
-it is far more important and useful to reveal the strong salient patterns than weak unreliable ones for instructors, the problem might not necessarily affect the utility of the approach so significantly.  
- A commonly applied approach
-to address the problem of multiple local maxima is to run the model multiple times with different
-starting points to allow the model to explore a larger portion of the
-potential parameter space. One can then compare the log-likelihood of the
-data between the models that were started from different initialization
+state representations and transition patterns. Empirically, however, we
+observed in our experiments that strong patterns tend to always show up as
+long as the algorithm reaches a reasonably good local maximum, and the
+differences of the results tend to be related to weak ``unstable'' patterns
+which may not be reliable anyway. Since it is far more important and useful
+to reveal the strong salient patterns than weak unreliable ones for
+instructors, the problem might not necessarily affect the utility of the
+approach so significantly.  A commonly applied approach to address the
+problem of multiple local maxima is to run the model multiple times with
+different starting points to allow the model to explore a larger portion of
+the potential parameter space. One can then compare the log-likelihood of
+the data between the models that were started from different initialization
 points and select the one that has the highest value. This still does not
 guarantee finding a global maximum, but it does help alleviate the
-potential for finding a particularly bad local maximum.  
-In practice, we
+potential for finding a particularly bad local maximum.  In practice, we
 have found that our model can be fit to the data fairly quickly on
 commodity hardware, so running it multiple times to address this concern is
-not computationally unfeasible. 
+not computationally unfeasible.
 
 
 A further complication in blindly applying the EM algorithm to our model is
@@ -69,15 +70,15 @@ all of our transition matrices to avoid this problem.
 \subsection{Limitations of Discovered Patterns}
 
 The proposed behavior representation is most suitable for representing
-recurring behavior patterns, which presumably are most interesting 
-to extract from the data, but may not cover all the interesting patterns in the data. 
+recurring behavior patterns, which presumably are most interesting
+to extract from the data, but may not cover all the interesting patterns in the data.
 It would be interesting to further explore other complementary models such as
- time series models, which may help capture non-recurring patterns.  
- 
+ time series models, which may help capture non-recurring patterns.
+
 Our proposed model is flexible in the patterns it can discover in two main
 ways. The first is that the granularity of the patterns can be adjusted by
 changing the segmentation strategy one uses to divide the user action
-stream into discrete ``sessions''. The other is in the number of latent
+stream into discrete ``sessions.'' The other is in the number of latent
 states $K$ that are used to describe the segmented action sequences. One
 drawback of these two lines of flexibility is that there is not necessarily
 a clear answer as to the ``correct'' approach for both in any given
@@ -114,7 +115,9 @@ Extracting the patterns is a necessary step towards the creation of
 knowledge, and we view our model as a component in a collaborative system
 which leverages the machine to perform statistical modeling to extract
 patterns which then enable a human actor to extract knowledge and take
-actions on the basis of the data. The pattern discovery is an important
-and absolutely necessary component, without which it would be very difficult, if not impossible, 
-for humans to directly digest the student behavior buried in the large amount of 
-data.  Of course, pattern discovery is only a means to help humans obtain knowledge, not the end of the knowledge discovery process.
+actions on the basis of the data. The pattern discovery is an important and
+absolutely necessary component, without which it would be very difficult,
+if not impossible, for humans to directly digest the student behavior
+buried in the large amount of data.  Of course, pattern discovery is only a
+means to help humans obtain knowledge, not the end of the knowledge
+discovery process.

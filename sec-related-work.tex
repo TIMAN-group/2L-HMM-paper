@@ -9,7 +9,13 @@ and are a member of the more general family of probabilistic graphical
 models~\cite{Koller:2009:PGM}.  A major challenge in applying HMMs and
 other graphical models successfully to solve a problem is to design an
 appropriate architecture of the model, which always varies according to
-specific applications.
+specific applications. For example, \citet{Hamilton:1990:JoE} explores HMMs
+in the context of ``regime-switching''. Essentially, these are HMMs with
+observation distributions such as the multivariate Gaussian or an
+auto-regressive model in order to properly capture real-valued vector data
+in the domain of econometrics. Our model can be seen as such a
+``regime-switching'' model where the output distributions are (observable)
+Markov chains.
 
 A multi-layered approach to HMM modeling of sequence data has been
 performed before in other domains. \citet{Zhang:2004:CVPR}, for example,

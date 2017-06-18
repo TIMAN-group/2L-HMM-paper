@@ -1,4 +1,4 @@
-> I still can’t give this paper a recommendation to publish. The main
+﻿> I still can’t give this paper a recommendation to publish. The main
 > contribution of this paper is a methodology, and this method is not
 > developed adequately in section 3.3.2.
 
@@ -18,10 +18,42 @@ equations.
 > I cannot know whether or not to believe that it works without either a
 > more detailed derivation or at the very least a simulation study.
 
-We have attempted to be more clear in our derivation.
+It is unclear what exactly your concerns are here.
 
-What do you mean by a simulation study? What experiments, specifically, are you
-recommending we perform in order make you "believe that it works?"
+Can you clarify 1) what specific derivation you are looking for, and 2)
+what kind of simulation study you had in mind?
+
+Here are a few possibilities that we can think of, along with our responses:
+
+1) You were looking for a proof of convergence of our algorithm (EM algorithm).
+
+Response: All EM algorithms are theoretically guaranteed to converge to a
+local maximum; see the following reference:
+
+Dempster, A.P.; Laird, N.M.; Rubin, D.B. (1977). "Maximum Likelihood from
+Incomplete Data via the EM Algorithm". Journal of the Royal Statistical
+Society, Series B. 39 (1): 1–38. JSTOR 2984875. MR 0501537.
+
+Our algorithm is a special case of EM algorithm, thus it is also guaranteed
+to converge.
+
+2) You were looking for a "proof" that our model (an HMM) will actually be
+able to capture meaningful patterns in the data.
+
+Response: The maximum likelihood estimate of an HMM would lead to
+parameters that give the data the maximum likelihood, thus frequently
+occurring patterns in the data can be expected to have high probabilities
+according to the estimated model, which enables "discovery" of frequent
+patterns. Thus in this sense, our model is also theoretically guaranteed to
+"work".
+
+Besides, in general, HMMs have been widely used in many domains with great
+success (e.g., speech recognition). Our work applies the general idea of
+HMM to a specific application problem in EDM. Note that whether the
+discovered frequent patterns are actually useful in an application is an
+orthogonal question and we have provided some qualitative and quantitative
+evaluation results in the paper, though much more work is still needed in
+this direction.
 
 > Equations 9-10 are not a proof, and the notation in them is not consistent
 > with the text.
@@ -34,6 +66,11 @@ If this is still a problem in the revision, in what way is the notation
 inconsistent with the text? Can you be more specific? We are unclear as to
 where in the description of the EM algorithm updating equations we have
 lost you.
+
+Note that if you were looking for a proof of convergence of the algorithm
+or a proof why Equations 9-10 can lead to a correct solution to our
+optimization problem, this is guaranteed by a general theoretical result
+about the EM algorithm (see our response to your previous point).
 
 > In referencing prior art, the authors do not even attempt to
 > explain the relationship of the current approach to regime-switching
@@ -55,11 +92,11 @@ Markov chains over the actions students take in the log data.
 >  ...or why they would call something a two-layer HMM when that term is
 >  already used to mean something else (Zhang, 2004).
 
-We would prefer to not change the name unless you feel this is a large enough
-problem to prohibit publication. We feel that two-layer HMM is still an
-adequate description of our model that is succinct, and there are other
-pressures to keep this naming at this point (e.g. the upcoming EDM
-conference presentation with the current title/abstract).
+We would prefer to not change the name unless you feel this is a large
+enough problem to prohibit publication. We feel that two-layer HMM is still
+an adequate description of our model that is succinct and accurate, and
+there are other pressures to keep this naming at this point (e.g. the
+upcoming EDM conference presentation with the current title/abstract).
 
 In the event that this is still a sticking point with you after this
 revision, and you do feel that this overlap is egregious enough to prohibit
@@ -86,7 +123,31 @@ possible.
 > are being estimated. Maybe I’m wrong about this, but, given the absence
 > of a derivation, it’s impossible to know.
 
-There are a polynomial number of probabilities to be estimated.
+It is unclear to us why you believe there is "an exponentially large number
+of probabilities are being estimated", so would appreciate your further
+clarification.
+
+Our best guess is that you were concerned that our HMM, when viewed as a
+mixture model for sequence data, would involve a large number of allocation
+probabilities of an observed sequence to all possible latent state
+transitions. That is, if we have K states and a sequence of T symbols, we'd
+have K^T possible state transitions. Conceptually, we would be computing
+the posterior probability of all these possible transitions given the
+observed sequence in the EM algorithm. This is indeed true (conceptually),
+but in reality, we do NOT have to actually compute all of them because of
+the possibility of simplifying the computation cleverly using the Baum
+Welch algorithm, which is a special case of EM algorithm for HMMs where
+the Markovian assumption of state transitions was leveraged to simplify the
+computation and allow us to have a polynomial algorithm (see the
+explanation in https://en.wikipedia.org/wiki/Baum%E2%80%93Welch_algorithm).
+The intuition is that all the history information up to a time point can
+often be summarized with just K variables corresponding to the K states
+(thus enabling us to essentially "ignore" many combinations in the past
+history) since the "future" behavior only depends on the current state.
+
+If your concern is about the parameters of the model itself, then there are
+a polynomial number of probabilities to be estimated as we already
+explained in the paper and repeated here again to further clarify.
 Specifically, if we have N different actions in the action space A and we
 set the number of latent states to K, we have
 

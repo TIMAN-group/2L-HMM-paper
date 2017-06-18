@@ -66,7 +66,11 @@ also naturally result in a description of a student (via his or her HMM
 transitions) that could be incorporated into existing supervised learning
 techniques that try to predict student outcomes for understanding
 which of the latent behavior patterns discovered by 2L-HMM are most predictive
-of the performance of student learning.
+of the performance of student learning. One could also relax this somewhat
+and posit that \emph{groups} of students transition between the lower layer
+patterns our method identifies in distinct ways and instead do a soft
+clustering of students into $K_2$ groups based on the similarity of their
+transitioning behavior between the higher-level behaviors we can identify.
 
 There is more recent work on better learning algorithms for mixtures of
 Markov models~\citep{Gupta:2016:NIPS}. It would be worth exploring whether

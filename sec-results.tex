@@ -74,7 +74,7 @@ readability; we instead will mention relevant transition probabilities in
 the text as we discuss the plots. The plots were created using
 python-igraph: \url{http://igraph.org/python/}.}.
 
-\begin{figure*}
+\begin{figure}
   \centering
   \begin{subfigure}[t]{0.5\textwidth}
     \includegraphics[width=\textwidth]{figures/text-6state/state0.png}
@@ -89,21 +89,7 @@ python-igraph: \url{http://igraph.org/python/}.}.
   \caption{Two example states found by the 6-state 2L-HMM. (The naming of
   these states reflects our own interpretation.)}
   \label{fig:states}
-\end{figure*}
-
-\begin{figure*}
-  \centering
-  \begin{subfigure}[t]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/text-6state/state4.png}
-    \caption{A state from \textretrieval{}.}
-  \end{subfigure}%
-  \begin{subfigure}[t]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/sustain-6state/state4.png}
-    \caption{A state from \sustain{}.}
-  \end{subfigure}
-  \caption{Two similar example states found by the 6-state 2L-HMM.}
-  \label{fig:cross-course}
-\end{figure*}
+\end{figure}
 
 Figure~\ref{fig:states} includes two such representations we learned. Under
 our interpretation, the first corresponds to a ``quiz taking'' state (it
@@ -131,6 +117,20 @@ forum \emph{looking for a particular post}, where in the second you are
 more likely to visit the forum \emph{to browse existing posts}. Thus,
 capturing the action transition matrix within a latent state is important
 for capturing detailed insights involving bigrams of actions.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/text-6state/state4.png}
+    \caption{A state from \textretrieval{}.}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/sustain-6state/state4.png}
+    \caption{A state from \sustain{}.}
+  \end{subfigure}
+  \caption{Two similar example states found by the 6-state 2L-HMM.}
+  \label{fig:cross-course}
+\end{figure}
 
 We can also use our model for cross-course behavior analysis. In
 Figure~\ref{fig:cross-course} we show two latent state representations
@@ -253,26 +253,6 @@ in which case a  setting of $K=3$ may be more appropriate for the
 
 \subsection{Transitions Between Latent States}
 
-\begin{figure*}
-  \centering
-  \begin{subfigure}[t]{0.33\textwidth}
-    \includegraphics[width=\textwidth,trim={0 3cm 0 2cm}]{figures/trans-comp/trans-avg.png}
-    \caption{\label{fig:trans-avg}}
-  \end{subfigure}%
-  \begin{subfigure}[t]{0.33\textwidth}
-    \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-perfect.png}
-    \caption{\label{fig:trans-perfect}}
-  \end{subfigure}%
-  \begin{subfigure}[t]{0.33\textwidth}
-    \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-low.png}
-    \caption{\label{fig:trans-low}}
-  \end{subfigure}
-  \caption{The latent state transition diagrams for a 4-state 2L-HMM fit to
-  \protect\textretrieval{} for all students (a) compared to only ``perfect''
-  students (b) and only ``low'' students (c).}
-  \label{fig:trans-comp}
-\end{figure*}
-
 A unique property of our model is its ability to capture transitions
 between the \emph{behavior patterns themselves} that are captured by the
 latent states. In Figure~\ref{fig:trans-avg} we show the latent state
@@ -296,6 +276,26 @@ to capture a more passive student, with negligible probability mass
 associated with forum activity (with low symmetry in the edges). The link
 between ``quiz submit'' and ``quiz start'' (indicating quiz repetition) is
 also significantly lower than state 1.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.33\textwidth}
+    \includegraphics[width=\textwidth,trim={0 3cm 0 2cm}]{figures/trans-comp/trans-avg.png}
+    \caption{\label{fig:trans-avg}}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.33\textwidth}
+    \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-perfect.png}
+    \caption{\label{fig:trans-perfect}}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.33\textwidth}
+    \includegraphics[width=\textwidth,trim={0, 3cm 0 2cm}]{figures/trans-comp/trans-low.png}
+    \caption{\label{fig:trans-low}}
+  \end{subfigure}
+  \caption{The latent state transition diagrams for a 4-state 2L-HMM fit to
+  \protect\textretrieval{} for all students (a) compared to only ``perfect''
+  students (b) and only ``low'' students (c).}
+  \label{fig:trans-comp}
+\end{figure}
 
 Thus, we might expect to see students that perform well in the course
 preferring states 1 and 2 over states 0 and 3. To verify this, we took the

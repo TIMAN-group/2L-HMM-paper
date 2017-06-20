@@ -155,7 +155,7 @@ vector of length $|\mathbf{A}|$ and $A^{(u)}$ is an $|\mathbf{A}| \times
 |\mathbf{A}|$ matrix indicating the transition probabilities between each
 pair of actions from $\mathbf{A}$.
 
-Thus, the probability of a sequence $\mathbf{o}$ of length $M$ given its
+Thus, the probability of a sequence $\mathbf{o}$ of length $T$ given a
 latent state $u$ is
 \begin{equation}
   P(\mathbf{o} \mid \lambda^{(u)}) = P(a_1 \mid \pi^{(u)}) \prod_{i=2}^T P(a_i \mid
@@ -315,7 +315,7 @@ rather than just a collection of sequences. This means that our observation
 values $\mathbf{o}_t$ are now \emph{themselves} sequences of values from
 $\mathbf{A}$, rather than just being a single token from $\mathbf{A}$.
 Formally, our training data $\mathbf{D} = (\mathbf{O}^{(1)}, \ldots,
-\mathbf{O}^{(|L|)})$, where each $\mathbf{O}^{(\ell)} = (\mathbf{o}_1,
+\mathbf{O}^{(|\mathbf{L}|)})$, where each $\mathbf{O}^{(\ell)} = (\mathbf{o}_1,
 \ldots, \mathbf{o}_{T_\ell})$ is itself a list of sequences. Each sequence
 $\mathbf{o}_k \in \mathbf{O}^{(\ell)}$ consists of a list of actions $(a_1,
 \ldots, a_{T_k})$, each of which is a member of $\mathbf{A}$.

@@ -56,27 +56,27 @@ and outputs prediction results as to which of the $K$ HMMs at layer two
 were mostly likely to produce the sequence of outputs produced by the
 previous layer, and so on.
 
-Our formulation differs from the work~\cite{Zhang:2004:CVPR,Oliver:2004:CVIU} in that we do not feed the labeled
-sequence of the lower level into the input of the higher level. Instead,
-our lower level is actually treated using a non-hidden Markov model, and
-the higher level is modeling transitions between the $K$ different
-non-hidden Markov models we consider. The problem to be solved is similar
-in that we wish to predict a ``label'' for a sequence of actions a student
-takes as well as understand the transition behavior between those labels.
-However, one of the consequences of modeling the lower layer using a
-non-hidden Markov model instead of an HMM directly is that the meaning of
-the $K$ different latent states can be more clearly captured by using our
-proposed behavior representation. If we were to use an HMM as our first
-layer, the behavior patterns (like from
-Figure~\ref{fig:motivating-example}) would instead have nodes that
-represent another set of latent states instead of being concrete actions
-themselves. Each of these latent states would then be associated with some
-other output distribution over the possible concrete actions to be
-considered. In order to understand a single behavior pattern uncovered, one
-would first have to understand the different output distributions for the
-latent states in that pattern in order to understand the meaning of that
-latent state. This further complicates the understanding of higher level
-patterns because understanding the higher layer patterns requires
+Our formulation differs from both \citet{Zhang:2004:CVPR} and
+\citet{Oliver:2004:CVIU} in that we do not feed the labeled sequence of the
+lower level into the input of the higher level. Instead, our lower level is
+actually treated using a non-hidden Markov model, and the higher level is
+modeling transitions between the $K$ different non-hidden Markov models we
+consider. The problem to be solved is similar in that we wish to predict a
+``label'' for a sequence of actions a student takes as well as understand
+the transition behavior between those labels.  However, one of the
+consequences of modeling the lower layer using a non-hidden Markov model
+instead of an HMM directly is that the meaning of the $K$ different latent
+states can be more clearly captured by using our proposed behavior
+representation. If we were to use an HMM as our first layer, the behavior
+patterns (like from Figure~\ref{fig:motivating-example}) would instead have
+nodes that represent another set of latent states instead of being concrete
+actions themselves. Each of these latent states would then be associated
+with some other output distribution over the possible concrete actions to
+be considered. In order to understand a single behavior pattern uncovered,
+one would first have to understand the different output distributions for
+the latent states in that pattern in order to understand the meaning of
+that latent state. This further complicates the understanding of higher
+level patterns because understanding the higher layer patterns requires
 understanding the lower layer patterns. By taking a more restrictive view
 on the first layer, we are able to produce a representation that can be
 more readily interpreted due to the states in our first layer

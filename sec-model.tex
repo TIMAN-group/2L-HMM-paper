@@ -200,8 +200,10 @@ To learn the parameters of our model, we may attempt to use maximum
 likelihood estimation. Unfortunately, a closed-form solution does not
 exist, so we must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In
 particular, we propose a minor modification of the Baum-Welch
-algorithm~\cite{Rabiner:1990:RSR} which is used to learn the parameters for
-hidden Markov models in an unsupervised setting. In the following sections,
+algorithm~\cite{Rabiner:1990:RSR} which is an efficient EM algorithm
+for learning the parameters for
+hidden Markov models in an unsupervised setting where the Markovian assumption is exploited
+ to significantly reduce the computational complexity of the EM algorithm by avoiding explicit enumeration of all the possible state transitions.  In the following sections,
 we will provide a brief description of the original Baum-Welch algorithm
 for unsupervised parameter estimation for categorical valued hidden Markov
 models, and then describe our modification to allow for parameter

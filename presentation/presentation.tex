@@ -37,6 +37,13 @@ Urbana-Champaign}
 \end{frame}
 
 \begin{frame}{The Back of My Envelope}
+  Data looks like:
+  \begin{center}
+    view lecture \rightarrow\, quiz \rightarrow\, forum \rightarrow\,
+    \ldots\, \rightarrow\, view lecture \rightarrow\, quiz \rightarrow\,
+    quiz \rightarrow\, forum \rightarrow\, \ldots
+  \end{center}
+
   If every course looked like Cheng's\ldots
   \begin{center}
       \[
@@ -59,10 +66,43 @@ Urbana-Champaign}
     \\[\baselineskip]
     This paper contributes the following:
     \begin{enumerate}
-      \item A suggestion for a \textbf{behavior pattern representation}, and
+      \item A suggestion for a \textbf{behavior pattern representation} to
+       understand patterns and \textbf{transitions between them}, and
+       \\[0.5\baselineskip]
       \item A model that can efficiently and \textbf{automatically} capture
-          this kind of representation in an \textbf{unsupervised} way
+       this kind of representation in an \textbf{unsupervised} way
     \end{enumerate}
+\end{frame}
+
+\section{Example}
+
+\begin{frame}{Our Behavior Representation}
+  Visualize behavior patterns with \textbf{labeled directed graphs} where
+  \begin{itemize}
+      \item \textbf{node size} is proportional to the \textbf{probability
+          of being at that node} at any given time,
+          \\[\baselineskip]
+      \item a \textbf{directed edge} represents a \textbf{transition from one behavior to
+          another}, and
+          \\[\baselineskip]
+      \item the \textbf{thickness of an edge} is proportional to the
+          \textbf{probability of taking that edge} to leave the source node.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{(Theoretical Example) Behavior Pattern 0}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../figures/example/state0.png}
+\end{frame}
+
+\begin{frame}{(Theoretical Example) Behavior Pattern 1}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../figures/example/state1.png}
+\end{frame}
+
+\begin{frame}{(Theoretical Example) Transitions Between Patterns}
+  \centering
+  \includegraphics[width=0.7\textwidth]{../figures/example/trans.png}
 \end{frame}
 
 \begin{frame}{Why do we need a different model/representation?}
@@ -101,93 +141,102 @@ Urbana-Champaign}
   granularity as needed.
 \end{frame}
 
-\section{Example}
-
-\begin{frame}{Our Behavior Representation}
-  Visualize behavior patterns with \textbf{labeled directed graphs} where
-  \begin{itemize}
-      \item \textbf{node size} is proportional to the \textbf{probability
-          of being at that node} at any given time,
-          \\[\baselineskip]
-      \item a \textbf{directed edge} represents a \textbf{transition from one behavior to
-          another}, and
-          \\[\baselineskip]
-      \item the \textbf{thickness of an edge} is proportional to the
-          \textbf{probability of taking that edge} to leave the source node.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{(Theoretical Example) Behavior Pattern 0}
-  \centering
-  \includegraphics[width=0.7\textwidth]{../figures/example/state0.png}
-\end{frame}
-
-\begin{frame}{(Theoretical Example) Behavior Pattern 1}
-  \centering
-  \includegraphics[width=0.7\textwidth]{../figures/example/state1.png}
-\end{frame}
-
-\begin{frame}{(Theoretical Example) Transitions Between Patterns}
-  \centering
-  \includegraphics[width=0.7\textwidth]{../figures/example/trans.png}
-\end{frame}
-
 \section{Modeling Details}
 
-\begin{frame}{The Model}
-  Notation:
-  \begin{itemize}
-    \item $\mathbf{A}$: a set of actions students take in the MOOC log,
-    \item $\mathbf{L}$: the set of all students in the MOOC,
-    \item $\mathbf{O}^{(\ell)}$: the list of action sequences (list of
-        lists) for each student $\ell \in \mathbf{L}$
-    \item $\mathbf{o} \in \mathbf{O}^{(\ell)}$: a list of actions a student
-        took in one ``session'' $\mathbf{o} = (a_1, a_2, \ldots, a_T)$
-        where $a_i \in \mathbf{A}$.
-  \end{itemize}
-\end{frame}
+\begin{frame}{The Generative Model}
+  \begin{center}
+    \begin{tikzpicture}
+      \tikzstyle{main}=[circle, minimum size = 10mm, thick, draw =black!80, node distance = 10mm]
+      \tikzstyle{observed}=[circle, minimum size = 10mm, thick, draw=black!80, node distance = 10mm, fill = black!10]
+      \tikzstyle{invismain}=[circle, minimum size = 10mm, thick, draw =white!100, node distance = 10mm]
+      \tikzstyle{connect}=[-latex, thick]
+      \tikzstyle{box}=[rectangle, draw=black!100]
 
-\begin{frame}{The Model}
-  Each pattern is associated with a latent state $u \in \{1,\ldots,K\}$,
-  which is itself a Markov model represented with $\lambda^{(u)} =
-  (\pi^{(u)}, A^{(u)})$ where
-  \begin{itemize}
-    \item $\pi^{(u)}$ is a $|\mathbf{A}|$ length probability vector to
-        indicate the probability of starting with any action $a \in
-        \mathbf{A}$, and
-    \item $A^{(u)}$ is a $|\mathbf{A}|\times|\mathbf{A}|$ matrix indicating
-        the transition probabilities between each pair of actions in
-        $\mathbf{A}$.
-  \end{itemize}
+      % tags
+      \node[main, fill = white!100] (s1) [] { $s_1$ };
+      \node[main, fill = white!100] (s2) [right=of s1] { $s_2$ };
+      \node[main, fill = white!100] (s3) [right=of s2] { $s_3$ };
+      \node[main, fill = white!100] (s4) [right=of s3] { $s_4$ };
+      \node[invismain, opacity=0, text opacity=1] (sn) [right=of s4] {$\ldots$};
 
-  \textbf{Assumption}: Each action list $\mathbf{o} \in
-  \mathbf{O}^{(\ell)}$ is generated from one specific latent state.
-  If $\mathbf{o} = (a_1, \ldots, a_T)$, then
+      % words
+      \node[observed] (o1) [below=of s1] { $\mathbf{o_1}$ };
+      \node[observed] (o2) [below=of s2] { $\mathbf{o_2}$ };
+      \node[observed] (o3) [below=of s3] { $\mathbf{o_3}$ };
+      \node[observed] (o4) [below=of s4] { $\mathbf{o_4}$ };
+      \node[invismain, opacity=0, text opacity=1] (on) [below=of sn] {$\ldots$};
+
+      \path (s1) edge [connect] (s2)
+        (s2) edge [connect] (s3)
+        (s3) edge [connect] (s4)
+        (s4) edge [connect] (sn);
+
+      \path (s1) edge [connect] (o1);
+      \path (s2) edge [connect] (o2);
+      \path (s3) edge [connect] (o3);
+      \path (s4) edge [connect] (o4);
+
+    \end{tikzpicture}
+  \end{center}
   \[
-      P(\mathbf{o} \mid \lambda^{(u)})
-      = P(a_1 \mid \pi^{(u)}) \prod_{i=2}^T P(a_i \mid a_{i-1}, A^{(u)})
+    \underbrace{\overbrace{\langle \overbrace{lecture}^{\text{action } a_1}
+      \rightarrow\, \overbrace{quiz}^{\text{action } a_2} \rightarrow\,
+      \ldots\, \rightarrow\, \overbrace{wiki}^{\text{action } a_T}
+    \rangle}^{\text{observation } \mathbf{o}_1 \text{ ``generated'' from }
+    s_1}, \overbrace{\langle \overbrace{wiki}^{\text{action } a_1}
+      \rightarrow\, \overbrace{quiz}^{\text{action } a_2} \rightarrow\,
+    \ldots \rangle}^{\text{observation } \mathbf{o}_2 \text{ ``generated'' from } s_2},
+    \ldots}_{\text{student sequence } \mathbf{O}^{(\ell)}}
   \]
 \end{frame}
 
-\begin{frame}{The Model}
-  Finally, we can compute the likelihood of a list of action sequences
-  $\mathbf{O}^{(\ell)}$ of length $N$ for any student $\ell \in \mathbf{L}$
-  as
-  \begin{align*}
-      P(\mathbf{O}^{(\ell)} \mid \Lambda) = \sum_{(v_1,\ldots,v_N) \in U}
-          &\left(P(v_1 \mid \Lambda) P(\mathbf{o}_1 \mid
-          \lambda^{(v_1)})\phantom{\prod_{i}^N}\right.\\
-          & \left.\times
-          \prod_{i=2}^N P(v_i \mid v_{i-1}, \Lambda)P(\mathbf{o}_i \mid
-      \lambda^{(v_i)})\right)
-  \end{align*}
-  where $\Lambda = (\pi, A, B)$ is the tuple of all model parameters.
+\begin{frame}{The Generative Model}
+  \begin{center}
+    \begin{tikzpicture}
+      \tikzstyle{main}=[circle, minimum size = 10mm, thick, draw =black!80, node distance = 10mm]
+      \tikzstyle{observed}=[circle, minimum size = 10mm, thick, draw=black!80, node distance = 10mm, fill = black!10]
+      \tikzstyle{invismain}=[circle, minimum size = 10mm, thick, draw =white!100, node distance = 10mm]
+      \tikzstyle{connect}=[-latex, thick]
+      \tikzstyle{box}=[rectangle, draw=black!100]
+
+      % tags
+      \node[main, fill = white!100] (s1) [] { $s_1$ };
+      \node[main, fill = white!100] (s2) [right=of s1] { $s_2$ };
+      \node[main, fill = white!100] (s3) [right=of s2] { $s_3$ };
+      \node[main, fill = white!100] (s4) [right=of s3] { $s_4$ };
+      \node[invismain, opacity=0, text opacity=1] (sn) [right=of s4] {$\ldots$};
+
+      % words
+      \node[observed] (o1) [below=of s1] { $\mathbf{o_1}$ };
+      \node[observed] (o2) [below=of s2] { $\mathbf{o_2}$ };
+      \node[observed] (o3) [below=of s3] { $\mathbf{o_3}$ };
+      \node[observed] (o4) [below=of s4] { $\mathbf{o_4}$ };
+      \node[invismain, opacity=0, text opacity=1] (on) [below=of sn] {$\ldots$};
+
+      \path (s1) edge [connect] (s2)
+        (s2) edge [connect] (s3)
+        (s3) edge [connect] (s4)
+        (s4) edge [connect] (sn);
+
+      \path (s1) edge [connect] (o1);
+      \path (s2) edge [connect] (o2);
+      \path (s3) edge [connect] (o3);
+      \path (s4) edge [connect] (o4);
+
+    \end{tikzpicture}
+  \end{center}
+
+  Model parameters $\Lambda = (\pi, A, B)$:
   \begin{itemize}
-    \item $\pi$: distribution over initial latent states,
-    \item $A$: $K\times K$ transition matrix for each pair of latent
-        states,
-    \item $B = (\lambda^{(1)}, \ldots, \lambda^{(K)})$, the latent state
-        Markov model representations
+    \item $\pi$: probability of starting student sequence in latent state
+      $s_i$
+    \item $A$: transition probability between latent states
+    \item $B = (\lambda^{(1)}, \ldots, \lambda^{(K)})$ where
+      \begin{itemize}
+        \item $\lambda^{(i)} = (\pi^{(i)}, A^{(i)})$, initial probability
+          and transition matrix between student \emph{actions} (e.g. view
+          forum, take quiz, \ldots) for latent state $s_i$
+      \end{itemize}
   \end{itemize}
 \end{frame}
 

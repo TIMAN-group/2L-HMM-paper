@@ -103,7 +103,7 @@ patterns.
 To estimate the parameters of our model, we will use the EM
 algorithm~\citep{Dempster:1977:JRSS} which allows us to perform maximum
 likelihood estimation of the model in the presence of latent (unobserved)
-variables. This algorithm, intuitively, works as follows: first the model
+variables. This algorithm, intuitively, works as follows: first, the model
 parameters we wish to estimate are initialized to some random (but valid)
 starting point. Then, we ``guess'' what the latent variable values might
 be given the current model parameters. We can then use this guess to
@@ -131,12 +131,12 @@ extract a list of action sequences $\mathbf{O}_\ell$ that he or she
 produced as observed in the log, where each sequence $\mathbf{o} \in
 \mathbf{O}_\ell$ is itself a list of actions $(a_1, a_2, \ldots, a_T)$ with
 each $a_i \in \mathbf{A}$.  Each sequence can be divided flexibly; in this
-paper we chose to denote the end of a sequence as occurring when no further
-actions occur within a 10 hour window of time (and thus our sequences
+paper, we chose to denote the end of a sequence as occurring when no further
+actions occur within a 10-hour window of time (and thus our sequences
 roughly correspond to one day's worth of activity). This decision reflects
 our desire to uncover latent state transition behavior at the granularity
 of day-to-day behavior. A different segmentation strategy could be used to
-uncover hour-by-hour behavior, or week-by-week behavior, and this depends
+uncover hour-by-hour behavior or week-by-week behavior, and this depends
 entirely on the desired time resolution one wishes to be exhibited in the
 transitions between the latent states. Different segmentation strategies
 will result in different underlying training data, and thus different
@@ -201,7 +201,7 @@ likelihood estimation. Unfortunately, a closed-form solution does not
 exist, so we must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In
 particular, we propose a minor modification of the Baum-Welch
 algorithm~\cite{Rabiner:1990:RSR} which is an efficient EM algorithm
-for learning the parameters for
+for learning the parameters of
 hidden Markov models in an unsupervised setting where the Markovian assumption is exploited
  to significantly reduce the computational complexity of the EM algorithm by avoiding explicit enumeration of all the possible state transitions.  In the following sections,
 we will provide a brief description of the original Baum-Welch algorithm
@@ -308,7 +308,7 @@ action distribution over the $|\mathbf{A}|$ available actions, and
 $A^{(i)}$ is the $|\mathbf{A}| \times |\mathbf{A}|$ transition matrix
 between those actions.
 
-The goal of the Baum-Welch algorithm is still to learn the paramters
+The goal of the Baum-Welch algorithm is still to learn the parameters
 $\Lambda$ for our model. What differs from the categorical-valued HMM case
 is that our data now consists of a collection of \emph{lists} of sequences,
 rather than just a collection of sequences. This means that our observation

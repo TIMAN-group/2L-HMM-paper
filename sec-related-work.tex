@@ -1,6 +1,6 @@
 \section{Related Work}
 
-Our model is based heavily upon the prior art of Hidden Markov
+Our model is based heavily on the prior art of Hidden Markov
 Models~\cite{Rabiner:1990:RSR} for sequence labeling tasks. These types of
 models are widely applicable and have been used for tasks such as speech
 recognition~\cite{Huang:1990:HMM}, part-of-speech
@@ -14,7 +14,7 @@ specific applications.
 For example, in part-of-speech tagging~\cite{Jurafsky:2009:SLP} the output
 distributions are categorical (distributions over words from a fixed
 vocabulary) and the latent states represent the part-of-speech category for
-a word. In speech recognition~\cite{Huang:1990:HMM} the output
+a word. In speech recognition~\cite{Huang:1990:HMM}, the output
 distributions might be mixtures of Gaussians to predict real-valued vectors
 extracted from short windows of a speech signal. In the domain of
 econometrics, \citet{Hamilton:1990:JoE} explores HMMs in the context of
@@ -53,7 +53,7 @@ results of these $K$ HMMs to make a prediction: which of the $K$ HMMs was
 most likely to produce that sequence of observations? This output is then
 fed to the next layer of HMMs, which considers sequences of length $T_2$
 and outputs prediction results as to which of the $K$ HMMs at layer two
-were mostly likely to produce the sequence of outputs produced by the
+were most likely to produce the sequence of outputs produced by the
 previous layer, and so on.
 
 Our formulation differs from both \citet{Zhang:2004:CVPR} and
@@ -78,7 +78,7 @@ the latent states in that pattern in order to understand the meaning of
 that latent state. This further complicates the understanding of higher
 level patterns because understanding the higher layer patterns requires
 understanding the lower layer patterns. By taking a more restrictive view
-on the first layer, we are able to produce a representation that can be
+of the first layer, we are able to produce a representation that can be
 more readily interpreted due to the states in our first layer
 representation having an immediately clear meaning (the concrete action
 they represent).
@@ -89,8 +89,8 @@ Hidden Markov Model (HHMM) detailed in \citet{Fine:1998:ML}. Here, the
 transitions.  Horizontal transitions move between states within a layer,
 where vertical transitions move between different layers. At the bottom
 layer lie the ``production'' states, which output symbols according to some
-probability distribution. Our specific model in this case can be modeled as
-a HHMM where the horizontal transitions between nodes at the highest layer
+probability distribution. Our specific model, in this case, can be modeled as
+an HHMM where the horizontal transitions between nodes at the highest layer
 (including self-loops) \emph{must} be immediately followed by a vertical
 transition to the lower layer. The output probability distributions over
 symbols in the lower layer ``production'' level are forced to emit only one
@@ -112,12 +112,12 @@ sequence's latent state.
 HMMs or similar ideas have been previously applied to model education
 data~\cite{Shih:2010:EDM,Kizilcec:2013:LAK,Davis:2016:EDM}, but the
 previous models are not well tuned toward the student behavior task and
-thus cannot adequately address all the aspects of complexity of student
+thus cannot adequately address all the aspects of the complexity of student
 learning behavior.  A main technical contribution of this paper is to
 propose a more general HMM that can better adapt to the variations of
 student behavior via its variable resolution and nested HMM structure, and
 thus enable discovery of more sophisticated behavior patterns and provide
-more detailed characterization of student behavior than the previous
+a more detailed characterization of student behavior than the previous
 models.
 
 For example, \citet{Kizilcec:2013:LAK} assigned students to states
@@ -128,7 +128,7 @@ used the sequence of states a student exhibited as a representation for
 performing $k$-means clustering of students into related groups. This
 differs from our method substantially: we assign students to states using a
 probabilistic framework to account for uncertainty in this state
-assignment, and jointly learn \emph{representations} for these states,
+assignment and jointly learn \emph{representations} for these states,
 which are treated as being \emph{latent} as opposed to pre-defined using
 some rule (or set of rules).  Furthermore, our model provides more
 flexibility in how the time segments are defined, allowing for both finer

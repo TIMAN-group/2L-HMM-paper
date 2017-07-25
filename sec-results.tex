@@ -5,7 +5,7 @@
 \newcommand{\UIUC}{UIUC}
 
 \section{Experiment Results}
-As an analysis tool, the 2L-HMM model provides with us the following two
+As an analysis tool, the 2L-HMM model provides us with the following two
 patterns to characterize student behavior:
 \begin{enumerate*}[label=(\arabic*)]
   \item the latent state representations, and
@@ -98,7 +98,7 @@ the other five states) whereas the second corresponds to a ``lecture
 viewing'' state. Our unsupervised method can uncover states that do indeed
 correspond to student behavior modes that we would expect to find a priori.
 
-We also argue that it is important that the latent state representation be
+We also argue that it is important that the latent state representation is
 a Markov model rather than just a discrete distribution over actions in
 $\mathbf{A}$ (as would be the case for a traditional single-layer HMM). We
 can observe why if we take a closer look at each of the two latent state
@@ -136,7 +136,7 @@ We can also use our model for cross-course behavior analysis. In
 Figure~\ref{fig:cross-course} we show two latent state representations
 learned by a 6-state 2L-HMM, one from \textretrieval{} and one from
 \sustain{}. These two states were chosen as they are the most similar
-across the two courses. However, if we look at the transitions we can see
+between the two courses. However, if we look at the transitions we can see
 some important differences. First, in the state from \textretrieval{}, we
 can see that the probability of returning to the course wiki after viewing
 a lecture (transition probability $p \approx 0.24$) is considerably lower
@@ -243,9 +243,9 @@ weight on the forum.
 
 We observe similar behavior in Figure~\ref{fig:sustain-state-evolution}
 as we increase $K$ when fitting our 2L-HMM on the \sustain{} MOOC.\ Again,
-in the transition between $K=2$ and $K=3$ we discover forum behavior
+in the transition between $K=2$ and $K=3$, we discover forum behavior
 patterns as a latent state. However, in the transition between $K=3$ to
-$K=4$ we instead see a refining of that discovered forum state, where
+$K=4$, we instead see a refining of that discovered forum state, where
 state 3 captures asymmetric transition probabilities between ``forum thread
 view'' and ``forum thread list''. These states could be seen as redundant,
 in which case a  setting of $K=3$ may be more appropriate for the
@@ -263,7 +263,7 @@ immediately observe two things: \begin{enumerate*}[label=(\arabic*)]
 \end{enumerate*}
 In particular, we can see that the forum browsing state (state 2) has
 relatively lower probability than the other states as we might expect. It
-also makes sense that state 0 has rather high probability as this state
+also makes sense that state 0 has a rather high probability as this state
 likely captures all sequences where a student logged in to the platform and
 then did nothing else (likely checking for updates). If we look at state 1
 and state 3, their relative probabilities match our intuition as
@@ -370,12 +370,12 @@ we discover that states 1 and 2 are correlated with the ``perfect'' or
 than those in the ``perfect'' group, and state 2 does the opposite and
 prefers students in the ``perfect'' group to those in the ``low'' group.
 
-Returning to Figure~\ref{fig:trans-comp}, we an also see a difference in
+Returning to Figure~\ref{fig:trans-comp}, we can also see a difference in
 the transitions between the latent states. In particular, look at the
 transitions in Figure~\ref{fig:trans-perfect} and
 Figure~\ref{fig:trans-low} that leave state 2. In the ``perfect'' group,
 nearly all of this probability mass is allocated for the self-loop ($p
-\approx 0.93$). In the ``low'' group, this self loop is less strong ($p
+\approx 0.93$). In the ``low'' group, this self-loop is less strong ($p
 \approx 0.80$; most easily seen by noting that the edges leaving state 2
 are darker than for the ``perfect'' group). We can perform a similar
 experiment to above by producing a ranked list of students $\ell \in

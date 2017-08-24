@@ -102,12 +102,11 @@ motivated by the following observations:
       articulate clearly a priori via a series of rules, and also allows us
       to model the inherent uncertainty in assigning a student's behavior
       to a particular pattern or group.
-  \item Student behavior can vary over time. Previous models that treat students
-      as exhibiting only one behavioral pattern over
+  \item Student behavior can vary over time. Previous models that treat
+      students as exhibiting only one behavioral pattern over
       time~\cite{Faucon:2016:EDM} miss out on the opportunity to understand
-      student behavior dynamics in a course. We propose a latent space
-      model with \emph{latent state transitions} to flexibly model the
-      dynamics.
+      student behavior dynamics in a course. We propose a latent space model
+      with \emph{latent state transitions} to flexibly model the dynamics.
   \item Analysis of student behavior can and should be performed at varying
       levels of granularity. This requires us to aggregate data over time
       with \emph{different levels of resolution}; existing models tend to come
@@ -118,24 +117,22 @@ motivated by the following observations:
       naturally.
 \end{enumerate}
 
-Thus, what we propose is a \emph{latent variable approach} for mining student behavior
-patterns that is \emph{probabilistic} for inference and
+Thus, what we propose is a \emph{latent variable approach} for mining
+student behavior patterns that is \emph{probabilistic} for inference and
 does \emph{not} force assumptions about time resolutions, making it
 \emph{flexible to model state changes over different time resolutions} more
 easily.  More specifically, we propose a novel two-layer hidden Markov
 model (2L-HMM) to discover latent student behavior patterns via
 unsupervised learning on large collections of student behavior observation
 sequences.  Evaluation results on a MOOC data set on Coursera demonstrate
-that the 2L-HMM can effectively discover a variety of interesting interpretable
-student behavior patterns at different levels of resolution, many of which
-are beyond what existing approaches can discover. We show that the patterns
-uncovered by the 2L-HMM capture meaningful behavior by quantitatively
-showing that features extracted from a trained 2L-HMM correlate with
-learning outcomes. Since our proposed methods are
+that the 2L-HMM can effectively discover a variety of interesting
+interpretable student behavior patterns at different levels of resolution,
+many of which are beyond what existing approaches can discover. We show
+that the patterns uncovered by the 2L-HMM capture meaningful behavior by
+quantitatively showing that features extracted from a trained 2L-HMM
+correlate with learning outcomes. Since our proposed methods are
 unsupervised, they can potentially be applied to any MOOC data without
-requiring manual annotation effort at the level of sequences, thus empowering
-% Instead,
-instructors 
-%are empowered 
-to use the latent patterns discovered by the 2L-HMM to further extract knowledge about the behaviors his/her
-students exhibit in the MOOC.
+requiring manual annotation effort at the level of sequences, thus
+empowering instructors to use the latent patterns discovered by the 2L-HMM
+to further extract knowledge about the behaviors his/her students exhibit
+in the MOOC.

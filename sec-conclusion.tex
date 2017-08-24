@@ -1,6 +1,4 @@
 \section{Conclusions and Future Work}
-% summarize the main contributions of the paper; summarize the experimental
-% results; argue again for our novelty; discuss future directions
 As a tool to help instructors and education researchers better understand
 the behavior of MOOC students, we proposed a two-layer hidden Markov model
 to automatically extract student activity patterns in the form of behavior
@@ -15,43 +13,43 @@ patterns and produces descriptions of these behavior patterns that are easy
 to interpret. We argued that it is important to capture student behavior
 patterns with more sophisticated models than simple discrete distributions
 over actions in order to capture information present in bigrams of actions
-(or above). By varying the number of latent
-states inferred, we showed that the model is flexible and can capture
-patterns of differing levels of specificity in this way.  Finally, we
-investigated whether we can detect differences in student behavior patterns
-as they correlate with course performance. Specifically, we demonstrated
-that high-performing students produce substantially different HMM
-transition diagrams that tend to show longer concentration span in quiz-taking
-and more active  forum participation as compared with the average students.
-These results show the great potential of the proposed model for serving as a tool
-to help humans discover knowledge about student behaviors.  
+(or above). By varying the number of latent states inferred, we showed that
+the model is flexible and can capture patterns of differing levels of
+specificity in this way.  Finally, we investigated whether we can detect
+differences in student behavior patterns as they correlate with course
+performance. Specifically, we demonstrated that high-performing students
+produce substantially different HMM transition diagrams that tend to show
+longer concentration span in quiz-taking and more active  forum
+participation as compared with the average students.  These results show
+the great potential of the proposed model for serving as a tool to help
+humans discover knowledge about student behaviors.
 
 %\subsection{Future Work}
 
-There are a number of interesting directions to further extend our work in the future. 
-First, the proposed model is 
-completely general and can thus be easily applied to analyze the log of many
-other courses to enable deep understanding of student behaviors as well as
-the correlations of such behaviors and other variables such as grades. To realize these benefits, 
-it would be useful 
-to develop a MOOC log analysis system based on the proposed model so as to facilitate education research and help instructors improve course
-design.
+There are a number of interesting directions to further extend our work in
+the future.  First, the proposed model is completely general and can thus
+be easily applied to analyze the log of many other courses to enable deep
+understanding of student behaviors as well as the correlations of such
+behaviors and other variables such as grades. To realize these benefits, it
+would be useful to develop a MOOC log analysis system based on the proposed
+model so as to facilitate education research and help instructors improve
+course design.
 
-Second, our model can empower many new comparative analyses. For example, we could
-now look at how behavior patterns change between different offerings of
-the same MOOC to understand how changes in course structure or materials
-influence student behavior. Individual students can now also be compared
-against each other or against groups. For example, by decoding the latent
-state sequences for each student, we can measure how ``surprising'' their
-latent state transition sequence is relative to the average we would expect
-according to the model, or to the average ``perfect'' student, etc. We can
-now investigate how certain behavioral patterns correlate with properties
-of a student (e.g., demographics, prior aptitude, etc.). After decoding the
-students' latent state sequences, we could also correlate course-wide
-drifts in these latent states with events in a course. For example, we
-might be able to automatically discover difficult or confusing parts of a
-course by noticing spikes in the distribution of students over latent
-states over time.
+Second, our model can empower many new comparative analyses. For example,
+we could now look at how behavior patterns change between different
+offerings of the same MOOC to understand how changes in course structure or
+materials influence student behavior. Individual students can now also be
+compared against each other or against groups. For example, by decoding the
+latent state sequences for each student, we can measure how ``surprising''
+their latent state transition sequence is relative to the average we would
+expect according to the model, or to the average ``perfect'' student, etc.
+We can now investigate how certain behavioral patterns correlate with
+properties of a student (e.g., demographics, prior aptitude, etc.). After
+decoding the students' latent state sequences, we could also correlate
+course-wide drifts in these latent states with events in a course. For
+example, we might be able to automatically discover difficult or confusing
+parts of a course by noticing spikes in the distribution of students over
+latent states over time.
 
 Third, there is more recent work on better learning algorithms for mixtures of
 Markov models~\citep{Gupta:2016:NIPS}. It would be worth exploring whether
@@ -59,23 +57,23 @@ the advances proposed in this and similar work can be applied to our model
 to address some of the concerns surrounding our use of the EM algorithm for
 our parameter estimation.
 
-Finally, the proposed model can be extended in several ways. For example, 
+Finally, the proposed model can be extended in several ways. For example,
 although our model does not explicitly model drop-out like
 \citet{Kizilcec:2013:LAK}, doing so is an obvious extension. Our model
 would be able to provide predictions of when a student is ``at risk'' for
-dropping out under such an extension.
-Also, currently, the model learns a transition matrix over the latent states that
-is \emph{shared} across all students. It would be interesting to instead
-learn a different latent state transition matrix for each individual
-student, but keep the second-level Markov models shared. This would provide
-the model with more flexibility which may be desirable itself, but would
-also naturally result in a description of a student (via his or her HMM
-transitions) that could be incorporated into existing supervised learning
-techniques that try to predict student outcomes for understanding
-which of the latent behavior patterns discovered by 2L-HMM are most predictive
-of the performance of student learning. One could also relax this somewhat
-and posit that \emph{groups} of students transition between the lower layer
-patterns identified by our method in distinct ways; this way, we can do a soft
+dropping out under such an extension. Also, currently, the model learns a
+transition matrix over the latent states that is \emph{shared} across all
+students. It would be interesting to instead learn a different latent state
+transition matrix for each individual student, but keep the second-level
+Markov models shared. This would provide the model with more flexibility
+which may be desirable itself, but would also naturally result in a
+description of a student (via his or her HMM transitions) that could be
+incorporated into existing supervised learning techniques that try to
+predict student outcomes for understanding which of the latent behavior
+patterns discovered by 2L-HMM are most predictive of the performance of
+student learning. One could also relax this somewhat and posit that
+\emph{groups} of students transition between the lower layer patterns
+identified by our method in distinct ways; this way, we can do a soft
 clustering of students into $K_2$ groups based on the similarity of their
 transitioning behavior between the higher-level behaviors we can identify.
 

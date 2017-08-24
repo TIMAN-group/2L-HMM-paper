@@ -140,9 +140,10 @@ uncover hour-by-hour behavior or week-by-week behavior, and this depends
 entirely on the desired time resolution one wishes to be exhibited in the
 transitions between the latent states. Different segmentation strategies
 will result in different underlying training data, and thus different
-meanings behind the patterns that the 2L-HMM will extract. The flexibility of
-using different segmentation strategies is intentional as it allows a user to
-flexibly adjust the segmentation so as to obtain patterns at different granularity levels as needed. 
+meanings behind the patterns that the 2L-HMM will extract. The flexibility
+of using different segmentation strategies is intentional as it allows a
+user to adjust the segmentation as needed so as to obtain patterns at
+different granularity levels.
 
 Each sequence $\mathbf{o} \in \mathbf{O}_\ell$ is associated with a latent
 state $u \in \{1,\ldots,K\}$ (where $K$ is a fixed constant picked in
@@ -199,18 +200,20 @@ a_2, \ldots a_T)$ whose probabilities are computed using another
 
 \subsection{Parameter Estimation}
 \label{sec:param-estimation}
-To learn the parameters of our model, we may use maximum
-likelihood estimation. Unfortunately, a closed-form solution does not
-exist, so we must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In
-particular, we propose a minor modification of the Baum-Welch
-algorithm~\cite{Rabiner:1990:RSR} which is an efficient EM algorithm
-for learning the parameters of
-hidden Markov models in an unsupervised setting where the Markovian assumption is exploited
- to significantly reduce the computational complexity of the EM algorithm by avoiding explicit enumeration of all the possible state transitions.  In the following sections,
-we will provide a brief description of the original Baum-Welch algorithm
-for unsupervised parameter estimation for categorical valued hidden Markov
-models, and then describe our modification to allow for parameter
-estimation for our 2L-HMM modification for sequence valued observations.
+To learn the parameters of our model, we may use maximum likelihood
+estimation. Unfortunately, a closed-form solution does not exist, so we
+must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In particular,
+we propose a minor modification of the Baum-Welch
+algorithm~\cite{Rabiner:1990:RSR} which is an efficient EM algorithm for
+learning the parameters of hidden Markov models in an unsupervised setting
+where the Markovian assumption is exploited to significantly reduce the
+computational complexity of the EM algorithm by avoiding explicit
+enumeration of all the possible state transitions.  In the following
+sections, we will provide a brief description of the original Baum-Welch
+algorithm for unsupervised parameter estimation for categorical valued
+hidden Markov models, and then describe our modification to allow for
+parameter estimation for our 2L-HMM modification for sequence valued
+observations.
 
 \subsubsection{Baum-Welch for Traditional HMMs}
 In the traditional HMM formulation with categorical outputs, we have
@@ -237,14 +240,14 @@ the probability of generating the sequence of observations $(o_1, o_2,
 \ldots, o_t)$ up to time $t$ and arriving in state $i$ at that time. They
 are typically defined using the following recursion:
 \begin{itemize}
-  \item $\alpha^{(\mathbf{o})}_1(i) = \pi_i b_i(o_1)$, the probability of starting in
-    state $i$ ($\pi_i$) times the probability of generating the first
-    observation $o_1$ from state $i$.
+  \item $\alpha^{(\mathbf{o})}_1(i) = \pi_i b_i(o_1)$, the probability of
+    starting in state $i$ ($\pi_i$) times the probability of generating the
+    first observation $o_1$ from state $i$.
   \item $\alpha^{(\mathbf{o})}_{t+1}(i) = b_i(o_{t+1})\sum_{j=1}^K
-    \alpha^{(\mathbf{o})}_t(j) A_{ji}$, the probability of generating the observation
-    $o_{t+1}$ from state $i$ times the probability that we arrive in state
-    $i$ from any other previous state after generating all of the other
-    observations.
+    \alpha^{(\mathbf{o})}_t(j) A_{ji}$, the probability of generating the
+    observation $o_{t+1}$ from state $i$ times the probability that we
+    arrive in state $i$ from any other previous state after generating all
+    of the other observations.
 \end{itemize}
 
 Analogously, $\beta^{(\mathbf{o})}_t(i) = P(o_{t+1}, \ldots, o_{T} \mid v_t
@@ -280,8 +283,8 @@ respectively~\cite{Rabiner:1990:RSR}. Computing these variables for each
 sequence $\mathbf{o} \in D$ is the E-step of the EM algorithm.
 
 Given $\gamma^{(\mathbf{o})}_t(i)$ and $\xi^{(\mathbf{o})}_t(i,j)$ for each
-sequence $\mathbf{o} \in \mathbf{D}$, we can update our model parameters $\Lambda$
-as
+sequence $\mathbf{o} \in \mathbf{D}$, we can update our model parameters
+$\Lambda$ as
 \begin{align}
   \pi_i &= \frac{\sum_{\mathbf{o} \in \mathbf{D}}
   \gamma^{(\mathbf{o})}_1(i)}{|\mathbf{D}|},\\

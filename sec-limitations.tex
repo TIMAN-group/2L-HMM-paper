@@ -63,8 +63,8 @@ encounter further stability issues once we applied these two tricks.
 As is the case with traditional hidden Markov models, it is often important
 to smooth the underlying model's distributions to ensure that there is a
 non-zero probability of generating the observations. We employed a simple
-additive smoothing in our implementation with a small additive constant for
-all of our transition matrices to avoid this problem.
+additive smoothing in our implementation with a small additive constant
+($10^{-6}$) for all of our transition matrices to avoid this problem.
 
 \subsection{Limitations of Discovered Patterns}
 

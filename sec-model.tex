@@ -125,8 +125,8 @@ manner.
 
 Given a MOOC log, we can define a set $\mathbf{A}$ of actions that a
 student can take at any given time. For example, an action $a \in
-\mathbf{A}$ might be ``viewing lecture'', ``taking quiz'', or ``viewing
-forum''. For each student in the course $\ell \in \mathbf{L}$, we then
+\mathbf{A}$ might be ``viewing lecture,'' ``taking quiz,'' or ``viewing
+forum.'' For each student in the course $\ell \in \mathbf{L}$, we then
 extract a list of action sequences $\mathbf{O}_\ell$ that he or she
 produced as observed in the log, where each sequence $\mathbf{o} \in
 \mathbf{O}_\ell$ is itself a list of actions $(a_1, a_2, \ldots, a_T)$ with
@@ -140,7 +140,9 @@ uncover hour-by-hour behavior or week-by-week behavior, and this depends
 entirely on the desired time resolution one wishes to be exhibited in the
 transitions between the latent states. Different segmentation strategies
 will result in different underlying training data, and thus different
-meanings behind the patterns that the 2L-HMM will extract.
+meanings behind the patterns that the 2L-HMM will extract. The flexibility of
+using different segmentation strategies is intentional as it allows a user to
+flexibly adjust the segmentation so as to obtain patterns at different granularity levels as needed. 
 
 Each sequence $\mathbf{o} \in \mathbf{O}_\ell$ is associated with a latent
 state $u \in \{1,\ldots,K\}$ (where $K$ is a fixed constant picked in
@@ -192,11 +194,12 @@ model with categorical outputs~\cite{Rabiner:1990:RSR} where instead of
 discrete observations (one for each latent state transition) we have
 observations that take the form of entire sequences $\mathbf{o}_i = (a_1,
 a_2, \ldots a_T)$ whose probabilities are computed using another
-(non-hidden) Markov model conditioned upon the latent state $u_i$.
+(non-hidden) Markov model conditioned upon the latent state $u_i$. 
+
 
 \subsection{Parameter Estimation}
 \label{sec:param-estimation}
-To learn the parameters of our model, we may attempt to use maximum
+To learn the parameters of our model, we may use maximum
 likelihood estimation. Unfortunately, a closed-form solution does not
 exist, so we must appeal to the EM algorithm~\cite{Dempster:1977:JRSS}. In
 particular, we propose a minor modification of the Baum-Welch

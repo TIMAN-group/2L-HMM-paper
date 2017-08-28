@@ -23,7 +23,7 @@ HMM would move to another state stochastically according to a transition
 matrix that specifies the probability $p(u_i \mid u_j)$ of going to state
 $u_i$ when the HMM is currently in state $u_j$. When the HMM is in state
 $u$, the HMM can generate an observable data point $x$ according to an
-output probabilistic model $p(x \mid u)$. Thus if we ``run'' an HMM for $N$
+output probabilistic model $p(x \mid u)$. Thus, if we ``run'' an HMM for $N$
 time points denoted by $t=1,\ldots,N$, the HMM could ``generate'' a sequence
 of observations $x_1 \ldots x_N$, where each $x_i$ is an output symbol by
 going through a sequence of \emph{hidden states} $w_1 \ldots w_N$ where
@@ -42,16 +42,16 @@ yet another may be to participate in forum discussions. While in each of
 these different states, the student would tend to exhibit different surface
 ``micro'' behaviors. For example, in the lecture study state, the student
 would tend to have many video-watching related behaviors and occasionally
-forum activities, while in the quiz-taking state (in order to pass each
-module), the student would tend to show many quiz-related ``micro''
-activities as well as asking questions or checking discussions on the
-forum. Note that due to the complexity of the student behavior, it is very
-difficult to accurately \emph{prescribe} the specific surface ``micro''
-behavior patterns for each state in advance, especially without  prior
-knowledge about the students. For example, forum activities are likely
-interleaved with other activities   in every task state and the
-interleaving pattern can be somewhat irregular with potentially many
-variations.  The major motivations for using an HMM are that
+forum activities, while in the quiz-taking state (to pass each module), the
+student would tend to show many quiz-related ``micro'' activities as well
+as asking questions or checking discussions on the forum. Note that due to
+the complexity of the student behavior, it is very difficult to accurately
+\emph{prescribe} the specific surface ``micro'' behavior patterns for each
+state in advance, especially without  prior knowledge about the students.
+For example, forum activities are likely interleaved with other activities
+in every task state and the interleaving pattern can be somewhat irregular
+with potentially many variations. The major motivations for using an HMM
+are that
 \begin{enumerate*}[label=(\arabic*)]
   \item it uses a probabilistic model (the output probability distribution
     $p(x \mid u)$ conditioned on each state) to directly capture the
@@ -63,18 +63,18 @@ variations.  The major motivations for using an HMM are that
     student would move from one state to another, but instead allows our
     data to ``tell'' us what kind of associations are most likely, what
     kind of transitions are most probable, and which states tend to be more
-    long-lasting for any particular set of students.
+    long-lasting for any set of students.
 \end{enumerate*}
 
-However, if we use an ordinary HMM to analyze our data, we would treat each
-observed ``micro'' activity (such as video watching or forum post reading)
-as an output symbol, and thus the output distribution $p(x \mid u)$ for each
-discovered latent state would be a simple distribution over all kinds of
-observable micro activities recorded in our log data (e.g., 50\% lecture
-watching, 8\% quiz taking, 7\% quiz submission, 2\% course wiki reading
-\ldots). While such a distribution is meaningful and can already help us
-interpret the corresponding latent state, it only gives us a rather
-superficial characterization of student behavior.
+However, if we were to use an ordinary HMM to analyze our data, we would
+treat each observed ``micro'' activity (such as video watching or forum
+post reading) as an output symbol, and thus the output distribution $p(x
+\mid u)$ for each discovered latent state would be a simple distribution
+over all kinds of observable micro activities recorded in our log data
+(e.g., 50\% lecture watching, 8\% quiz taking, 7\% quiz submission, 2\%
+course wiki reading, etc.). While such a distribution is meaningful and
+can already help us interpret the corresponding latent state, it only gives
+us a rather superficial characterization of student behavior.
 
 Ideally, we want $p(x \mid u)$ to characterize the directly observable
 ``micro'' behavior in more detail to further capture the relations and
@@ -93,7 +93,7 @@ most common to a task state, but also the transition patterns between these
 transitions between quiz-taking and quiz-submission, which would suggest a
 concentrated period of taking quizzes). Combining this ``surface'' Markov
 model over the ``micro'' actions with the ``deep'' hidden Markov model over
-the latent task states gives us a fairly general and powerful two-layer HMM
+the latent task states gives us a general and powerful two-layer HMM
 (2L-HMM) that can simultaneously learn ``deeply'' the latent task/behavior
 states and their transitions as well as the corresponding ``micro''
 activity transition patterns associated with each latent state to
@@ -142,8 +142,8 @@ transitions between the latent states. Different segmentation strategies
 will result in different underlying training data, and thus different
 meanings behind the patterns that the 2L-HMM will extract. The flexibility
 of using different segmentation strategies is intentional as it allows a
-user to adjust the segmentation as needed so as to obtain patterns at
-different granularity levels.
+user to adjust the segmentation as needed to obtain patterns at different
+granularity levels.
 
 Each sequence $\mathbf{o} \in \mathbf{O}_\ell$ is associated with a latent
 state $u \in \{1,\ldots,K\}$ (where $K$ is a fixed constant picked in

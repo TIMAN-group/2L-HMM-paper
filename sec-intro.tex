@@ -31,23 +31,22 @@ How should we represent behavioral patterns, and what does it mean to
 understand changes in student behavior with respect to these patterns?
 These are still very open questions and are active areas of
 research~\cite{Kizilcec:2013:LAK, Faucon:2016:EDM, Davis:2016:EDM,
-Shih:2010:EDM}. In this paper, we advocate for a particular representation
-of student behavior patterns as well as \emph{behavior transitions} that we
-believe is simultaneously interpretable but also amenable to unsupervised,
-automated discovery via statistical means. Specifically, we choose to
-visualize behavior patterns as labeled directed graphs where a node
-represents a ``behavior state'' (such as watching a lecture video or
-visiting a forum), a directed edge indicates a transition from one
-behavior state to another, node sizes are proportional to steady-state
-probabilities, and edge widths are proportional to the probability of
-leaving a node following that edge. We can use this same representation for
-visualizing both the student behavior patterns as well as the transitioning
-behavior between them. In Figure~\ref{fig:motivating-example} we show a
-hypothetical example of the kind of output our proposed representation
-could convey.  Here we see two different behavioral patterns
-(\ref{fig:motivating-example-0} and \ref{fig:motivating-example-1}) as well
-as the \emph{transition behavior} between these two behavior patterns
-(\ref{fig:motivating-example-trans}).
+Shih:2010:EDM}. In this paper, we advocate for a representation of student
+behavior patterns as well as \emph{behavior transitions} that we believe is
+simultaneously interpretable but also amenable to unsupervised, automated
+discovery via statistical means. Specifically, we choose to visualize
+behavior patterns as labeled directed graphs where a node represents a
+``behavior state'' (such as watching a lecture video or visiting a forum),
+a directed edge indicates a transition from one behavior state to another,
+node sizes are proportional to steady-state probabilities, and edge widths
+are proportional to the probability of leaving a node following that edge.
+We can use this same representation for visualizing both the student
+behavior patterns as well as the transitioning behavior between them. In
+Figure~\ref{fig:motivating-example} we show a hypothetical example of the
+kind of output our proposed representation could convey.  Here we see two
+different behavioral patterns (\ref{fig:motivating-example-0} and
+\ref{fig:motivating-example-1}) as well as the \emph{transition behavior}
+between these two behavior patterns (\ref{fig:motivating-example-trans}).
 \begin{figure}
   \centering
   \begin{subfigure}[t]{0.30\textwidth}
@@ -82,13 +81,12 @@ large collections of click logs associated with MOOCs. We view our model
 as a component of a system that enables collaboration between the machine
 and a human instructor to extract knowledge from large collections of
 MOOC data. Automatically extracting interpretable patterns from the
-clickstream data associated with MOOCs is a necessary step in order for
-instructors to identify the hidden knowledge in massive interaction
-datasets. Without the availability of a suitable model for identifying
-behavioral patterns, instructors are not empowered to use this available
-data to improve their courses without expending extraordinary amounts of
-manual effort (even with which the raw data can still be very hard to
-interpret).
+clickstream data associated with MOOCs is a necessary step for instructors
+to identify the hidden knowledge in massive interaction datasets. Without
+the availability of a suitable model for identifying behavioral patterns,
+instructors are not empowered to use this available data to improve their
+courses without expending extraordinary amounts of manual effort (even with
+which the raw data can still be very hard to interpret).
 
 Our proposed model (as well as the proposed behavior representation) is
 motivated by the following observations:
@@ -99,9 +97,9 @@ motivated by the following observations:
       propose to treat student behavior patterns as being characterized
       (represented) via a sequence of \emph{latent states}. This allows us
       to automatically capture patterns that we might not have been able to
-      articulate clearly a priori via a series of rules, and also allows us
-      to model the inherent uncertainty in assigning a student's behavior
-      to a particular pattern or group.
+      articulate clearly a priori via a series of rules, and allows us to
+      model the inherent uncertainty in assigning a student's behavior to a
+      pattern or group.
   \item Student behavior can vary over time. Previous models that treat
       students as exhibiting only one behavioral pattern over
       time~\cite{Faucon:2016:EDM} miss out on the opportunity to understand
@@ -110,7 +108,7 @@ motivated by the following observations:
   \item Analysis of student behavior can and should be performed at varying
       levels of granularity. This requires us to aggregate data over time
       with \emph{different levels of resolution}; existing models tend to come
-      with a particular assumption about the resolution of time they
+      with an assumption about the resolution of time they
       consider~\cite{Faucon:2016:EDM, Kizilcec:2013:LAK, Shih:2010:EDM}. We
       propose a model that is agnostic to the time resolution considered,
       allowing it to be applied at different levels of resolution more

@@ -6,17 +6,17 @@ nature of the model and the particular methodology we propose for fitting
 our model parameters. Second, there are limitations in the kinds of
 patterns our model is able to discover in its current formulation and the
 ease with which instructors are able to extract knowledge from these
-patterns. We discuss both of these lines below.
+patterns. We discuss both lines below.
 
 \subsection{Technical Limitations and Implementation Challenges}
 
 One potential limitation is that the model is complex and has many parameters
-in order to truly uncover the relevant patterns in the data. In order to
-properly estimate these parameters at training time, a large amount of data
-must be available to the training algorithm. The assumption that we have a
-large amount of sequence data available for training on should generally
-hold for most MOOC courses, but this assumption may be problematic if
-attempting to apply our model to smaller online (or on-campus) courses.
+in order to truly uncover the relevant patterns in the data. To properly
+estimate these parameters at training time, a large amount of data must be
+available to the training algorithm. The assumption that we have a large
+amount of sequence data available for training on should hold for most MOOC
+courses, but this assumption may be problematic if attempting to apply our
+model to smaller online (or on-campus) courses.
 
 Our model fits its parameters using maximum likelihood estimation using the
 EM algorithm. The EM algorithm is a hill climbing algorithm that is
@@ -26,22 +26,22 @@ practice~\citep{Dempster:1977:JRSS}.  This may mean that the parameters
 found for the model may not be the ``best'' parameters in a global sense,
 which may lead to suboptimal latent state representations and transition
 patterns. Empirically, however, we observed in our experiments that strong
-patterns tend to always show up as long as the algorithm reaches a
-reasonably good local maximum, and the differences of the results tend to
-be related to weak ``unstable'' patterns which may not be reliable anyway.
-Since it is far more important and useful to reveal the strong salient
-patterns than weak unreliable ones for instructors, the problem might not
-necessarily affect the utility of the approach so significantly.  A
-commonly applied approach to address the problem of multiple local maxima
-is to run the model multiple times with different starting points to allow
-the model to explore a larger portion of the potential parameter space. One
-can then compare the log-likelihood of the data between the models that
-were started from different initialization points and select the one that
-has the highest value. This still does not guarantee that we find a global
-maximum, but it does help alleviate the potential for finding a
-particularly bad local maximum.  In practice, we have found that our model
-can be fit to the data fairly quickly on commodity hardware, so running it
-multiple times to address this concern is not computationally unfeasible.
+patterns tend to always show up if algorithm reaches a reasonably good
+local maximum, and the differences of the results tend to be related to
+weak ``unstable'' patterns which may not be reliable anyway.  Since it is
+far more important and useful to reveal the strong salient patterns than
+weak unreliable ones for instructors, the problem might not necessarily
+affect the utility of the approach so significantly.  A commonly applied
+approach to address the problem of multiple local maxima is to run the
+model multiple times with different starting points to allow the model to
+explore a larger portion of the parameter space. One can then compare the
+log-likelihood of the data between the models that were started from
+different initialization points and select the one that has the highest
+value. This still does not guarantee that we find a global maximum, but it
+does help alleviate the potential for finding a particularly bad local
+maximum. In practice, we have found that our model can be fit to the data
+quickly on commodity hardware, so running it multiple times to address this
+concern is not computationally unfeasible.
 
 A further complication in blindly applying the EM algorithm to our model is
 the fact that the observation probabilities will be incredibly small. The
@@ -64,16 +64,15 @@ As is the case with traditional hidden Markov models, it is often important
 to smooth the underlying model's distributions to ensure that there is a
 non-zero probability of generating the observations. We employed a simple
 additive smoothing in our implementation with a small additive constant
-($10^{-6}$) for all of our transition matrices to avoid this problem.
+($10^{-6}$) for all our transition matrices to avoid this problem.
 
 \subsection{Limitations of Discovered Patterns}
 
 The proposed behavior representation is most suitable for representing
 recurring behavior patterns, which presumably are most interesting to
 extract from the data, but may not cover all the interesting patterns in
-the data. It would be interesting to further explore other complementary
-models such as time series models, which may help capture non-recurring
-patterns.
+the data. It would be interesting to explore other complementary models
+such as time series models, which may help capture non-recurring patterns.
 
 Our proposed model is flexible in the patterns it can discover in two main
 ways. The first is that the granularity of the patterns can be adjusted by
@@ -83,14 +82,14 @@ states $K$ that are used to describe the segmented action sequences. One
 drawback of these two lines of flexibility is that there is not necessarily
 a clear answer as to the ``correct'' approach for both in any given
 scenario. Varying the segmentation strategy changes the granularity of the
-patterns that are required to be explained by the latent states, which will
-change their meaning. Varying the number of latent states increases the
-flexibility of the model, but also may result in latent states that are not
-substantially different from the other latent states and/or latent states
-with very low probability. This flexibility forces a user of our model to
-make some assumptions about the patterns they wish to find (granularity,
-diversity), and the model itself does not necessarily provide clear
-guidance as to what the best approach is.
+patterns the latent states explain, which will change their meaning.
+Varying the number of latent states increases the flexibility of the model,
+but also may result in latent states that are not substantially different
+from the other latent states and/or latent states with very low
+probability. This flexibility forces a user of our model to make some
+assumptions about the patterns they wish to find (granularity, diversity),
+and the model itself does not necessarily provide clear guidance as to what
+the best approach is.
 
 Furthermore, we have made an implicit assumption that the segmentation
 strategy is applied as a pre-processing step (and is most obviously a
@@ -99,13 +98,13 @@ do not specifically allow for the transitioning between the different
 latent behavior patterns to occur over different windows of time for
 different users: we have made a strong assumption that transitions between
 latent states only occur at action sequence boundaries. One can model how
-much time a user stays in a given state in terms of the number of sessions
+much time a user stays in each state in terms of the number of sessions
 they remain there before transitioning, but it may be better to directly
-model the amount of time we expect a user to stay in the given state
-directly. In other words, a more powerful model might be one in which the
-segmentation and the latent behavior pattern discovery are jointly modeled
-in a single probabilistic framework rather than being completely separate
-pieces as we investigate in this work.
+model the amount of time we expect a user to stay in the given state.  In
+other words, a more powerful model might be one in which the segmentation
+and the latent behavior pattern discovery are jointly modeled in a single
+probabilistic framework rather than being separate pieces as we investigate
+in this work.
 
 While the model can discover \emph{patterns} in the data in a fully
 automated way, there is still clearly a burden on the user of our model to

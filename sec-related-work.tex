@@ -21,19 +21,19 @@ econometrics, \citet{Hamilton:1990:JoE} explores HMMs in the context of
 ``regime-switching.'' In this framing, the goal is to understand how
 econometric data changes by modeling discrete changes in ``regime'' as
 having an impact on the resulting real-valued vector data observed. The
-``regimes'' are represented with some sort of model that can produce
-real-valued vector data, such as a multivariate Gaussian or an
-auto-regressive model. The analogy with HMMs is that a ``regime'' is a
-latent state, and the characterization of the regime itself is the output
-distribution for that latent state. Our model can be seen as such a
-``regime-switching'' model where the output of the ``regimes'' that
-students are switching between are discrete-valued \emph{sequences} (as
-opposed to real numbers, vectors of real numbers, or categorical symbols)
-and the model used to represent a specific ``regime'' is an (observable)
-Markov chain over the observed student actions. We view the switching
-between ``regimes'' as the first ``layer'' of our model, and the
-transitioning behavior \emph{within} a ``regime'' between the actions a
-student takes as the second ``layer'' of our model.
+``regimes'' are thus represented with a model that can produce real-valued
+vector data, such as a multivariate Gaussian or an auto-regressive model.
+The analogy with HMMs is that a ``regime'' is a latent state, and the
+characterization of the regime itself is the output distribution for that
+latent state. Our model can be seen as such a ``regime-switching'' model
+where the output of the ``regimes'' that students are switching between are
+discrete-valued \emph{sequences} (as opposed to real numbers, vectors of
+real numbers, or categorical symbols) and the model used to represent a
+specific ``regime'' is an (observable) Markov chain over the observed
+student actions. We view the switching between ``regimes'' as the first
+``layer'' of our model, and the transitioning behavior \emph{within} a
+``regime'' between the actions a student takes as the second ``layer'' of
+our model.
 
 A multi-layered approach to HMM modeling of sequence data has been
 performed before in other domains. \citet{Zhang:2004:CVPR}, for example,
@@ -59,29 +59,28 @@ previous layer, and so on.
 Our formulation differs from both \citet{Zhang:2004:CVPR} and
 \citet{Oliver:2004:CVIU} in that we do not feed the labeled sequence of the
 lower level into the input of the higher level. Instead, our lower level is
-actually treated using a non-hidden Markov model, and the higher level is
-modeling transitions between the $K$ different non-hidden Markov models we
-consider. The problem to be solved is similar in that we wish to predict a
-``label'' for a sequence of actions a student takes as well as understand
-the transition behavior between those labels.  However, one of the
-consequences of modeling the lower layer using a non-hidden Markov model
-instead of an HMM directly is that the meaning of the $K$ different latent
-states can be more clearly captured by using our proposed behavior
-representation. If we were to use an HMM as our first layer, the behavior
-patterns (like from Figure~\ref{fig:motivating-example}) would instead have
-nodes that represent another set of latent states instead of being concrete
-actions themselves. Each of these latent states would then be associated
-with some other output distribution over the possible concrete actions to
-be considered. In order to understand a single behavior pattern uncovered,
-one would first have to understand the different output distributions for
-the latent states in that pattern in order to understand the meaning of
-that latent state. This further complicates the understanding of higher
-level patterns because understanding the higher layer patterns requires
-understanding the lower layer patterns. By taking a more restrictive view
-of the first layer, we are able to produce a representation that can be
-more readily interpreted due to the states in our first layer
-representation having an immediately clear meaning (the concrete action
-they represent).
+treated using a non-hidden Markov model, and the higher level is modeling
+transitions between the $K$ different non-hidden Markov models we consider.
+The problem to be solved is similar in that we wish to predict a ``label''
+for a sequence of actions a student takes as well as understand the
+transition behavior between those labels.  However, one of the consequences
+of modeling the lower layer using a non-hidden Markov model instead of an
+HMM directly is that the meaning of the $K$ different latent states can be
+more clearly captured by using our proposed behavior representation. If we
+were to use an HMM as our first layer, the behavior patterns (like from
+Figure~\ref{fig:motivating-example}) would instead have nodes that
+represent another set of latent states instead of being concrete actions
+themselves. Each of these latent states would then be associated with some
+other output distribution over the possible concrete actions to be
+considered. In order to understand a single behavior pattern uncovered, one
+would first have to understand the different output distributions for the
+latent states in that pattern to understand the meaning of that latent
+state. This further complicates the understanding of higher level patterns
+because understanding the higher layer patterns requires understanding the
+lower layer patterns. By taking a more restrictive view of the first layer,
+we can produce a representation that can be more readily interpreted due to
+the states in our first layer representation having an immediately clear
+meaning (the concrete action they represent).
 
 The 2L-HMM model we propose is more closely related to the Hierarchical
 Hidden Markov Model (HHMM) detailed in \citet{Fine:1998:ML}. Here, the
@@ -135,14 +134,14 @@ flexibility in how the time segments are defined, allowing for both finer
 (for example, day-by-day) or coarser (for example, month-by-month)
 granularity. \citet{Shih:2010:EDM} investigated the use of HMM-based
 clustering techniques for automatic discovery of student learning
-strategies when solving a particular problem.  This is similar to our
-approach in that the description of behavior profiles is a Markov model,
-but cannot further characterize each latent state with another informative
-HMM. Thus their work can be regarded to modeling ``micro'' behavior,
-whereas our model can model both ``micro'' and ``macro'' behavior.
+strategies when solving a problem. This is similar to our approach in that
+the description of behavior profiles is a Markov model, but cannot further
+characterize each latent state with another informative HMM. Thus, their
+work can be regarded to modeling ``micro'' behavior, whereas our model can
+model both ``micro'' and ``macro'' behavior.
 
 \citet{Davis:2016:EDM} investigate frequent student behavior pattern chains
-with a set of actions that is defined similarly to ours. However, their
+with a set of actions that are defined similarly to ours. However, their
 method for finding the common behavioral patterns involves a manual
 clustering step to identify behavioral ``motifs,'' which is then followed
 by an automatic (rule-based) assignment of all sequences to these motifs.

@@ -27,11 +27,12 @@ output probabilistic model $p(x \mid u)$. Thus, if we ``run'' an HMM for $N$
 time points denoted by $t=1,\ldots,N$, the HMM could ``generate'' a sequence
 of observations $x_1 \ldots x_N$, where each $x_i$ is an output symbol by
 going through a sequence of \emph{hidden states} $w_1 \ldots w_N$ where
-$w_i \in U$ is a state. The association of such a latent sequence of state
-transitions with the observed symbols makes it possible to use the HMM to
-``decode'' the latent behavior of students behind the surface behavior we
-directly observe in the log data, allowing for understanding student
-behavior more deeply than a model with no latent state variables.
+each $w_i$ is a random variable taking a value from the HMM's state set
+$U$. The association of such a latent sequence of state transitions with
+the observed symbols makes it possible to use the HMM to ``decode'' the
+latent behavior of students behind the surface behavior we directly observe
+in the log data, allowing for understanding student behavior more deeply
+than a model with no latent state variables.
 
 In many ways, the generation process behind an HMM is meant to simulate the
 actual behavior of a student. We may say that students transition through
